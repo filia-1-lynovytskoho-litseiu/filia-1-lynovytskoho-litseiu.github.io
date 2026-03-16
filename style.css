@@ -714,3 +714,115 @@ footer {
         grid-column: 1 / -1;
     }
 }
+/* ───────────────────────────────────────────────
+   single-news (окремі новини) — адаптивні стилі
+   ─────────────────────────────────────────────── */
+
+.single-news {
+    background: white;
+    padding: 2rem 1rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.news-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.news-header h2 {
+    color: #005bbb;
+    font-size: clamp(1.9rem, 6.5vw, 2.8rem);
+    margin-bottom: 0.8rem;
+}
+
+.news-date {
+    font-size: 1.05rem;
+    color: #555;
+    margin: 0 0 0.4rem 0;
+    font-style: italic;
+}
+
+.news-author {
+    font-size: 0.98rem;
+    color: #777;
+    margin: 0;
+}
+
+.news-full-img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 1.5rem 0 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.news-content {
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.news-content p {
+    margin-bottom: 1.4rem;
+}
+
+blockquote {
+    background: #f0f8ff;
+    border-left: 5px solid #005bbb;
+    padding: 1.2rem 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #333;
+    border-radius: 6px;
+}
+
+.news-gallery {
+    margin: 2.5rem 0;
+}
+
+.news-gallery h3 {
+    text-align: center;
+    color: #005bbb;
+    margin-bottom: 1.2rem;
+    font-size: 1.4rem;
+}
+
+.news-back {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 1.1rem;
+}
+
+.news-back a {
+    color: #005bbb;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.6rem 1.2rem;
+    border: 2px solid #005bbb;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.news-back a:hover {
+    background: #005bbb;
+    color: white;
+}
+
+/* Адаптивність для окремих новин */
+@media (min-width: 640px) {
+    .single-news {
+        padding: 2.5rem 2rem 5rem;
+    }
+    
+    .news-full-img {
+        max-height: 600px;
+    }
+}
+
+@media (min-width: 900px) {
+    .single-news {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
