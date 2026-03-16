@@ -1043,3 +1043,172 @@ blockquote {
     margin-left: auto;
     margin-right: auto;
 }
+/* ───────────────────────────────────────────────
+   kontakty.html — покращена мобільна адаптивність
+   ─────────────────────────────────────────────── */
+
+.contacts-section {
+    background: white;
+    padding: 1.5rem 1rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.contacts-section h2 {
+    text-align: center;
+    color: #005bbb;
+    font-size: clamp(1.7rem, 6vw, 2.4rem);
+    margin-bottom: 1rem;
+}
+
+.intro {
+    text-align: center;
+    font-size: 1.05rem;
+    margin: 0 auto 2rem;
+    max-width: 700px;
+    color: #444;
+}
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+}
+
+.contact-block {
+    background: #f9fcff;
+    padding: 1.4rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    border: 1px solid #e8f2ff;
+}
+
+.contact-block h3 {
+    color: #005bbb;
+    font-size: 1.3rem;
+    margin-bottom: 0.9rem;
+    border-bottom: 2px solid #ffd500;
+    padding-bottom: 0.5rem;
+}
+
+.contact-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 1rem 0;
+}
+
+.contact-list li {
+    margin-bottom: 0.7rem;
+    font-size: 1.02rem;
+    line-height: 1.5;
+}
+
+address {
+    font-style: normal;
+    line-height: 1.6;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.98rem;
+}
+
+.schedule-table th, .schedule-table td {
+    border: 1px solid #ddd;
+    padding: 0.8rem 0.6rem;
+    text-align: center;
+}
+
+.schedule-table th {
+    background: #005bbb;
+    color: white;
+}
+
+.schedule-table tr:nth-child(even) {
+    background: #f8fbff;
+}
+
+/* На маленьких екранах таблиця стає "картковою" */
+@media (max-width: 520px) {
+    .schedule-table,
+    .schedule-table thead,
+    .schedule-table tbody,
+    .schedule-table tr,
+    .schedule-table th,
+    .schedule-table td {
+        display: block;
+    }
+    
+    .schedule-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    .schedule-table tr {
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+    
+    .schedule-table td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+    }
+    
+    .schedule-table td:before {
+        position: absolute;
+        top: 0.8rem;
+        left: 0.8rem;
+        width: 45%;
+        padding-right: 1rem;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #005bbb;
+    }
+    
+    .schedule-table td:nth-of-type(1):before { content: "День"; }
+    .schedule-table td:nth-of-type(2):before { content: "Адміністрація"; }
+    .schedule-table td:nth-of-type(3):before { content: "Бібліотека"; }
+}
+
+.highlight {
+    text-align: center;
+    font-size: clamp(1.1rem, 4.5vw, 1.35rem);
+    font-weight: 600;
+    color: #005bbb;
+    margin: 2.5rem 1rem;
+}
+
+/* Планшет+ */
+@media (min-width: 640px) {
+    .contacts-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.6rem;
+    }
+    
+    .contacts-section {
+        padding: 2rem 1.5rem 4rem;
+    }
+}
+
+@media (min-width: 960px) {
+    .contacts-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+    
+    .full-width {
+        grid-column: 1 / -1;
+    }
+    
+    .contacts-section {
+        max-width: 1200px;
+    }
+}
