@@ -1,0 +1,54 @@
+body{
+font-family: Arial, sans-serif;
+margin:0;
+background:#f4f4f4;
+}
+
+header{
+background:#005bbb;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+nav{
+background:#333;
+text-align:center;
+padding:10px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:15px;
+font-size:18px;
+}
+
+nav a:hover{
+color:#ffd500;
+}
+
+.hero{
+background:white;
+text-align:center;
+padding:40px;
+}
+
+.news{
+padding:30px;
+}
+
+.news-item{
+background:white;
+padding:15px;
+margin-bottom:15px;
+border-left:5px solid #005bbb;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:20px;
+}
