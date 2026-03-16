@@ -594,3 +594,123 @@ footer {
         height: 220px;
     }
 }
+/* ───────────────────────────────────────────────
+   kontakty.html — стилі для сторінки контактів
+   ─────────────────────────────────────────────── */
+
+.contacts-section {
+    background: white;
+    padding: 2rem 1rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contacts-section h2 {
+    text-align: center;
+    color: #005bbb;
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    margin-bottom: 1.2rem;
+}
+
+.intro {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    color: #444;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+}
+
+.contact-block {
+    background: #f9fcff;
+    padding: 1.6rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+    border: 1px solid #e0f0ff;
+}
+
+.contact-block h3 {
+    color: #005bbb;
+    margin-bottom: 1rem;
+    font-size: 1.35rem;
+    border-bottom: 2px solid #ffd500;
+    padding-bottom: 0.6rem;
+}
+
+.contact-block ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.2rem;
+}
+
+.contact-block li {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-bottom: 0.7rem;
+    font-size: 1.03rem;
+}
+
+.contact-block li::before {
+    content: "☎";
+    position: absolute;
+    left: 0;
+    color: #005bbb;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+.schedule-table th,
+.schedule-table td {
+    border: 1px solid #ddd;
+    padding: 0.9rem;
+    text-align: center;
+}
+
+.schedule-table th {
+    background: #005bbb;
+    color: white;
+    font-weight: bold;
+}
+
+.schedule-table tr:nth-child(even) {
+    background: #f8fbff;
+}
+
+.link {
+    color: #005bbb;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.link:hover {
+    color: #003366;
+}
+
+/* Адаптивність */
+@media (min-width: 640px) {
+    .contacts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 960px) {
+    .contacts-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .full-width {
+        grid-column: 1 / -1;
+    }
+}
