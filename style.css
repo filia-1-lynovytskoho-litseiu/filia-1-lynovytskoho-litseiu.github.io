@@ -23,7 +23,7 @@ img {
 }
 
 /* ==========================================================================
-   HEADER — однаковий на всіх сторінках
+   HEADER
    ========================================================================== */
 
 header {
@@ -46,7 +46,7 @@ header {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: clamp(0.8rem, 4vw, 1.5rem);
+  padding: 1rem;
 }
 
 header h1 {
@@ -76,7 +76,7 @@ header p {
   margin: 0.3rem;
   display: inline-block;
   border-radius: 6px;
-  transition: background 0.25s, color 0.25s;
+  transition: 0.25s;
 }
 
 .main-nav a:hover,
@@ -86,10 +86,9 @@ header p {
 }
 
 /* ==========================================================================
-   ЗАГАЛЬНІ СЕКЦІЇ + ЦЕНТРУВАННЯ ТЕКСТУ
+   ЗАГАЛЬНІ СЕКЦІЇ
    ========================================================================== */
 
-main,
 .hero,
 .pupils-section,
 .contacts-section,
@@ -97,30 +96,24 @@ main,
 .about,
 .news {
   background: white;
-  padding: clamp(1.5rem, 4vw, 2.5rem) 1rem;
+  padding: 2rem 1rem;
   max-width: 1400px;
   margin: 0 auto;
-  text-align: center;
-}
-
-h2, h3 {
-  color: #005bbb;
-  text-align: center;
 }
 
 h2 {
+  text-align: center;
+  color: #005bbb;
   font-size: clamp(1.7rem, 6vw, 2.5rem);
   margin-bottom: 1.5rem;
 }
 
-h3 {
-  font-size: clamp(1.2rem, 4.5vw, 1.4rem);
-  margin-bottom: 1rem;
-}
-
-p, li, blockquote {
-  text-align: left;
-  max-width: 75ch;
+.intro,
+.center-text {
+  text-align: center;
+  color: #444;
+  margin-bottom: 2rem;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -137,10 +130,12 @@ p, li, blockquote {
   border-radius: 10px;
   box-shadow: 0 3px 12px rgba(0,0,0,0.07);
   border: 1px solid #e0f0ff;
-  text-align: left;
 }
 
 .block h3 {
+  color: #005bbb;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
   border-bottom: 2px solid #ffd500;
   padding-bottom: 0.5rem;
 }
@@ -155,6 +150,15 @@ p, li, blockquote {
   position: relative;
   padding-left: 1.8rem;
   margin-bottom: 0.7rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.block li::before {
+  position: absolute;
+  left: 0;
+  color: #005bbb;
+  font-weight: bold;
 }
 
 .pupil-block li::before { content: "→"; }
@@ -165,9 +169,15 @@ p, li, blockquote {
    ========================================================================== */
 
 .gallery,
-.gallery-mini,
-.news-gallery {
+.gallery-mini {
   padding: 2rem 1rem;
+}
+
+.gallery h2,
+.news-gallery h3 {
+  text-align: center;
+  color: #005bbb;
+  margin-bottom: 1.2rem;
 }
 
 .gallery-scroll {
@@ -180,15 +190,20 @@ p, li, blockquote {
 }
 
 .gallery-scroll img {
-  flex: 0 0 clamp(220px, 55vw, 280px);
-  height: clamp(150px, 40vw, 190px);
+  flex: 0 0 260px;
+  height: 170px;
   object-fit: cover;
   border-radius: 8px;
   scroll-snap-align: start;
 }
 
+.gallery-scroll.mini img {
+  flex: 0 0 240px;
+  height: 160px;
+}
+
 /* ==========================================================================
-   НОВИНИ ТА SINGLE-NEWS
+   НОВИНИ (загальні + сітка)
    ========================================================================== */
 
 .news-grid {
@@ -197,32 +212,41 @@ p, li, blockquote {
   gap: 1.6rem;
 }
 
+.news-item {
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
 .news-item:hover {
   transform: translateY(-6px);
   box-shadow: 0 10px 24px rgba(0,0,0,0.12);
 }
 
-.read-more,
-.news-back a,
-.download-link,
-.link {
+.news-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.read-more {
   display: inline-block;
   padding: 0.5rem 1rem;
   background: #005bbb;
   color: white;
   border-radius: 4px;
   text-decoration: none;
-  font-weight: 500;
 }
 
-.read-more:hover,
-.news-back a:hover,
-.download-link:hover,
-.link:hover {
-  background: #004080;
-}
+.read-more:hover { background: #004080; }
+
+/* ==========================================================================
+   SINGLE-NEWS
+   ========================================================================== */
+
+.news-header { text-align: center; margin-bottom: 2.5rem; }
 
 .news-full-img {
+  width: 100%;
   max-height: 500px;
   object-fit: cover;
   border-radius: 10px;
@@ -230,18 +254,40 @@ p, li, blockquote {
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
+.news-content {
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
 blockquote {
   background: #f0f8ff;
   border-left: 5px solid #005bbb;
   padding: 1.2rem 1.5rem;
-  margin: 2rem auto;
+  margin: 2rem 0;
   font-style: italic;
-  max-width: 75ch;
   border-radius: 6px;
 }
 
+.news-back {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.news-back a {
+  color: #005bbb;
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  border: 2px solid #005bbb;
+  border-radius: 6px;
+}
+
+.news-back a:hover {
+  background: #005bbb;
+  color: white;
+}
+
 /* ==========================================================================
-   ТАБЛИЦЯ
+   ТАБЛИЦЯ (графік роботи)
    ========================================================================== */
 
 .schedule-table {
@@ -261,8 +307,10 @@ blockquote {
   color: white;
 }
 
+.schedule-table tr:nth-child(even) { background: #f8fbff; }
+
 /* ==========================================================================
-   АДАПТИВНІСТЬ
+   АДАПТИВНІСТЬ — ОСНОВНА
    ========================================================================== */
 
 @media (min-width: 640px) {
@@ -273,9 +321,11 @@ blockquote {
   .pupils-grid,
   .contacts-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
   }
 
-  .gallery-scroll img {
+  .gallery-scroll img,
+  .gallery-scroll.mini img {
     flex: 0 0 300px;
     height: 190px;
   }
@@ -286,6 +336,7 @@ blockquote {
   .pupils-grid,
   .contacts-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 2.2rem;
   }
 
   .full-width { grid-column: 1 / -1; }
@@ -297,6 +348,12 @@ blockquote {
     max-width: 1300px;
     padding: 2.5rem 2rem;
   }
+
+  .gallery-scroll img,
+  .gallery-scroll.mini img {
+    flex: 0 0 340px;
+    height: 220px;
+  }
 }
 
 @media (min-width: 1400px) {
@@ -306,7 +363,7 @@ blockquote {
 }
 
 /* ==========================================================================
-   МОБІЛЬНИЙ ЗАХИСТ
+   МОБІЛЬНИЙ ЗАХИСТ ВІД СКРОЛУ ТА ВИЛАЗІННЯ ТЕКСТУ
    ========================================================================== */
 
 @media (max-width: 520px) {
@@ -335,13 +392,10 @@ blockquote {
     padding: 1.1rem 0.9rem;
   }
 
-  .gallery-scroll img {
-    flex: 0 0 240px;
-    height: 160px;
-  }
+  body { overflow-x: hidden !important; }
 }
 
-/* Стекована таблиця */
+/* Стекована таблиця на дуже маленьких екранах */
 @media (max-width: 520px) {
   .schedule-table,
   .schedule-table thead,
@@ -388,6 +442,7 @@ blockquote {
 
 .highlight,
 .call-to-action {
+  text-align: center;
   font-size: clamp(1.1rem, 4.5vw, 1.3rem);
   font-weight: 600;
   color: #005bbb;
@@ -405,6 +460,4 @@ blockquote {
 }
 
 .download-link:hover,
-.link:hover {
-  color: #003366;
-}
+.link:hover { color: #003366; }
