@@ -1,378 +1,260 @@
-body{
-font-family: Arial, sans-serif;
-margin:0;
-background:#f4f4f4;
+/* ==========================================================================
+   БАЗОВІ СТИЛІ + РЕСЕТ (mobile-first)
+   ========================================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-header{
-background:#005bbb;
-color:white;
-text-align:center;
-padding:20px;
+body {
+  font-family: Arial, system-ui, sans-serif;
+  background: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
 }
 
-.header-image{
-width:100%;
-max-height:250px;
-object-fit:cover;
-margin-bottom:10px;
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-nav{
-background:#333;
-text-align:center;
-padding:10px;
+/* ==========================================================================
+   HEADER + ГЕРОЙСЬКА ЗОБРАЖЕННЯ
+   ========================================================================== */
+
+header {
+  position: relative;
+  color: white;
+  text-align: center;
 }
 
-nav a{
-color:white;
-text-decoration:none;
-margin:15px;
-font-size:18px;
+.header-image {
+  width: 100%;
+  aspect-ratio: 3 / 1.2;          /* ≈ 3:1.2 — гарне співвідношення для банера */
+  object-fit: cover;
+  display: block;
 }
 
-nav a:hover{
-color:#ffd500;
+header h1,
+header p {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 91, 187, 0.55); /* #005bbb з прозорістю */
+  padding: 1rem;
+  margin: 0;
 }
 
-.hero{
-background:white;
-text-align:center;
-padding:40px;
+header h1 {
+  font-size: clamp(1.6rem, 7vw, 2.8rem);
+  margin-bottom: 0.5rem;
 }
 
-.news{
-padding:30px;
+header p {
+  font-size: clamp(1rem, 4.5vw, 1.4rem);
 }
 
-.news-item{
-display:flex;
-gap:15px;
-background:white;
-padding:15px;
-margin-bottom:15px;
-border-left:5px solid #005bbb;
-align-items:center;
+/* ==========================================================================
+   НАВІГАЦІЯ (мобільно — стовпчик, десктоп — горизонтально)
+   ========================================================================== */
+
+nav {
+  background: #333;
+  padding: 1rem;
+  text-align: center;
 }
 
-.news-img{
-width:120px;
-height:80px;
-object-fit:cover;
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 0.7rem 1.2rem;
+  margin: 0.3rem;
+  display: inline-block;
+  border-radius: 6px;
+  transition: background 0.25s, color 0.25s;
 }
 
-.gallery{
-padding:30px;
-background:white;
+nav a:hover,
+nav a:focus {
+  background: rgba(255, 213, 0, 0.25); /* #ffd500 легка прозорість */
+  color: #ffd500;
 }
 
-.gallery-scroll{
-display:flex;
-overflow-x:auto;
-gap:10px;
-padding:10px;
+/* ==========================================================================
+   HERO + ОСНОВНІ СЕКЦІЇ
+   ========================================================================== */
+
+.hero {
+  background: white;
+  text-align: center;
+  padding: 2.5rem 1rem;
 }
 
-.gallery-scroll img{
-height:150px;
-border-radius:5px;
+.hero h2 {
+  color: #005bbb;
+  font-size: clamp(1.8rem, 6vw, 2.4rem);
+  margin-bottom: 1rem;
 }
 
-footer{
-background:#222;
-color:white;
-text-align:center;
-padding:15px;
-margin-top:20px;
-}
-.about{
-background:white;
-padding:30px;
-margin:20px;
-}
-
-.about ul{
-padding-left:20px;
-}
-/* Покращення для великої кількості новин */
+/* Новини */
 .news {
-    max-width: 1100px;
-    margin: 0 auto;          /* центруємо блок новин */
-    padding: 30px 15px;
+  padding: 2rem 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .news h2 {
-    text-align: center;
-    color: #005bbb;
-    margin-bottom: 30px;
-    font-size: 2.2em;
+  text-align: center;
+  color: #005bbb;
+  font-size: clamp(1.7rem, 5.5vw, 2.3rem);
+  margin-bottom: 2rem;
 }
 
-/* Додаємо дату та "Читати далі" */
-.news-date {
-    font-size: 0.9em;
-    color: #666;
-    margin: 4px 0 10px 0;
-    font-style: italic;
+.news-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: white;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-left: 5px solid #005bbb;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.news-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.news-item > div {
+  flex: 1;
 }
 
 .read-more {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 6px 14px;
-    background: #005bbb;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 0.95em;
-    transition: background 0.2s;
+  display: inline-block;
+  margin-top: 0.8rem;
+  padding: 0.5rem 1rem;
+  background: #005bbb;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  transition: background 0.2s;
 }
 
 .read-more:hover {
-    background: #004080;
+  background: #004080;
 }
 
-/* Адаптивність: на маленьких екранах новини в стовпчик */
-@media (max-width: 680px) {
-    .news-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .news-img {
-        width: 100%;
-        height: auto;
-        max-height: 220px;
-    }
-    
-    .news-item > div {
-        width: 100%;
-    }
+/* Галерея */
+.gallery {
+  padding: 2rem 1rem;
+  background: white;
 }
 
-/* Опціонально: сітка на великих екранах (2–3 колонки) */
+.gallery h2 {
+  text-align: center;
+  color: #005bbb;
+  margin-bottom: 1.5rem;
+}
+
+.gallery-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  padding: 0.8rem 0;
+  scrollbar-width: thin;
+}
+
+.gallery-scroll img {
+  flex: 0 0 260px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Footer */
+footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 1.2rem;
+  margin-top: 2rem;
+}
+
+/* ==========================================================================
+   АДАПТИВНІСТЬ (min-width — від планшета і вище)
+   ========================================================================== */
+
+/* Планшет ≈ 640–900px */
+@media (min-width: 640px) {
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  nav a {
+    margin: 0;
+  }
+
+  .news-item {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .news-img {
+    width: 140px;
+    height: 100px;
+    flex-shrink: 0;
+  }
+}
+
+/* Десктоп / великий планшет ≈ 900px+ */
 @media (min-width: 900px) {
-    .news {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);   /* або repeat(auto-fit, minmax(420px, 1fr)) */
-        gap: 25px 35px;
-    }
-    
-    .news-item {
-        margin-bottom: 0;     /* прибираємо нижній відступ, бо є gap */
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    .news-img {
-        width: 100%;
-        height: 180px;
-    }
-}
-.pupils-section {
-    background: white;
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.pupils-grid {
+  .news {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 25px;
-}
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
 
-.pupil-block {
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
+  .news-item {
+    margin-bottom: 0;
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-.pupil-block h3 {
-    color: #005bbb;
-    margin-top: 0;
-    border-bottom: 2px solid #ffd500;
-    padding-bottom: 8px;
-}
-
-.pupil-block ul {
-    padding-left: 20px;
-    line-height: 1.6;
-}
-
-.full-width {
-    grid-column: 1 / -1;
-}
-
-.center-text {
-    text-align: center;
-}
-
-/* Сітка на великих екранах */
-@media (min-width: 768px) {
-    .pupils-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1100px) {
-    .pupils-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .full-width {
-        grid-column: 1 / 4;
-    }
-}
-.contacts-section {
-    background: white;
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.contacts-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 25px;
-}
-
-.contact-block {
-    background: #f9f9f9;
-    padding: 25px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-}
-
-.contact-block h3 {
-    color: #005bbb;
-    margin-top: 0;
-    border-bottom: 2px solid #ffd500;
-    padding-bottom: 10px;
-}
-
-.contact-block ul {
-    padding-left: 20px;
-    line-height: 1.7;
-}
-
-.contact-block table.schedule-table {
+  .news-img {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+
+  .gallery-scroll img {
+    flex: 0 0 320px;
+    height: 200px;
+  }
 }
 
-.schedule-table th, .schedule-table td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-}
+/* Дуже великий екран (опціонально) */
+@media (min-width: 1200px) {
+  .news {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
-.schedule-table th {
-    background: #005bbb;
-    color: white;
-}
-
-.full-width {
-    grid-column: 1 / -1;
-}
-
-.center-text {
-    text-align: center;
-    font-weight: bold;
-}
-
-/* Адаптивна сітка */
-@media (min-width: 768px) {
-    .contacts-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1100px) {
-    .contacts-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .full-width {
-        grid-column: 1 / 4;
-    }
-}
-.single-news {
-    background: white;
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.news-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.news-header h2 {
-    color: #005bbb;
-    margin-bottom: 10px;
-}
-
-.news-date {
-    font-size: 1.1em;
-    color: #666;
-    margin: 0 0 8px 0;
-}
-
-.news-author {
-    font-style: italic;
-    color: #444;
-}
-
-.news-full-img {
-    width: 100%;
-    max-height: 500px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin: 20px 0;
-}
-
-.news-content {
-    line-height: 1.7;
-    font-size: 1.05em;
-}
-
-.news-content blockquote {
-    background: #f0f8ff;
-    border-left: 5px solid #005bbb;
-    padding: 15px 20px;
-    margin: 25px 0;
-    font-style: italic;
-    color: #333;
-}
-
-.news-gallery {
-    margin: 30px 0;
-}
-
-.news-gallery h3 {
-    text-align: center;
-    color: #005bbb;
-    margin-bottom: 15px;
-}
-
-.news-back {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 1.1em;
-}
-
-.news-back a {
-    color: #005bbb;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.news-back a:hover {
-    text-decoration: underline;
+  .gallery-scroll img {
+    flex: 0 0 380px;
+    height: 240px;
+  }
 }
