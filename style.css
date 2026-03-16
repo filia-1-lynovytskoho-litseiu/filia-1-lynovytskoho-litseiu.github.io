@@ -467,3 +467,130 @@ footer {
         font-size: 1.45rem;
     }
 }
+/* ───────────────────────────────────────────────
+   uchnyam.html — стилі для учнівської сторінки
+   ─────────────────────────────────────────────── */
+
+.pupils-section {
+    background: white;
+    padding: 2rem 1rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pupils-section h2 {
+    text-align: center;
+    color: #005bbb;
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    margin-bottom: 1.2rem;
+}
+
+.intro {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    color: #444;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pupils-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+}
+
+.pupil-block {
+    background: #f9fcff;
+    padding: 1.6rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+    border: 1px solid #e0f0ff;
+}
+
+.pupil-block h3 {
+    color: #005bbb;
+    margin-bottom: 1rem;
+    font-size: 1.35rem;
+    border-bottom: 2px solid #ffd500;
+    padding-bottom: 0.6rem;
+}
+
+.pupil-block ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.2rem;
+}
+
+.pupil-block li {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-bottom: 0.7rem;
+    font-size: 1.03rem;
+}
+
+.pupil-block li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #005bbb;
+    font-weight: bold;
+}
+
+.download-link {
+    color: #005bbb;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.download-link:hover {
+    color: #003366;
+}
+
+.gallery-mini {
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.gallery-mini .gallery-scroll.mini {
+    margin-top: 1.2rem;
+}
+
+.gallery-scroll.mini img {
+    flex: 0 0 260px;
+    height: 170px;
+}
+
+.center-text {
+    text-align: center;
+    color: #005bbb;
+}
+
+/* Адаптивність */
+@media (min-width: 640px) {
+    .pupils-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-scroll.mini img {
+        flex: 0 0 300px;
+        height: 190px;
+    }
+}
+
+@media (min-width: 960px) {
+    .pupils-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .full-width {
+        grid-column: 1 / -1;
+    }
+    
+    .gallery-scroll.mini img {
+        flex: 0 0 340px;
+        height: 220px;
+    }
+}
