@@ -2,6 +2,7 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Новини – Філія №1 Линовицького ліцею</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -9,12 +10,14 @@
 <body>
 
 <header>
-    <img src="main.jpg" class="header-image">
-    <h1>Філія №1 Линовицького ліцею</h1>
-    <p>Офіційний сайт закладу освіти</p>
+    <img src="main.jpg" class="header-image" alt="Линовицький ліцей Філія №1">
+    <div class="header-overlay">
+        <h1>Філія №1 Линовицького ліцею</h1>
+        <p>Офіційний сайт закладу освіти</p>
+    </div>
 </header>
 
-<nav>
+<nav class="main-nav">
     <a href="index.html">Головна</a>
     <a href="about.html">Про нас</a>
     <a href="news.html">Новини</a>
@@ -22,121 +25,88 @@
     <a href="kontakty.html">Контакти</a>
 </nav>
 
-<section class="news">
-    <h2>Всі останні новини</h2>
-    
-    <div class="news-item">
-        <img src="2.jpg" class="news-img" alt="Спортивні змагання">
-        <div>
-            <h3>Тидлень Шевченковськоъ полезыъ</h3>
-            <p class="news-date">10 березня 2026</p>
-            <p>Наші учні вибороли 3 золоті, 4 срібні та 5 бронзових медалей у легкоатлетичних дисциплінах. Вітаємо спортсменів та тренерів!</p>
-            <a href="#" class="read-more">Читати далі →</a>
+<main>
+    <section class="news">
+        <h2>Всі останні новини</h2>
+        
+        <div class="news-grid">
+
+            <article class="news-item">
+                <img src="2.jpg" class="news-img" alt="Тиждень Шевченківської поезії">
+                <div class="news-content">
+                    <h3>Тиждень Шевченківської поезії</h3>
+                    <p class="news-date">10 березня 2026</p>
+                    <p>Наші учні вибороли 3 золоті, 4 срібні та 5 бронзових медалей у легкоатлетичних дисциплінах. Вітаємо спортсменів та тренерів!</p>
+                    <a href="#" class="read-more">Читати далі →</a>
+                </div>
+            </article>
+
+            <article class="news-item">
+                <img src="1.jpg" class="news-img" alt="Відкриття кабінету інформатики">
+                <div class="news-content">
+                    <h3>Відкриття нового кабінету інформатики</h3>
+                    <p class="news-date">15 березня 2026</p>
+                    <p>У нашому закладі урочисто відкрито сучасний кабінет інформатики з новими комп'ютерами та інтерактивною дошкою. Тепер уроки IT стануть ще цікавішими!</p>
+                    <a href="vidkryttya-novogo-kabinetu.html" class="read-more">Читати далі →</a>
+                </div>
+            </article>
+
+            <article class="news-item">
+                <img src="2.jpg" class="news-img" alt="Спортивні змагання">
+                <div class="news-content">
+                    <h3>Успіх на районних спортивних змаганнях</h3>
+                    <p class="news-date">10 березня 2026</p>
+                    <p>Наші учні вибороли 3 золоті, 4 срібні та 5 бронзових медалей у легкоатлетичних дисциплінах. Вітаємо спортсменів та тренерів!</p>
+                    <a href="#" class="read-more">Читати далі →</a>
+                </div>
+            </article>
+
+            <article class="news-item">
+                <img src="3.jpg" class="news-img" alt="Театральна постановка">
+                <div class="news-content">
+                    <h3>Прем'єра шкільної вистави «Попелюшка»</h3>
+                    <p class="news-date">5 березня 2026</p>
+                    <p>Учні 7–9 класів представили чудову постановку казки. Зал аплодував стоячи! Дякуємо всім учасникам та керівникам гуртка.</p>
+                    <a href="#" class="read-more">Читати далі →</a>
+                </div>
+            </article>
+
+            <article class="news-item">
+                <img src="4.jpg" class="news-img" alt="Екскурсія до музею">
+                <div class="news-content">
+                    <h3>Екскурсія до краєзнавчого музею</h3>
+                    <p class="news-date">28 лютого 2026</p>
+                    <p>Учні 5–6 класів відвідали районний краєзнавчий музей та дізналися багато цікавого про історію рідного краю.</p>
+                    <a href="#" class="read-more">Читати далі →</a>
+                </div>
+            </article>
+
+            <article class="news-item">
+                <img src="5.jpg" class="news-img" alt="Олімпіада з математики">
+                <div class="news-content">
+                    <h3>Перемога на Всеукраїнській олімпіаді з математики</h3>
+                    <p class="news-date">20 лютого 2026</p>
+                    <p>Учениця 10 класу Анна К. посіла І місце в обласному етапі. Вітаємо та бажаємо успіху на всеукраїнському рівні!</p>
+                    <a href="#" class="read-more">Читати далі →</a>
+                </div>
+            </article>
+
+            <!-- решту новин можна продовжити аналогічно -->
+
         </div>
-    </div>
+    </section>
 
-    <div class="news-item">
-        <img src="1.jpg" class="news-img" alt="Новий кабінет">
-        <div>
-            <h3>Відкриття нового кабінету інформатики</h3>
-            <p class="news-date">15 березня 2026</p>
-            <p>У нашому закладі урочисто відкрито сучасний кабінет інформатики з новими комп'ютерами та інтерактивною дошкою. Тепер уроки IT стануть ще цікавішими!</p>
-            <a href="vidkryttya-novogo-kabinetu.html" class="read-more">Читати далі →</a>
+    <section class="gallery">
+        <h2>Фотогалерея</h2>
+        <div class="gallery-scroll">
+            <img src="1.jpg" alt="Фото школи 1">
+            <img src="2.jpg" alt="Фото школи 2">
+            <img src="3.jpg" alt="Фото школи 3">
+            <img src="4.jpg" alt="Фото школи 4">
+            <img src="5.jpg" alt="Фото школи 5">
         </div>
-    </div>
-
-    <div class="news-item">
-        <img src="2.jpg" class="news-img" alt="Спортивні змагання">
-        <div>
-            <h3>Успіх на районних спортивних змаганнях</h3>
-            <p class="news-date">10 березня 2026</p>
-            <p>Наші учні вибороли 3 золоті, 4 срібні та 5 бронзових медалей у легкоатлетичних дисциплінах. Вітаємо спортсменів та тренерів!</p>
-            <a href="#" class="read-more">Читати далі →</a>
-        </div>
-    </div>
-
-    <div class="news-item">
-        <img src="3.jpg" class="news-img" alt="Театральна постановка">
-        <div>
-            <h3>Прем'єра шкільної вистави «Попелюшка»</h3>
-            <p class="news-date">5 березня 2026</p>
-            <p>Учні 7–9 класів представили чудову постановку казки. Зал аплодував стоячи! Дякуємо всім учасникам та керівникам гуртка.</p>
-            <a href="#" class="read-more">Читати далі →</a>
-        </div>
-    </div>
-
-    <div class="news-item">
-        <img src="4.jpg" class="news-img" alt="Екскурсія">
-        <div>
-            <h3>Екскурсія до краєзнавчого музею</h3>
-            <p class="news-date">28 лютого 2026</p>
-            <p>Учні 5–6 класів відвідали районний краєзнавчий музей та дізналися багато цікавого про історію рідного краю.</p>
-            <a href="#" class="read-more">Читати далі →</a>
-        </div>
-    </div>
-
-    <div class="news-item">
-        <img src="5.jpg" class="news-img" alt="Олімпіада">
-        <div>
-            <h3>Перемога на Всеукраїнській олімпіаді з математики</h3>
-            <p class="news-date">20 лютого 2026</p>
-            <p>Учениця 10 класу Анна К. посіла І місце в обласному етапі. Вітаємо та бажаємо успіху на всеукраїнському рівні!</p>
-            <a href="#" class="read-more">Читати далі →</a>
-        </div>
-    </div>
-
-    <div class="news-item">
-        <img src="6.jpg" class="news-img" alt="День вчителя">
-        <div>
-            <h3>Вітаємо наших педагогів з професійним святом!</h3>
-            <p class="news-date">5 жовтня 2025</p>
-            <p>Щиро дякуємо за знання, терпіння, любов та підтримку. Ви — найкращі!</p>
-            <a href="#" class="read-more">Читати далі →</a>
-        </div>
-    </div>
-
-    <div class="news-item">
-        <img src="7.jpg" class="news-img" alt="Осінній ярмарок">
-        <div>
-            <h3>Традиційний осінній ярмарок у ліцеї</h3>
-            <p class="news-date">25 вересня 2025</p>
-            <p>Учні та вчителі представили власноруч приготовані страви, вироби hand-made та солодощі. Зібрано понад 12 000 грн на благодійність.</p>
-            <a href="#" class="read-more">Читати далі →</a>
-        </div>
-    </div>
-
-    <div class="news-item">
-        <img src="8.jpg" class="news-img" alt="Перший дзвоник">
-        <div>
-            <h3>Святкування Дня знань та Першого дзвоника</h3>
-            <p class="news-date">1 вересня 2025</p>
-            <p>Новий навчальний рік розпочато! Бажаємо всім учням та педагогам успіхів, натхнення та цікавих відкриттів.</p>
-            <a href="#" class="read-more">Читати далі →</a>
-        </div>
-    </div>
-
-    <div class="news-item">
-        <img src="9.jpg" class="news-img" alt="Випускний">
-        <div>
-            <h3>Випускний вечір 11 класу</h3>
-            <p class="news-date">20 червня 2025</p>
-            <p>Прощаємося зі шкільними роками та вітаємо випускників з отриманням атестатів. Успіхів на новому етапі життя!</p>
-            <a href="#" class="read-more">Читати далі →</a>
-        </div>
-    </div>
-
-</section>
-
-<section class="gallery">
-    <h2>Фотогалерея</h2>
-    <div class="gallery-scroll">
-        <img src="1.jpg" alt="Фото 1">
-        <img src="2.jpg" alt="Фото 2">
-        <img src="3.jpg" alt="Фото 3">
-        <img src="4.jpg" alt="Фото 4">
-        <img src="5.jpg" alt="Фото 5">
-    </div>
-</section>
+    </section>
+</main>
 
 <footer>
     <p>© 2026 Філія №1 Линовицького ліцею</p>
