@@ -94,3 +94,78 @@ margin:20px;
 .about ul{
 padding-left:20px;
 }
+/* Покращення для великої кількості новин */
+.news {
+    max-width: 1100px;
+    margin: 0 auto;          /* центруємо блок новин */
+    padding: 30px 15px;
+}
+
+.news h2 {
+    text-align: center;
+    color: #005bbb;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+}
+
+/* Додаємо дату та "Читати далі" */
+.news-date {
+    font-size: 0.9em;
+    color: #666;
+    margin: 4px 0 10px 0;
+    font-style: italic;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 14px;
+    background: #005bbb;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.95em;
+    transition: background 0.2s;
+}
+
+.read-more:hover {
+    background: #004080;
+}
+
+/* Адаптивність: на маленьких екранах новини в стовпчик */
+@media (max-width: 680px) {
+    .news-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .news-img {
+        width: 100%;
+        height: auto;
+        max-height: 220px;
+    }
+    
+    .news-item > div {
+        width: 100%;
+    }
+}
+
+/* Опціонально: сітка на великих екранах (2–3 колонки) */
+@media (min-width: 900px) {
+    .news {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);   /* або repeat(auto-fit, minmax(420px, 1fr)) */
+        gap: 25px 35px;
+    }
+    
+    .news-item {
+        margin-bottom: 0;     /* прибираємо нижній відступ, бо є gap */
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .news-img {
+        width: 100%;
+        height: 180px;
+    }
+}
