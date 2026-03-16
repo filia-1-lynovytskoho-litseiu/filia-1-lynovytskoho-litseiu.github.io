@@ -362,3 +362,108 @@ footer {
     height: 240px;
   }
 }
+/* ───────────────────────────────────────────────
+   news.html — специфічні покращення та адаптація
+   ─────────────────────────────────────────────── */
+
+.news {
+    padding: 2rem 1rem 4rem;
+    background: #f8fbff;
+}
+
+.news h2 {
+    text-align: center;
+    color: #005bbb;
+    font-size: clamp(1.8rem, 6vw, 2.6rem);
+    margin-bottom: 2.2rem;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+}
+
+.news-item {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+.news-img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 1.4rem 1.5rem 1.8rem;
+}
+
+.news-content h3 {
+    margin: 0 0 0.6rem;
+    font-size: clamp(1.18rem, 4.2vw, 1.38rem);
+    line-height: 1.3;
+    color: #003366;
+}
+
+.news-date {
+    display: block;
+    font-size: 0.94rem;
+    color: #555;
+    margin-bottom: 0.8rem;
+    font-style: italic;
+}
+
+.news-content p {
+    margin: 0 0 1.1rem;
+    font-size: 1.03rem;
+    line-height: 1.58;
+}
+
+/* Галерея на сторінці новин — можна залишити як є або уточнити */
+.gallery {
+    padding: 2.5rem 1rem;
+    background: white;
+}
+
+/* ───────────────────────────────
+   Адаптивність для новин
+   ─────────────────────────────── */
+
+@media (min-width: 640px) {
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.8rem;
+    }
+}
+
+@media (min-width: 960px) {
+    .news {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.2rem 2.5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .news-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.4rem 2.8rem;
+    }
+    
+    .news-content h3 {
+        font-size: 1.45rem;
+    }
+}
