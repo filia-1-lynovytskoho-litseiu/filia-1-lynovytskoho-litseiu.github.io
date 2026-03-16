@@ -1,73 +1,77 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8">
-<title>Линовицький ліцей – Філія №1</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Линовицький ліцей – Філія №1</title>
+  
+  <!-- Обов’язково для адаптивності! -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  
+  <link rel="stylesheet" href="style.css">
   <meta name="google-site-verification" content="nzQj2xGdQmcjNdkb7C-c_WhR6F7RKy_tW2y6L_GNDEY" />
 </head>
 
 <body>
 
 <header>
-<img src="main.jpg" class="header-image">
-<h1>Філія №1 Линовицького ліцею</h1>
-<p>Офіційний сайт закладу освіти</p>
+  <img src="main.jpg" class="header-image" alt="Линовицький ліцей Філія №1">
+  <div class="header-text">
+    <h1>Філія №1 Линовицького ліцею</h1>
+    <p>Офіційний сайт закладу освіти</p>
+  </div>
 </header>
 
-<nav>
-<a href="index.html">Головна</a>
-<a href="about.html">Про нас</a>
-<a href="news.html">Новини</a>
-<a href="uchnyam.html">Учням</a>
-<a href="kontakty.html">Контакти</a>
+<nav class="main-nav">
+  <a href="index.html">Головна</a>
+  <a href="about.html">Про нас</a>
+  <a href="news.html">Новини</a>
+  <a href="uchnyam.html">Учням</a>
+  <a href="kontakty.html">Контакти</a>
 </nav>
 
-<section class="hero">
-<h2>Ласкаво просимо!</h2>
-<p>Раді вітати вас на офіційному сайті нашого навчального закладу.</p>
-</section>
+<main>
+  <section class="hero">
+    <h2>Ласкаво просимо!</h2>
+    <p>Раді вітати вас на офіційному сайті нашого навчального закладу.</p>
+  </section>
 
-<section class="news">
+  <section class="news">
+    <h2>Останні новини</h2>
+    <div class="news-grid">
+      <article class="news-item">
+        <img src="1.jpg" class="news-img" alt="Відкриття нового кабінету">
+        <div class="news-content">
+          <h3>Відкриття нового кабінету</h3>
+          <p>У школі відкрито сучасний кабінет інформатики.</p>
+          <a href="vidkryttya-novogo-kabinetu.html" class="read-more">Читати далі →</a>
+        </div>
+      </article>
 
-<h2>Останні новини</h2>
+      <article class="news-item">
+        <img src="2.jpg" class="news-img" alt="Спортивні змагання">
+        <div class="news-content">
+          <h3>Спортивні змагання</h3>
+          <p>Учні взяли участь у районних спортивних змаганнях.</p>
+          <a href="vidkryttya-novogo-kabinetu.html" class="read-more">Читати далі →</a>
+        </div>
+      </article>
+    </div>
+  </section>
 
-<div class="news-item">
-<img src="1.jpg" class="news-img">
-<div>
-<h3>Відкриття нового кабінету</h3>
-<p>У школі відкрито сучасний кабінет інформатики.</p>
-  <a href="vidkryttya-novogo-kabinetu.html" class="read-more">Читати далі →</a>
-</div>
-</div>
-
-<div class="news-item">
-<img src="2.jpg" class="news-img">
-<div>
-<h3>Спортивні змагання</h3>
-<p>Учні взяли участь у районних спортивних змаганнях.</p>
-  <a href="vidkryttya-novogo-kabinetu.html" class="read-more">Читати далі →</a>
-</div>
-</div>
-
-</section>
-
-<section class="gallery">
-
-<h2>Фотогалерея</h2>
-
-<div class="gallery-scroll">
-<img src="1.jpg">
-<img src="2.jpg">
-<img src="3.jpg">
-<img src="4.jpg">
-<img src="5.jpg">
-</div>
-
-</section>
+  <section class="gallery">
+    <h2>Фотогалерея</h2>
+    <div class="gallery-scroll">
+      <img src="1.jpg" alt="Фото 1">
+      <img src="2.jpg" alt="Фото 2">
+      <img src="3.jpg" alt="Фото 3">
+      <img src="4.jpg" alt="Фото 4">
+      <img src="5.jpg" alt="Фото 5">
+    </div>
+  </section>
+</main>
 
 <footer>
-<p>© 2026 Філія №1 Линовицького ліцею</p>
+  <p>© 2026 Філія №1 Линовицького ліцею</p>
 </footer>
 
 </body>
