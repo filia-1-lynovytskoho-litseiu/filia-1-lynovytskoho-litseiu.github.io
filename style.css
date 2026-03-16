@@ -13,6 +13,7 @@ body {
   background: #f4f4f4;
   color: #333;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 img {
@@ -22,33 +23,30 @@ img {
 }
 
 /* ==========================================================================
-   HEADER + ГЕРОЙСЬКА ЗОБРАЖЕННЯ
+   HEADER
    ========================================================================== */
 
 header {
   position: relative;
-  color: white;
-  text-align: center;
 }
 
 .header-image {
   width: 100%;
-  aspect-ratio: 3 / 1.2;          /* ≈ 3:1.2 — гарне співвідношення для банера */
+  aspect-ratio: 3 / 1.2;
   object-fit: cover;
-  display: block;
 }
 
-header h1,
-header p {
+.header-overlay {
   position: absolute;
   inset: 0;
+  background: rgba(0, 91, 187, 0.55);
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 91, 187, 0.55); /* #005bbb з прозорістю */
+  text-align: center;
   padding: 1rem;
-  margin: 0;
 }
 
 header h1 {
@@ -61,16 +59,16 @@ header p {
 }
 
 /* ==========================================================================
-   НАВІГАЦІЯ (мобільно — стовпчик, десктоп — горизонтально)
+   НАВІГАЦІЯ
    ========================================================================== */
 
-nav {
+.main-nav {
   background: #333;
   padding: 1rem;
   text-align: center;
 }
 
-nav a {
+.main-nav a {
   color: white;
   text-decoration: none;
   font-size: 1.1rem;
@@ -78,94 +76,108 @@ nav a {
   margin: 0.3rem;
   display: inline-block;
   border-radius: 6px;
-  transition: background 0.25s, color 0.25s;
+  transition: 0.25s;
 }
 
-nav a:hover,
-nav a:focus {
-  background: rgba(255, 213, 0, 0.25); /* #ffd500 легка прозорість */
+.main-nav a:hover,
+.main-nav a:focus {
+  background: rgba(255, 213, 0, 0.25);
   color: #ffd500;
 }
 
 /* ==========================================================================
-   HERO + ОСНОВНІ СЕКЦІЇ
+   ЗАГАЛЬНІ СЕКЦІЇ
    ========================================================================== */
 
-.hero {
-  background: white;
-  text-align: center;
-  padding: 2.5rem 1rem;
-}
-
-.hero h2 {
-  color: #005bbb;
-  font-size: clamp(1.8rem, 6vw, 2.4rem);
-  margin-bottom: 1rem;
-}
-
-/* Новини */
+.hero,
+.pupils-section,
+.contacts-section,
+.single-news,
+.about,
 .news {
+  background: white;
   padding: 2rem 1rem;
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
-.news h2 {
+h2 {
   text-align: center;
   color: #005bbb;
-  font-size: clamp(1.7rem, 5.5vw, 2.3rem);
+  font-size: clamp(1.7rem, 6vw, 2.5rem);
+  margin-bottom: 1.5rem;
+}
+
+.intro,
+.center-text {
+  text-align: center;
+  color: #444;
   margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* ==========================================================================
+   КАРТКИ (pupil-block, contact-block, news-item)
+   ========================================================================== */
+
+.pupil-block,
+.contact-block,
 .news-item {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  background: white;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  border-left: 5px solid #005bbb;
-  border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  background: #f9fcff;
+  padding: 1.4rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+  border: 1px solid #e0f0ff;
 }
 
-.news-img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 4px;
+.block h3 {
+  color: #005bbb;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  border-bottom: 2px solid #ffd500;
+  padding-bottom: 0.5rem;
 }
 
-.news-item > div {
-  flex: 1;
+.block ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 1rem;
 }
 
-.read-more {
-  display: inline-block;
-  margin-top: 0.8rem;
-  padding: 0.5rem 1rem;
-  background: #005bbb;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  font-size: 0.95rem;
-  transition: background 0.2s;
+.block li {
+  position: relative;
+  padding-left: 1.8rem;
+  margin-bottom: 0.7rem;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
-.read-more:hover {
-  background: #004080;
+.block li::before {
+  position: absolute;
+  left: 0;
+  color: #005bbb;
+  font-weight: bold;
 }
 
-/* Галерея */
-.gallery {
+.pupil-block li::before { content: "→"; }
+.contact-block li::before { content: "☎"; }
+
+/* ==========================================================================
+   ГАЛЕРЕЇ
+   ========================================================================== */
+
+.gallery,
+.gallery-mini {
   padding: 2rem 1rem;
-  background: white;
 }
 
-.gallery h2 {
+.gallery h2,
+.news-gallery h3 {
   text-align: center;
   color: #005bbb;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 .gallery-scroll {
@@ -174,1305 +186,278 @@ nav a:focus {
   gap: 12px;
   padding: 0.8rem 0;
   scrollbar-width: thin;
+  scroll-snap-type: x mandatory;
 }
 
 .gallery-scroll img {
   flex: 0 0 260px;
-  height: 160px;
+  height: 170px;
   object-fit: cover;
   border-radius: 8px;
-}
-
-/* Footer */
-footer {
-  background: #222;
-  color: white;
-  text-align: center;
-  padding: 1.2rem;
-  margin-top: 2rem;
-}
-
-/* ==========================================================================
-   АДАПТИВНІСТЬ (min-width — від планшета і вище)
-   ========================================================================== */
-
-/* Планшет ≈ 640–900px */
-@media (min-width: 640px) {
-  nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  nav a {
-    margin: 0;
-  }
-
-  .news-item {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .news-img {
-    width: 140px;
-    height: 100px;
-    flex-shrink: 0;
-  }
-}
-
-/* Десктоп / великий планшет ≈ 900px+ */
-@media (min-width: 900px) {
-  .news {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  .news-item {
-    margin-bottom: 0;
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .news-img {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    height: auto;
-  }
-
-  .gallery-scroll img {
-    flex: 0 0 320px;
-    height: 200px;
-  }
-}
-
-/* Дуже великий екран (опціонально) */
-@media (min-width: 1200px) {
-  .news {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .gallery-scroll img {
-    flex: 0 0 380px;
-    height: 240px;
-  }
-}
-/* ────────────────────────────────────────
-   ABOUT сторінка – доповнення до загальних стилів
-───────────────────────────────────────── */
-
-/* Загальний блок .about */
-.about {
-  background: white;
-  padding: 2rem 1rem;
-  margin: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.about h2 {
-  color: #005bbb;
-  font-size: clamp(1.6rem, 5vw, 2.1rem);
-  margin-bottom: 1.2rem;
-  text-align: center;
-}
-
-.about p {
-  margin-bottom: 1.1rem;
-  font-size: 1.05rem;
-}
-
-/* Переваги – список */
-.advantages ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.advantages li {
-  position: relative;
-  padding-left: 2.2rem;
-  margin-bottom: 0.9rem;
-  font-size: 1.05rem;
-}
-
-.advantages li::before {
-  content: "✔";
-  position: absolute;
-  left: 0;
-  color: #005bbb;
-  font-weight: bold;
-}
-
-/* Галерея (вже є на головній, але уточнюємо для цієї сторінки) */
-.gallery {
-  padding: 2rem 1rem;
-  background: #f8fbff;
-}
-
-.gallery h2 {
-  text-align: center;
-  color: #005bbb;
-  margin-bottom: 1.5rem;
-}
-
-.gallery-scroll {
-  display: flex;
-  overflow-x: auto;
-  gap: 14px;
-  padding: 0.8rem 0;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-}
-
-.gallery-scroll img {
-  flex: 0 0 280px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
   scroll-snap-align: start;
 }
 
-/* ────────────────────────────────────────
-   Адаптивність для about сторінки
-───────────────────────────────────────── */
-
-@media (min-width: 640px) {
-  .about {
-    padding: 2.5rem 2rem;
-    margin: 1.5rem auto;
-  }
-  
-  .gallery-scroll img {
-    flex: 0 0 320px;
-    height: 210px;
-  }
+.gallery-scroll.mini img {
+  flex: 0 0 240px;
+  height: 160px;
 }
 
-@media (min-width: 900px) {
-  .about {
-    padding: 3rem 2.5rem;
-  }
-  
-  .gallery-scroll img {
-    flex: 0 0 360px;
-    height: 240px;
-  }
-}
-/* ───────────────────────────────────────────────
-   news.html — специфічні покращення та адаптація
-   ─────────────────────────────────────────────── */
-
-.news {
-    padding: 2rem 1rem 4rem;
-    background: #f8fbff;
-}
-
-.news h2 {
-    text-align: center;
-    color: #005bbb;
-    font-size: clamp(1.8rem, 6vw, 2.6rem);
-    margin-bottom: 2.2rem;
-}
+/* ==========================================================================
+   НОВИНИ (загальні + сітка)
+   ========================================================================== */
 
 .news-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.6rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.6rem;
 }
 
 .news-item {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .news-item:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
 }
 
 .news-img {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
 }
 
-.news-content {
-    padding: 1.4rem 1.5rem 1.8rem;
+.read-more {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #005bbb;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
 }
 
-.news-content h3 {
-    margin: 0 0 0.6rem;
-    font-size: clamp(1.18rem, 4.2vw, 1.38rem);
-    line-height: 1.3;
-    color: #003366;
-}
+.read-more:hover { background: #004080; }
 
-.news-date {
-    display: block;
-    font-size: 0.94rem;
-    color: #555;
-    margin-bottom: 0.8rem;
-    font-style: italic;
-}
+/* ==========================================================================
+   SINGLE-NEWS
+   ========================================================================== */
 
-.news-content p {
-    margin: 0 0 1.1rem;
-    font-size: 1.03rem;
-    line-height: 1.58;
-}
-
-/* Галерея на сторінці новин — можна залишити як є або уточнити */
-.gallery {
-    padding: 2.5rem 1rem;
-    background: white;
-}
-
-/* ───────────────────────────────
-   Адаптивність для новин
-   ─────────────────────────────── */
-
-@media (min-width: 640px) {
-    .news-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.8rem;
-    }
-}
-
-@media (min-width: 960px) {
-    .news {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-    
-    .news-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2.2rem 2.5rem;
-    }
-}
-
-@media (min-width: 1200px) {
-    .news-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2.4rem 2.8rem;
-    }
-    
-    .news-content h3 {
-        font-size: 1.45rem;
-    }
-}
-/* ───────────────────────────────────────────────
-   uchnyam.html — стилі для учнівської сторінки
-   ─────────────────────────────────────────────── */
-
-.pupils-section {
-    background: white;
-    padding: 2rem 1rem 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.pupils-section h2 {
-    text-align: center;
-    color: #005bbb;
-    font-size: clamp(1.8rem, 6vw, 2.5rem);
-    margin-bottom: 1.2rem;
-}
-
-.intro {
-    text-align: center;
-    font-size: 1.1rem;
-    margin-bottom: 2.5rem;
-    color: #444;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.pupils-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.6rem;
-}
-
-.pupil-block {
-    background: #f9fcff;
-    padding: 1.6rem;
-    border-radius: 10px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.07);
-    border: 1px solid #e0f0ff;
-}
-
-.pupil-block h3 {
-    color: #005bbb;
-    margin-bottom: 1rem;
-    font-size: 1.35rem;
-    border-bottom: 2px solid #ffd500;
-    padding-bottom: 0.6rem;
-}
-
-.pupil-block ul {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 1.2rem;
-}
-
-.pupil-block li {
-    position: relative;
-    padding-left: 1.8rem;
-    margin-bottom: 0.7rem;
-    font-size: 1.03rem;
-}
-
-.pupil-block li::before {
-    content: "→";
-    position: absolute;
-    left: 0;
-    color: #005bbb;
-    font-weight: bold;
-}
-
-.download-link {
-    color: #005bbb;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.download-link:hover {
-    color: #003366;
-}
-
-.gallery-mini {
-    padding: 0;
-    background: transparent;
-    box-shadow: none;
-}
-
-.gallery-mini .gallery-scroll.mini {
-    margin-top: 1.2rem;
-}
-
-.gallery-scroll.mini img {
-    flex: 0 0 260px;
-    height: 170px;
-}
-
-.center-text {
-    text-align: center;
-    color: #005bbb;
-}
-
-/* Адаптивність */
-@media (min-width: 640px) {
-    .pupils-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .gallery-scroll.mini img {
-        flex: 0 0 300px;
-        height: 190px;
-    }
-}
-
-@media (min-width: 960px) {
-    .pupils-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .full-width {
-        grid-column: 1 / -1;
-    }
-    
-    .gallery-scroll.mini img {
-        flex: 0 0 340px;
-        height: 220px;
-    }
-}
-/* ───────────────────────────────────────────────
-   kontakty.html — стилі для сторінки контактів
-   ─────────────────────────────────────────────── */
-
-.contacts-section {
-    background: white;
-    padding: 2rem 1rem 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.contacts-section h2 {
-    text-align: center;
-    color: #005bbb;
-    font-size: clamp(1.8rem, 6vw, 2.5rem);
-    margin-bottom: 1.2rem;
-}
-
-.intro {
-    text-align: center;
-    font-size: 1.1rem;
-    margin-bottom: 2.5rem;
-    color: #444;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.contacts-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.6rem;
-}
-
-.contact-block {
-    background: #f9fcff;
-    padding: 1.6rem;
-    border-radius: 10px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.07);
-    border: 1px solid #e0f0ff;
-}
-
-.contact-block h3 {
-    color: #005bbb;
-    margin-bottom: 1rem;
-    font-size: 1.35rem;
-    border-bottom: 2px solid #ffd500;
-    padding-bottom: 0.6rem;
-}
-
-.contact-block ul {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 1.2rem;
-}
-
-.contact-block li {
-    position: relative;
-    padding-left: 1.8rem;
-    margin-bottom: 0.7rem;
-    font-size: 1.03rem;
-}
-
-.contact-block li::before {
-    content: "☎";
-    position: absolute;
-    left: 0;
-    color: #005bbb;
-}
-
-.schedule-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    font-size: 1rem;
-}
-
-.schedule-table th,
-.schedule-table td {
-    border: 1px solid #ddd;
-    padding: 0.9rem;
-    text-align: center;
-}
-
-.schedule-table th {
-    background: #005bbb;
-    color: white;
-    font-weight: bold;
-}
-
-.schedule-table tr:nth-child(even) {
-    background: #f8fbff;
-}
-
-.link {
-    color: #005bbb;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.link:hover {
-    color: #003366;
-}
-
-/* Адаптивність */
-@media (min-width: 640px) {
-    .contacts-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 960px) {
-    .contacts-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .full-width {
-        grid-column: 1 / -1;
-    }
-}
-/* ───────────────────────────────────────────────
-   single-news (окремі новини) — адаптивні стилі
-   ─────────────────────────────────────────────── */
-
-.single-news {
-    background: white;
-    padding: 2rem 1rem 4rem;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.news-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-}
-
-.news-header h2 {
-    color: #005bbb;
-    font-size: clamp(1.9rem, 6.5vw, 2.8rem);
-    margin-bottom: 0.8rem;
-}
-
-.news-date {
-    font-size: 1.05rem;
-    color: #555;
-    margin: 0 0 0.4rem 0;
-    font-style: italic;
-}
-
-.news-author {
-    font-size: 0.98rem;
-    color: #777;
-    margin: 0;
-}
+.news-header { text-align: center; margin-bottom: 2.5rem; }
 
 .news-full-img {
-    width: 100%;
-    max-height: 500px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin: 1.5rem 0 2rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .news-content {
-    line-height: 1.7;
-    font-size: 1.05rem;
-}
-
-.news-content p {
-    margin-bottom: 1.4rem;
+  line-height: 1.7;
+  font-size: 1.05rem;
 }
 
 blockquote {
-    background: #f0f8ff;
-    border-left: 5px solid #005bbb;
-    padding: 1.2rem 1.5rem;
-    margin: 2rem 0;
-    font-style: italic;
-    color: #333;
-    border-radius: 6px;
-}
-
-.news-gallery {
-    margin: 2.5rem 0;
-}
-
-.news-gallery h3 {
-    text-align: center;
-    color: #005bbb;
-    margin-bottom: 1.2rem;
-    font-size: 1.4rem;
+  background: #f0f8ff;
+  border-left: 5px solid #005bbb;
+  padding: 1.2rem 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  border-radius: 6px;
 }
 
 .news-back {
-    text-align: center;
-    margin-top: 3rem;
-    font-size: 1.1rem;
+  text-align: center;
+  margin-top: 3rem;
 }
 
 .news-back a {
-    color: #005bbb;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 0.6rem 1.2rem;
-    border: 2px solid #005bbb;
-    border-radius: 6px;
-    transition: all 0.2s;
+  color: #005bbb;
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  border: 2px solid #005bbb;
+  border-radius: 6px;
 }
 
 .news-back a:hover {
-    background: #005bbb;
-    color: white;
+  background: #005bbb;
+  color: white;
 }
 
-/* Адаптивність для окремих новин */
-@media (min-width: 640px) {
-    .single-news {
-        padding: 2.5rem 2rem 5rem;
-    }
-    
-    .news-full-img {
-        max-height: 600px;
-    }
-}
-
-@media (min-width: 900px) {
-    .single-news {
-        padding-left: 3rem;
-        padding-right: 3rem;
-    }
-}
-/* ───────────────────────────────────────────────
-   uchnyam.html — стилі для учнівської сторінки
-   ─────────────────────────────────────────────── */
-
-.pupils-section {
-    background: white;
-    padding: 2rem 1rem 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.pupils-section h2 {
-    text-align: center;
-    color: #005bbb;
-    font-size: clamp(1.8rem, 6vw, 2.5rem);
-    margin-bottom: 1.2rem;
-}
-
-.intro {
-    text-align: center;
-    font-size: 1.1rem;
-    margin-bottom: 2.5rem;
-    color: #444;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.pupils-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.6rem;
-}
-
-.pupil-block {
-    background: #f9fcff;
-    padding: 1.6rem;
-    border-radius: 10px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.07);
-    border: 1px solid #e0f0ff;
-}
-
-.pupil-block h3 {
-    color: #005bbb;
-    margin-bottom: 1rem;
-    font-size: 1.35rem;
-    border-bottom: 2px solid #ffd500;
-    padding-bottom: 0.6rem;
-}
-
-.pupil-block ul {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 1.2rem;
-}
-
-.pupil-block li {
-    position: relative;
-    padding-left: 1.8rem;
-    margin-bottom: 0.7rem;
-    font-size: 1.03rem;
-}
-
-.pupil-block li::before {
-    content: "→";
-    position: absolute;
-    left: 0;
-    color: #005bbb;
-    font-weight: bold;
-}
-
-.download-link {
-    color: #005bbb;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.download-link:hover {
-    color: #003366;
-}
-
-.gallery-mini {
-    padding: 0;
-    background: transparent;
-    box-shadow: none;
-}
-
-.gallery-mini .gallery-scroll.mini {
-    margin-top: 1.2rem;
-}
-
-.gallery-scroll.mini img {
-    flex: 0 0 260px;
-    height: 170px;
-}
-
-.center-text {
-    text-align: center;
-    color: #005bbb;
-}
-
-/* Адаптивність */
-@media (min-width: 640px) {
-    .pupils-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .gallery-scroll.mini img {
-        flex: 0 0 300px;
-        height: 190px;
-    }
-}
-
-@media (min-width: 960px) {
-    .pupils-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .full-width {
-        grid-column: 1 / -1;
-    }
-    
-    .gallery-scroll.mini img {
-        flex: 0 0 340px;
-        height: 220px;
-    }
-}
-/* ───────────────────────────────────────────────
-   Виправлення вузьких блоків новин на ПК
-   ─────────────────────────────────────────────── */
-
-/* Головна сторінка + сторінка всіх новин */
-.news,
-.news-grid-container,          /* якщо використовуєш обгортку */
-.single-news {
-    max-width: 1400px;         /* головна зміна — розширюємо до сучасних значень */
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-}
-
-/* Сітка новин — робимо більш гнучкою */
-.news-grid,
-.news .news-grid {             /* якщо є вкладеність */
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.8rem 1.6rem;
-}
-
-/* Планшет і невеликі ноутбуки */
-@media (min-width: 768px) {
-    .news-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem 2.2rem;
-    }
-    
-    .news,
-    .single-news {
-        padding-left: 2rem;
-        padding-right: 2rem;
-        max-width: 1100px;     /* трохи вужче, ніж на великому ПК */
-    }
-}
-
-/* Звичайні ПК / ноутбуки (1366–1919 px) */
-@media (min-width: 992px) {
-    .news,
-    .single-news {
-        max-width: 1200px;
-    }
-    
-    .news-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2.4rem 2.8rem;
-    }
-}
-
-/* Великі монітори / 4K */
-@media (min-width: 1400px) {
-    .news,
-    .single-news {
-        max-width: 1400px;     /* або навіть 1600px, якщо хочеш дуже широко */
-    }
-    
-    .news-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2.5rem 3rem;
-    }
-}
-
-/* Окрема новина — робимо ширше, ніж раніше */
-.single-news {
-    max-width: 1100px;         /* базове значення */
-}
-
-@media (min-width: 992px) {
-    .single-news {
-        max-width: 1200px;
-    }
-}
-
-@media (min-width: 1400px) {
-    .single-news {
-        max-width: 1300px;     /* текст не стає надто довгим рядком */
-    }
-}
-
-/* Додатково: обмежуємо максимальну ширину тексту в статті, щоб не було "моря" */
-.news-content p,
-.news-content li,
-blockquote {
-    max-width: 75ch;           /* ≈ 65–75 символів на рядок — комфортно читати */
-    margin-left: auto;
-    margin-right: auto;
-}
-/* ───────────────────────────────────────────────
-   kontakty.html — покращена мобільна адаптивність
-   ─────────────────────────────────────────────── */
-
-.contacts-section {
-    background: white;
-    padding: 1.5rem 1rem 3rem;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.contacts-section h2 {
-    text-align: center;
-    color: #005bbb;
-    font-size: clamp(1.7rem, 6vw, 2.4rem);
-    margin-bottom: 1rem;
-}
-
-.intro {
-    text-align: center;
-    font-size: 1.05rem;
-    margin: 0 auto 2rem;
-    max-width: 700px;
-    color: #444;
-}
-
-.contacts-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.4rem;
-}
-
-.contact-block {
-    background: #f9fcff;
-    padding: 1.4rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    border: 1px solid #e8f2ff;
-}
-
-.contact-block h3 {
-    color: #005bbb;
-    font-size: 1.3rem;
-    margin-bottom: 0.9rem;
-    border-bottom: 2px solid #ffd500;
-    padding-bottom: 0.5rem;
-}
-
-.contact-list {
-    list-style: none;
-    padding-left: 0;
-    margin: 0 0 1rem 0;
-}
-
-.contact-list li {
-    margin-bottom: 0.7rem;
-    font-size: 1.02rem;
-    line-height: 1.5;
-}
-
-address {
-    font-style: normal;
-    line-height: 1.6;
-}
+/* ==========================================================================
+   ТАБЛИЦЯ (графік роботи)
+   ========================================================================== */
 
 .schedule-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    font-size: 0.98rem;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
 }
 
 .schedule-table th, .schedule-table td {
-    border: 1px solid #ddd;
-    padding: 0.8rem 0.6rem;
-    text-align: center;
+  border: 1px solid #ddd;
+  padding: 0.8rem;
+  text-align: center;
 }
 
 .schedule-table th {
-    background: #005bbb;
-    color: white;
+  background: #005bbb;
+  color: white;
 }
 
-.schedule-table tr:nth-child(even) {
-    background: #f8fbff;
-}
+.schedule-table tr:nth-child(even) { background: #f8fbff; }
 
-/* На маленьких екранах таблиця стає "картковою" */
-@media (max-width: 520px) {
-    .schedule-table,
-    .schedule-table thead,
-    .schedule-table tbody,
-    .schedule-table tr,
-    .schedule-table th,
-    .schedule-table td {
-        display: block;
-    }
-    
-    .schedule-table thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-    
-    .schedule-table tr {
-        margin-bottom: 1rem;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-        overflow: hidden;
-    }
-    
-    .schedule-table td {
-        border: none;
-        border-bottom: 1px solid #eee;
-        position: relative;
-        padding-left: 50%;
-        text-align: left;
-    }
-    
-    .schedule-table td:before {
-        position: absolute;
-        top: 0.8rem;
-        left: 0.8rem;
-        width: 45%;
-        padding-right: 1rem;
-        white-space: nowrap;
-        font-weight: bold;
-        color: #005bbb;
-    }
-    
-    .schedule-table td:nth-of-type(1):before { content: "День"; }
-    .schedule-table td:nth-of-type(2):before { content: "Адміністрація"; }
-    .schedule-table td:nth-of-type(3):before { content: "Бібліотека"; }
-}
+/* ==========================================================================
+   АДАПТИВНІСТЬ — ОСНОВНА
+   ========================================================================== */
 
-.highlight {
-    text-align: center;
-    font-size: clamp(1.1rem, 4.5vw, 1.35rem);
-    font-weight: 600;
-    color: #005bbb;
-    margin: 2.5rem 1rem;
-}
-
-/* Планшет+ */
 @media (min-width: 640px) {
-    .contacts-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.6rem;
-    }
-    
-    .contacts-section {
-        padding: 2rem 1.5rem 4rem;
-    }
+  .main-nav { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; }
+  .main-nav a { margin: 0; }
+
+  .news-grid,
+  .pupils-grid,
+  .contacts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+  }
+
+  .gallery-scroll img,
+  .gallery-scroll.mini img {
+    flex: 0 0 300px;
+    height: 190px;
+  }
 }
 
 @media (min-width: 960px) {
-    .contacts-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-    }
-    
-    .full-width {
-        grid-column: 1 / -1;
-    }
-    
-    .contacts-section {
-        max-width: 1200px;
-    }
+  .news-grid,
+  .pupils-grid,
+  .contacts-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.2rem;
+  }
+
+  .full-width { grid-column: 1 / -1; }
+
+  .news,
+  .single-news,
+  .pupils-section,
+  .contacts-section {
+    max-width: 1300px;
+    padding: 2.5rem 2rem;
+  }
+
+  .gallery-scroll img,
+  .gallery-scroll.mini img {
+    flex: 0 0 340px;
+    height: 220px;
+  }
 }
-/* Виправлення вилазіння тексту на мобілці */
-.pupil-block,
-.pupils-section p,
-.pupils-section li,
-.pupils-section address {
+
+@media (min-width: 1400px) {
+  .news-grid { grid-template-columns: repeat(3, 1fr); }
+  .news,
+  .single-news { max-width: 1400px; }
+}
+
+/* ==========================================================================
+   МОБІЛЬНИЙ ЗАХИСТ ВІД СКРОЛУ ТА ВИЛАЗІННЯ ТЕКСТУ
+   ========================================================================== */
+
+@media (max-width: 520px) {
+  .pupil-block,
+  .contact-block,
+  .news-item,
+  .news-content p,
+  .news-content li,
+  blockquote,
+  .pupils-section p,
+  .contacts-section p,
+  .contact-list li,
+  address {
     overflow-wrap: break-word;
     word-break: break-word;
     hyphens: auto;
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
-}
+  }
 
-/* Додатково для довгих посилань */
-.pupil-block a {
+  a[href^="tel:"],
+  a[href^="mailto:"] {
     word-break: break-all;
-    overflow-wrap: anywhere;
+  }
+
+  .pupil-block,
+  .contact-block {
+    padding: 1.1rem 0.9rem;
+  }
+
+  body { overflow-x: hidden !important; }
 }
 
-/* Захист від горизонтального скролу */
-@media (max-width: 480px) {
-    .pupils-section,
-    .pupil-block {
-        padding-left: 12px !important;
-        padding-right: 12px !important;
-    }
-    
-    body {
-        overflow-x: hidden;
-    }
-    
-    /* Зменшуємо шрифт у довгих блоках, якщо потрібно */
-    .pupil-block ul li {
-        font-size: 0.97rem;
-        line-height: 1.45;
-    }
+/* Стекована таблиця на дуже маленьких екранах */
+@media (max-width: 520px) {
+  .schedule-table,
+  .schedule-table thead,
+  .schedule-table tbody,
+  .schedule-table tr,
+  .schedule-table th,
+  .schedule-table td {
+    display: block;
+  }
+
+  .schedule-table thead tr { position: absolute; top: -9999px; left: -9999px; }
+
+  .schedule-table tr {
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+  }
+
+  .schedule-table td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+
+  .schedule-table td:before {
+    position: absolute;
+    top: 0.8rem;
+    left: 1rem;
+    width: 45%;
+    font-weight: bold;
+    color: #005bbb;
+  }
+
+  .schedule-table td:nth-of-type(1):before { content: "День"; }
+  .schedule-table td:nth-of-type(2):before { content: "Адміністрація"; }
+  .schedule-table td:nth-of-type(3):before { content: "Бібліотека"; }
 }
 
-/* Покращення галереї на мобілці */
-.gallery-scroll.mini {
-    gap: 10px;
-    padding: 8px 0;
-}
+/* ==========================================================================
+   ДРІБНІ ПОКРАЩЕННЯ
+   ========================================================================== */
 
-.gallery-scroll.mini img {
-    flex: 0 0 240px;          /* менша ширина на мобілці */
-    height: 160px;
-    object-fit: cover;
-}
-
-/* Красивіший заклик до дії */
+.highlight,
 .call-to-action {
-    text-align: center;
-    font-size: clamp(1.1rem, 4.2vw, 1.25rem);
-    font-weight: 600;
-    color: #005bbb;
-    margin: 2.5rem 1rem;
-    padding: 1rem;
-    background: #f0f8ff;
-    border-radius: 8px;
-}
-/* ───────────────────────────────────────────────
-   Виправлення вилазіння тексту на мобільних
-   ─────────────────────────────────────────────── */
-
-.contacts-section,
-.contact-block,
-.contact-block p,
-.contact-block li,
-.contact-block address,
-.contacts-section .intro {
-    overflow-wrap: break-word;
-    word-break: break-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
+  text-align: center;
+  font-size: clamp(1.1rem, 4.5vw, 1.3rem);
+  font-weight: 600;
+  color: #005bbb;
+  margin: 2.5rem 1rem;
+  padding: 1rem;
+  background: #f0f8ff;
+  border-radius: 8px;
 }
 
-/* Дуже агресивний розрив для телефонів, email, довгих посилань */
-.contact-block a[href^="tel:"],
-.contact-block a[href^="mailto:"] {
-    word-break: break-all;
-    overflow-wrap: anywhere;
+.download-link,
+.link {
+  color: #005bbb;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
-/* Таблиця на дуже маленьких екранах стає карткою */
-@media (max-width: 520px) {
-    .schedule-table,
-    .schedule-table thead,
-    .schedule-table tbody,
-    .schedule-table tr,
-    .schedule-table th,
-    .schedule-table td {
-        display: block;
-    }
-    
-    .schedule-table thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-    
-    .schedule-table tr {
-        margin-bottom: 1rem;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-    }
-    
-    .schedule-table td {
-        border: none;
-        border-bottom: 1px solid #eee;
-        position: relative;
-        padding-left: 50%;
-        text-align: left;
-    }
-    
-    .schedule-table td:before {
-        position: absolute;
-        top: 0.8rem;
-        left: 1rem;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-        font-weight: bold;
-        color: #005bbb;
-        content: attr(data-label);
-    }
-    
-    /* Додаємо data-label вручну в HTML або через CSS */
-    .schedule-table td:nth-of-type(1):before { content: "День"; }
-    .schedule-table td:nth-of-type(2):before { content: "Адміністрація"; }
-    .schedule-table td:nth-of-type(3):before { content: "Бібліотека"; }
-}
-
-/* Додатковий захист від скролу */
-@media (max-width: 480px) {
-    .contacts-section,
-    .contact-block {
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-    }
-    
-    body {
-        overflow-x: hidden;
-    }
-    
-    .contact-list li {
-        font-size: 0.96rem;
-        line-height: 1.45;
-    }
-}
-
-/* Покращення читабельності */
-.highlight {
-    text-align: center;
-    font-size: clamp(1.15rem, 5vw, 1.4rem);
-    font-weight: 600;
-    color: #005bbb;
-    margin: 2.5rem 1rem;
-    padding: 1rem;
-    background: #f0f8ff;
-    border-radius: 8px;
-}
-/* ───────────────────────────────────────────────
-   Виправлення вилазіння тексту на мобільних
-   ─────────────────────────────────────────────── */
-
-.contacts-section,
-.contact-block,
-.contact-block p,
-.contact-block li,
-.contact-block address,
-.contacts-section .intro {
-    overflow-wrap: break-word;
-    word-break: break-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
-}
-
-/* Дуже агресивний розрив для телефонів, email, довгих посилань */
-.contact-block a[href^="tel:"],
-.contact-block a[href^="mailto:"] {
-    word-break: break-all;
-    overflow-wrap: anywhere;
-}
-
-/* Таблиця на дуже маленьких екранах стає карткою */
-@media (max-width: 520px) {
-    .schedule-table,
-    .schedule-table thead,
-    .schedule-table tbody,
-    .schedule-table tr,
-    .schedule-table th,
-    .schedule-table td {
-        display: block;
-    }
-    
-    .schedule-table thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-    
-    .schedule-table tr {
-        margin-bottom: 1rem;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-    }
-    
-    .schedule-table td {
-        border: none;
-        border-bottom: 1px solid #eee;
-        position: relative;
-        padding-left: 50%;
-        text-align: left;
-    }
-    
-    .schedule-table td:before {
-        position: absolute;
-        top: 0.8rem;
-        left: 1rem;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-        font-weight: bold;
-        color: #005bbb;
-        content: attr(data-label);
-    }
-    
-    /* Додаємо data-label вручну в HTML або через CSS */
-    .schedule-table td:nth-of-type(1):before { content: "День"; }
-    .schedule-table td:nth-of-type(2):before { content: "Адміністрація"; }
-    .schedule-table td:nth-of-type(3):before { content: "Бібліотека"; }
-}
-
-/* Додатковий захист від скролу */
-@media (max-width: 480px) {
-    .contacts-section,
-    .contact-block {
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-    }
-    
-    body {
-        overflow-x: hidden;
-    }
-    
-    .contact-list li {
-        font-size: 0.96rem;
-        line-height: 1.45;
-    }
-}
-
-/* Покращення читабельності */
-.highlight {
-    text-align: center;
-    font-size: clamp(1.15rem, 5vw, 1.4rem);
-    font-weight: 600;
-    color: #005bbb;
-    margin: 2.5rem 1rem;
-    padding: 1rem;
-    background: #f0f8ff;
-    border-radius: 8px;
-}
+.download-link:hover,
+.link:hover { color: #003366; }
