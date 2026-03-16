@@ -11,6 +11,13 @@ text-align:center;
 padding:20px;
 }
 
+.header-image{
+width:100%;
+max-height:250px;
+object-fit:cover;
+margin-bottom:10px;
+}
+
 nav{
 background:#333;
 text-align:center;
@@ -39,10 +46,36 @@ padding:30px;
 }
 
 .news-item{
+display:flex;
+gap:15px;
 background:white;
 padding:15px;
 margin-bottom:15px;
 border-left:5px solid #005bbb;
+align-items:center;
+}
+
+.news-img{
+width:120px;
+height:80px;
+object-fit:cover;
+}
+
+.gallery{
+padding:30px;
+background:white;
+}
+
+.gallery-scroll{
+display:flex;
+overflow-x:auto;
+gap:10px;
+padding:10px;
+}
+
+.gallery-scroll img{
+height:150px;
+border-radius:5px;
 }
 
 footer{
