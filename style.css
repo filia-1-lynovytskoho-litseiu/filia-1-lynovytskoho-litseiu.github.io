@@ -258,3 +258,107 @@ footer {
     height: 240px;
   }
 }
+/* ────────────────────────────────────────
+   ABOUT сторінка – доповнення до загальних стилів
+───────────────────────────────────────── */
+
+/* Загальний блок .about */
+.about {
+  background: white;
+  padding: 2rem 1rem;
+  margin: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about h2 {
+  color: #005bbb;
+  font-size: clamp(1.6rem, 5vw, 2.1rem);
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.about p {
+  margin-bottom: 1.1rem;
+  font-size: 1.05rem;
+}
+
+/* Переваги – список */
+.advantages ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.advantages li {
+  position: relative;
+  padding-left: 2.2rem;
+  margin-bottom: 0.9rem;
+  font-size: 1.05rem;
+}
+
+.advantages li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #005bbb;
+  font-weight: bold;
+}
+
+/* Галерея (вже є на головній, але уточнюємо для цієї сторінки) */
+.gallery {
+  padding: 2rem 1rem;
+  background: #f8fbff;
+}
+
+.gallery h2 {
+  text-align: center;
+  color: #005bbb;
+  margin-bottom: 1.5rem;
+}
+
+.gallery-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 14px;
+  padding: 0.8rem 0;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+.gallery-scroll img {
+  flex: 0 0 280px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  scroll-snap-align: start;
+}
+
+/* ────────────────────────────────────────
+   Адаптивність для about сторінки
+───────────────────────────────────────── */
+
+@media (min-width: 640px) {
+  .about {
+    padding: 2.5rem 2rem;
+    margin: 1.5rem auto;
+  }
+  
+  .gallery-scroll img {
+    flex: 0 0 320px;
+    height: 210px;
+  }
+}
+
+@media (min-width: 900px) {
+  .about {
+    padding: 3rem 2.5rem;
+  }
+  
+  .gallery-scroll img {
+    flex: 0 0 360px;
+    height: 240px;
+  }
+}
