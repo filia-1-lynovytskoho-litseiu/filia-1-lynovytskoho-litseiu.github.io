@@ -953,3 +953,93 @@ blockquote {
         height: 220px;
     }
 }
+/* ───────────────────────────────────────────────
+   Виправлення вузьких блоків новин на ПК
+   ─────────────────────────────────────────────── */
+
+/* Головна сторінка + сторінка всіх новин */
+.news,
+.news-grid-container,          /* якщо використовуєш обгортку */
+.single-news {
+    max-width: 1400px;         /* головна зміна — розширюємо до сучасних значень */
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* Сітка новин — робимо більш гнучкою */
+.news-grid,
+.news .news-grid {             /* якщо є вкладеність */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.8rem 1.6rem;
+}
+
+/* Планшет і невеликі ноутбуки */
+@media (min-width: 768px) {
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 2.2rem;
+    }
+    
+    .news,
+    .single-news {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        max-width: 1100px;     /* трохи вужче, ніж на великому ПК */
+    }
+}
+
+/* Звичайні ПК / ноутбуки (1366–1919 px) */
+@media (min-width: 992px) {
+    .news,
+    .single-news {
+        max-width: 1200px;
+    }
+    
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.4rem 2.8rem;
+    }
+}
+
+/* Великі монітори / 4K */
+@media (min-width: 1400px) {
+    .news,
+    .single-news {
+        max-width: 1400px;     /* або навіть 1600px, якщо хочеш дуже широко */
+    }
+    
+    .news-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem 3rem;
+    }
+}
+
+/* Окрема новина — робимо ширше, ніж раніше */
+.single-news {
+    max-width: 1100px;         /* базове значення */
+}
+
+@media (min-width: 992px) {
+    .single-news {
+        max-width: 1200px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .single-news {
+        max-width: 1300px;     /* текст не стає надто довгим рядком */
+    }
+}
+
+/* Додатково: обмежуємо максимальну ширину тексту в статті, щоб не було "моря" */
+.news-content p,
+.news-content li,
+blockquote {
+    max-width: 75ch;           /* ≈ 65–75 символів на рядок — комфортно читати */
+    margin-left: auto;
+    margin-right: auto;
+}
