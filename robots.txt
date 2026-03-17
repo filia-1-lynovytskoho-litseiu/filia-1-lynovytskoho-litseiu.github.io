@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://filia-1-lynovytskoho-litseiu.github.io/sitemap.xml
