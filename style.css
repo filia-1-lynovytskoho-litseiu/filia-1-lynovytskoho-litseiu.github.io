@@ -38,7 +38,6 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.85rem;
     color: #ffcc00;
-    line-height: 1.1;
 }
 
 .logo p {
@@ -68,12 +67,12 @@ body {
     cursor: pointer;
 }
 
-/* Hero */
+/* Hero (тільки для головної) */
 .hero {
     height: 82vh;
     min-height: 520px;
     background: linear-gradient(rgba(0, 42, 92, 0.78), rgba(0, 42, 92, 0.78)), 
-                url('https://via.placeholder.com/1920x1080/003366/ffffff?text=Філія+№1+Удайці') center/cover no-repeat;
+                url('main.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     text-align: center;
@@ -101,13 +100,12 @@ body {
     border-radius: 50px;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
 }
 
 .btn:hover {
     background: #ffd633;
     transform: translateY(-4px);
-    box-shadow: 0 6px 15px rgba(255, 204, 0, 0.3);
 }
 
 .btn-secondary {
@@ -119,115 +117,65 @@ body {
     border-radius: 50px;
     font-weight: 500;
     text-decoration: none;
-    transition: all 0.3s;
 }
 
-.btn-secondary:hover {
-    background: #002a5c;
-    color: white;
+/* Загальні секції */
+section {
+    padding: 80px 0;
 }
 
-/* Sections */
-.welcome, .news, .quick-links {
-    padding: 85px 0;
-}
-
-.welcome {
-    background: white;
-    text-align: center;
-}
-
-.welcome h2 {
+h2 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2.4rem;
     color: #002a5c;
-    margin-bottom: 20px;
-}
-
-/* News */
-.news {
-    background: #f1f5f9;
-}
-
-.news h2 {
     text-align: center;
-    margin-bottom: 55px;
-    font-family: 'Montserrat', sans-serif;
-    color: #002a5c;
+    margin-bottom: 50px;
 }
 
-.news-grid {
+/* News cards */
+.news-grid, .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 28px;
 }
 
-.news-card {
+.news-card, .gallery-card {
     background: white;
     border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 6px 18px rgba(0,0,0,0.07);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s;
 }
 
-.news-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+.news-card:hover, .gallery-card:hover {
+    transform: translateY(-8px);
 }
 
 .news-date {
     background: #002a5c;
     color: #ffcc00;
     padding: 8px 18px;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
 }
 
-.news-card h3 {
-    padding: 22px 22px 12px;
-    font-size: 1.32rem;
+.news-card h3, .gallery-card h3 {
+    padding: 20px 22px 10px;
 }
 
-.news-card p {
-    padding: 0 22px 22px;
-    color: #555;
-}
-
-.read-more {
-    display: block;
-    padding: 16px 22px;
-    color: #002a5c;
-    font-weight: 500;
-    text-decoration: none;
-    border-top: 1px solid #eee;
-}
-
-/* Quick Links */
-.links-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
-}
-
-.link-card {
-    text-align: center;
-    padding: 42px 20px;
-    border: 2px solid #e2e8f0;
+/* Content pages */
+.content {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 50px;
     border-radius: 14px;
-    text-decoration: none;
-    color: #333;
-    transition: all 0.35s;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
-.link-card:hover {
-    border-color: #002a5c;
-    background: #f8fafc;
-    transform: translateY(-6px);
-}
-
-.link-card i {
-    font-size: 2.8rem;
+.content h1 {
+    font-family: 'Montserrat', sans-serif;
     color: #002a5c;
-    margin-bottom: 18px;
+    margin-bottom: 25px;
 }
 
 /* Footer */
@@ -247,18 +195,6 @@ body {
 .footer h3 {
     color: #ffcc00;
     margin-bottom: 18px;
-}
-
-.social-link {
-    color: #ccc;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.social-link:hover {
-    color: #ffcc00;
 }
 
 .footer-bottom {
@@ -295,7 +231,7 @@ body {
         font-size: 2.4rem;
     }
     
-    .hero-content p {
-        font-size: 1.2rem;
+    .content {
+        padding: 30px 20px;
     }
 }
