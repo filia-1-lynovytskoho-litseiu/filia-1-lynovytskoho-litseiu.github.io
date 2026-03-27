@@ -1,463 +1,278 @@
-/* ==========================================================================
-   БАЗОВІ СТИЛІ + РЕСЕТ (mobile-first)
-   ========================================================================== */
-
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: Arial, system-ui, sans-serif;
-  background: #f4f4f4;
-  color: #333;
-  line-height: 1.6;
-  overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* ==========================================================================
-   HEADER
-   ========================================================================== */
-
-header {
-  position: relative;
+/* Header */
+.header {
+    background: #003087;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.header-image {
-  width: 100%;
-  aspect-ratio: 3 / 1.2;
-  object-fit: cover;
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
 }
 
-.header-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 91, 187, 0.55);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 1rem;
+.logo h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    color: #ffcc00;
 }
 
-header h1 {
-  font-size: clamp(1.6rem, 7vw, 2.8rem);
-  margin-bottom: 0.5rem;
+.logo p {
+    font-size: 0.95rem;
+    opacity: 0.9;
 }
 
-header p {
-  font-size: clamp(1rem, 4.5vw, 1.4rem);
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
-/* ==========================================================================
-   НАВІГАЦІЯ
-   ========================================================================== */
-
-.main-nav {
-  background: #333;
-  padding: 1rem;
-  text-align: center;
+.nav a:hover, .nav a.active {
+    color: #ffcc00;
 }
 
-.main-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.1rem;
-  padding: 0.7rem 1.2rem;
-  margin: 0.3rem;
-  display: inline-block;
-  border-radius: 6px;
-  transition: 0.25s;
+.mobile-menu-btn {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
 }
 
-.main-nav a:hover,
-.main-nav a:focus {
-  background: rgba(255, 213, 0, 0.25);
-  color: #ffd500;
+/* Hero */
+.hero {
+    height: 85vh;
+    min-height: 550px;
+    background: linear-gradient(rgba(0, 48, 135, 0.75), rgba(0, 48, 135, 0.75)), 
+                url('https://via.placeholder.com/1920x1080?text=Школа+Удайці') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
 }
 
-/* ==========================================================================
-   ЗАГАЛЬНІ СЕКЦІЇ
-   ========================================================================== */
+.hero-content h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.2rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
 
-.hero,
-.pupils-section,
-.contacts-section,
-.single-news,
-.about,
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    display: inline-block;
+    background: #ffcc00;
+    color: #003087;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background: #ffd633;
+    transform: translateY(-3px);
+}
+
+/* Sections */
+.welcome {
+    padding: 80px 0;
+    text-align: center;
+    background: white;
+}
+
+.welcome h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    color: #003087;
+}
+
+/* News */
 .news {
-  background: white;
-  padding: 2rem 1rem;
-  max-width: 1400px;
-  margin: 0 auto;
+    padding: 80px 0;
+    background: #f1f5f9;
 }
 
-h2 {
-  text-align: center;
-  color: #005bbb;
-  font-size: clamp(1.7rem, 6vw, 2.5rem);
-  margin-bottom: 1.5rem;
+.news h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: 'Montserrat', sans-serif;
+    color: #003087;
 }
-
-.intro,
-.center-text {
-  text-align: center;
-  color: #444;
-  margin-bottom: 2rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ==========================================================================
-   КАРТКИ (pupil-block, contact-block, news-item)
-   ========================================================================== */
-
-.pupil-block,
-.contact-block,
-.news-item {
-  background: #f9fcff;
-  padding: 1.4rem;
-  border-radius: 10px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.07);
-  border: 1px solid #e0f0ff;
-}
-
-.block h3 {
-  color: #005bbb;
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
-  border-bottom: 2px solid #ffd500;
-  padding-bottom: 0.5rem;
-}
-
-.block ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0 0 1rem;
-}
-
-.block li {
-  position: relative;
-  padding-left: 1.8rem;
-  margin-bottom: 0.7rem;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.block li::before {
-  position: absolute;
-  left: 0;
-  color: #005bbb;
-  font-weight: bold;
-}
-
-.pupil-block li::before { content: "→"; }
-.contact-block li::before { content: "☎"; }
-
-/* ==========================================================================
-   ГАЛЕРЕЇ
-   ========================================================================== */
-
-.gallery,
-.gallery-mini {
-  padding: 2rem 1rem;
-}
-
-.gallery h2,
-.news-gallery h3 {
-  text-align: center;
-  color: #005bbb;
-  margin-bottom: 1.2rem;
-}
-
-.gallery-scroll {
-  display: flex;
-  overflow-x: auto;
-  gap: 12px;
-  padding: 0.8rem 0;
-  scrollbar-width: thin;
-  scroll-snap-type: x mandatory;
-}
-
-.gallery-scroll img {
-  flex: 0 0 260px;
-  height: 170px;
-  object-fit: cover;
-  border-radius: 8px;
-  scroll-snap-align: start;
-}
-
-.gallery-scroll.mini img {
-  flex: 0 0 240px;
-  height: 160px;
-}
-
-/* ==========================================================================
-   НОВИНИ (загальні + сітка)
-   ========================================================================== */
 
 .news-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.6rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
 }
 
-.news-item {
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
+.news-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
 }
 
-.news-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+.news-card:hover {
+    transform: translateY(-8px);
 }
 
-.news-img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
+.news-date {
+    background: #003087;
+    color: white;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    display: inline-block;
+}
+
+.news-card h3 {
+    padding: 20px 20px 10px;
+    font-size: 1.35rem;
+}
+
+.news-card p {
+    padding: 0 20px 20px;
+    color: #555;
 }
 
 .read-more {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: #005bbb;
-  color: white;
-  border-radius: 4px;
-  text-decoration: none;
-}
-
-.read-more:hover { background: #004080; }
-
-/* ==========================================================================
-   SINGLE-NEWS
-   ========================================================================== */
-
-.news-header { text-align: center; margin-bottom: 2.5rem; }
-
-.news-full-img {
-  width: 100%;
-  max-height: 500px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin: 1.5rem 0;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.news-content {
-  line-height: 1.7;
-  font-size: 1.05rem;
-}
-
-blockquote {
-  background: #f0f8ff;
-  border-left: 5px solid #005bbb;
-  padding: 1.2rem 1.5rem;
-  margin: 2rem 0;
-  font-style: italic;
-  border-radius: 6px;
-}
-
-.news-back {
-  text-align: center;
-  margin-top: 3rem;
-}
-
-.news-back a {
-  color: #005bbb;
-  font-weight: bold;
-  padding: 0.6rem 1.2rem;
-  border: 2px solid #005bbb;
-  border-radius: 6px;
-}
-
-.news-back a:hover {
-  background: #005bbb;
-  color: white;
-}
-
-/* ==========================================================================
-   ТАБЛИЦЯ (графік роботи)
-   ========================================================================== */
-
-.schedule-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-}
-
-.schedule-table th, .schedule-table td {
-  border: 1px solid #ddd;
-  padding: 0.8rem;
-  text-align: center;
-}
-
-.schedule-table th {
-  background: #005bbb;
-  color: white;
-}
-
-.schedule-table tr:nth-child(even) { background: #f8fbff; }
-
-/* ==========================================================================
-   АДАПТИВНІСТЬ — ОСНОВНА
-   ========================================================================== */
-
-@media (min-width: 640px) {
-  .main-nav { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; }
-  .main-nav a { margin: 0; }
-
-  .news-grid,
-  .pupils-grid,
-  .contacts-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.8rem;
-  }
-
-  .gallery-scroll img,
-  .gallery-scroll.mini img {
-    flex: 0 0 300px;
-    height: 190px;
-  }
-}
-
-@media (min-width: 960px) {
-  .news-grid,
-  .pupils-grid,
-  .contacts-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.2rem;
-  }
-
-  .full-width { grid-column: 1 / -1; }
-
-  .news,
-  .single-news,
-  .pupils-section,
-  .contacts-section {
-    max-width: 1300px;
-    padding: 2.5rem 2rem;
-  }
-
-  .gallery-scroll img,
-  .gallery-scroll.mini img {
-    flex: 0 0 340px;
-    height: 220px;
-  }
-}
-
-@media (min-width: 1400px) {
-  .news-grid { grid-template-columns: repeat(3, 1fr); }
-  .news,
-  .single-news { max-width: 1400px; }
-}
-
-/* ==========================================================================
-   МОБІЛЬНИЙ ЗАХИСТ ВІД СКРОЛУ ТА ВИЛАЗІННЯ ТЕКСТУ
-   ========================================================================== */
-
-@media (max-width: 520px) {
-  .pupil-block,
-  .contact-block,
-  .news-item,
-  .news-content p,
-  .news-content li,
-  blockquote,
-  .pupils-section p,
-  .contacts-section p,
-  .contact-list li,
-  address {
-    overflow-wrap: break-word;
-    word-break: break-word;
-    hyphens: auto;
-  }
-
-  a[href^="tel:"],
-  a[href^="mailto:"] {
-    word-break: break-all;
-  }
-
-  .pupil-block,
-  .contact-block {
-    padding: 1.1rem 0.9rem;
-  }
-
-  body { overflow-x: hidden !important; }
-}
-
-/* Стекована таблиця на дуже маленьких екранах */
-@media (max-width: 520px) {
-  .schedule-table,
-  .schedule-table thead,
-  .schedule-table tbody,
-  .schedule-table tr,
-  .schedule-table th,
-  .schedule-table td {
     display: block;
-  }
-
-  .schedule-table thead tr { position: absolute; top: -9999px; left: -9999px; }
-
-  .schedule-table tr {
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-  }
-
-  .schedule-table td {
-    border: none;
-    border-bottom: 1px solid #eee;
-    position: relative;
-    padding-left: 50%;
-    text-align: left;
-  }
-
-  .schedule-table td:before {
-    position: absolute;
-    top: 0.8rem;
-    left: 1rem;
-    width: 45%;
-    font-weight: bold;
-    color: #005bbb;
-  }
-
-  .schedule-table td:nth-of-type(1):before { content: "День"; }
-  .schedule-table td:nth-of-type(2):before { content: "Адміністрація"; }
-  .schedule-table td:nth-of-type(3):before { content: "Бібліотека"; }
+    padding: 15px 20px;
+    color: #003087;
+    font-weight: 500;
+    text-decoration: none;
+    border-top: 1px solid #eee;
 }
 
-/* ==========================================================================
-   ДРІБНІ ПОКРАЩЕННЯ
-   ========================================================================== */
-
-.highlight,
-.call-to-action {
-  text-align: center;
-  font-size: clamp(1.1rem, 4.5vw, 1.3rem);
-  font-weight: 600;
-  color: #005bbb;
-  margin: 2.5rem 1rem;
-  padding: 1rem;
-  background: #f0f8ff;
-  border-radius: 8px;
+/* Quick Links */
+.quick-links {
+    padding: 60px 0;
+    background: white;
 }
 
-.download-link,
-.link {
-  color: #005bbb;
-  font-weight: bold;
-  text-decoration: underline;
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
 }
 
-.download-link:hover,
-.link:hover { color: #003366; }
+.link-card {
+    text-align: center;
+    padding: 40px 20px;
+    border: 2px solid #e0e7ff;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.link-card:hover {
+    border-color: #003087;
+    background: #f0f4ff;
+    transform: translateY(-5px);
+}
+
+.link-card i {
+    font-size: 3rem;
+    color: #003087;
+    margin-bottom: 15px;
+}
+
+/* Footer */
+.footer {
+    background: #002255;
+    color: #ddd;
+    padding: 60px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer h3 {
+    color: #ffcc00;
+    margin-bottom: 15px;
+}
+
+.social a {
+    color: #ddd;
+    font-size: 1.6rem;
+    margin-right: 15px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #334466;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #003087;
+        flex-direction: column;
+        padding: 20px;
+        display: none;
+    }
+    
+    .nav.active {
+        display: flex;
+    }
+    
+    .nav a {
+        margin: 10px 0;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.4rem;
+    }
+}
