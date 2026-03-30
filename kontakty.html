@@ -1,123 +1,244 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакти – Філія №1 Линовицького ліцею</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Контакти Філії №1 Линовицького ліцею: адреса, телефони, email, графік роботи та карта проїзду.">
+  <title>Контакти – Філія №1 Линовицького ліцею</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    tailwind.config = {
+      content: [],
+      theme: {
+        extend: {
+          colors: {
+            primary: '#005bbb',
+            accent: '#ffd500',
+          }
+        }
+      }
+    }
+  </script>
 </head>
 
-<body>
+<body class="bg-gray-50 font-sans">
 
-<header>
-    <img src="main.jpg" class="header-image" alt="Будівля Філії №1 Линовицького ліцею">
-    <div class="header-overlay">
-        <h1>Офіційний сайт Філії №1 Линовицького ліцею</h1>
+  <!-- Фіксована навігація -->
+  <nav class="bg-white/95 backdrop-blur-md shadow-md fixed top-0 left-0 right-0 z-50 border-b">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="Логотип школи" class="h-10 w-auto">
+        <div>
+          <h1 class="text-xl font-bold text-primary leading-tight">Філія №1</h1>
+          <p class="text-xs text-gray-600 -mt-1">Линовицького ліцею</p>
+        </div>
+      </div>
+
+      <div class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="index.html" class="hover:text-primary transition">Головна</a>
+        <a href="about.html" class="hover:text-primary transition">Про нас</a>
+        <a href="news.html" class="hover:text-primary transition">Новини</a>
+        <a href="uchnyam.html" class="hover:text-primary transition">Учням</a>
+        <a href="kontakty.html" class="text-primary font-semibold">Контакти</a>
+      </div>
+
+      <a href="kontakty.html" 
+         class="bg-primary hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-medium transition">
+        Задати питання
+      </a>
     </div>
-</header>
+  </nav>
 
-<nav class="main-nav">
-    <a href="index.html">Головна</a>
-    <a href="about.html">Про нас</a>
-    <a href="news.html">Новини</a>
-    <a href="uchnyam.html">Учням</a>
-    <a href="kontakty.html">Контакти</a>
-</nav>
+  <!-- Hero-секція -->
+  <header class="relative mt-16">
+    <img src="main.jpg" 
+         class="w-full h-[380px] md:h-[460px] object-cover brightness-75" 
+         alt="Будівля Філії №1 Линовицького ліцею">
 
-<main>
-    <section class="contacts-section">
-        <h2>Контактна інформація</h2>
-        <p class="intro">Ми завжди раді спілкуванню! Звертайтеся до нас будь-яким зручним способом.</p>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70"></div>
 
-        <div class="contacts-grid">
-
-            <div class="contact-block">
-                <h3>Адреса</h3>
-                <address>
-                    Філія №1 Линовицького ліцею<br>
-                    вул. Центральна, 15<br>
-                    с. Линовиця, Прилуцький район<br>
-                    Чернігівська область, 17540
-                </address>
-                <p><strong>Як дістатися:</strong> автобусом з Прилук (маршрутки щогодини), або власним авто по трасі Р-67.</p>
-            </div>
-
-            <div class="contact-block">
-                <h3>Телефони</h3>
-                <ul class="contact-list">
-                    <li><strong>Завідувач:</strong> <a href="tel:+38046372215XX">(04637) 2-15-XX</a> — Баєвський Олександр Олександрович</li>
-                    <li><strong>Секретар:</strong> <a href="tel:+38046372214YY">(04637) 2-14-YY</a></li>
-                    <li><strong>Бухгалтерія:</strong> <a href="tel:+38046372213ZZ">(04637) 2-13-ZZ</a></li>
-                    <li><strong>Гаряча лінія (для батьків):</strong> <a href="tel:+380671234567">+380 (67) 123-45-67</a></li>
-                </ul>
-                <p>Робочий час: 8:00 – 17:00 (понеділок–п'ятниця)</p>
-            </div>
-
-            <div class="contact-block">
-                <h3>Email та месенджери</h3>
-                <ul class="contact-list">
-                    <li><strong>Загальна пошта:</strong> <a href="mailto:linovitsa1@lyceum.edu.ua">linovitsa1@lyceum.edu.ua</a></li>
-                    <li><strong>Для батьків:</strong> <a href="mailto:batkivska-linovitsa@ukr.net">batkivska-linovitsa@ukr.net</a></li>
-                    <li><strong>Viber/Telegram адміністрація:</strong> <a href="tel:+380671234567">+380 (67) 123-45-67</a></li>
-                    <li><strong>Офіційна група Viber:</strong> <a href="#" class="link">Приєднатися</a></li>
-                </ul>
-                <p>Відповіді на електронні звернення — протягом 1–2 робочих днів.</p>
-            </div>
-
-            <div class="contact-block full-width">
-                <h3>Наша будівля та територія</h3>
-                <p>Сучасна філія з оновленими класами, спортивним майданчиком та безпечним укриттям.</p>
-            </div>
-
-            <div class="contact-block">
-                <h3>Графік роботи</h3>
-                <table class="schedule-table">
-                    <thead>
-                        <tr>
-                            <th>День</th>
-                            <th>Адміністрація</th>
-                            <th>Бібліотека</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Понеділок–п'ятниця</td><td>8:00 – 17:00</td><td>8:00 – 16:00</td></tr>
-                        <tr><td>Субота</td><td>9:00 – 13:00</td><td>закрито</td></tr>
-                        <tr><td>Неділя</td><td>вихідний</td><td>вихідний</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="contact-block">
-                <h3>Адміністрація</h3>
-                <p>
-                    <strong>Директор:</strong> Іваненко Олена Миколаївна<br>
-                    <strong>Заступник з НВР:</strong> Петренко Марія Василівна<br>
-                    <strong>Вихователька ГПД:</strong> Сидоренко Наталія Петрівна
-                </p>
-            </div>
-
-        </div>
-
-        <p class="center-text highlight">
-            Чекаємо на вас! 💙💛
+    <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+      <div class="max-w-3xl">
+        <h1 class="text-white text-4xl md:text-5xl font-bold mb-4">Контакти</h1>
+        <p class="text-white/90 text-lg md:text-xl">
+          Ми завжди раді спілкуванню з вами
         </p>
-    </section>
+      </div>
+    </div>
+  </header>
 
-    <section class="gallery">
-        <h2>Фотогалерея</h2>
-        <div class="gallery-scroll">
-            <img src="1.jpg" alt="Фото школи 1" loading="lazy">
-            <img src="2.jpg" alt="Фото школи 2" loading="lazy">
-            <img src="3.jpg" alt="Фото школи 3" loading="lazy">
-            <img src="4.jpg" alt="Фото школи 4" loading="lazy">
-            <img src="5.jpg" alt="Фото школи 5" loading="lazy">
+  <main class="max-w-7xl mx-auto px-4 py-12 space-y-16">
+
+    <!-- Контактна інформація -->
+    <section>
+      <h2 class="text-3xl font-bold text-primary text-center mb-10">Як з нами зв’язатися</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <!-- Адреса + Карта -->
+        <div class="bg-white p-8 rounded-3xl shadow">
+          <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+            📍 Адреса
+          </h3>
+          <address class="not-italic text-gray-700 space-y-2 text-lg">
+            Філія №1 Линовицького ліцею<br>
+            вул. Центральна, 15<br>
+            с. Удайці, Линовицька громада<br>
+            Чернігівська область, 17540
+          </address>
+          
+          <div class="mt-8">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d... (замініть на реальну карту)" 
+              width="100%" 
+              height="280" 
+              style="border:0; border-radius: 16px;" 
+              allowfullscreen="" 
+              loading="lazy">
+            </iframe>
+          </div>
+
+          <p class="mt-6 text-sm text-gray-600">
+            <strong>Як дістатися:</strong> автобусом або маршруткою з Прилук, або власним авто по трасі Р-67.
+          </p>
         </div>
-    </section>
-</main>
 
-<footer>
-    <p>© 2026 Філія №1 Линовицького ліцею</p>
-</footer>
+        <!-- Телефони та Email -->
+        <div class="space-y-8">
+
+          <!-- Телефони -->
+          <div class="bg-white p-8 rounded-3xl shadow">
+            <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+              📞 Телефони
+            </h3>
+            <ul class="space-y-4 text-gray-700">
+              <li><strong>Завідувач:</strong> Баєвський Олександр Олександрович — 
+                <a href="tel:+38046372215XX" class="text-primary hover:underline">(04637) 2-15-XX</a>
+              </li>
+              <li><strong>Секретар:</strong> 
+                <a href="tel:+38046372214YY" class="text-primary hover:underline">(04637) 2-14-YY</a>
+              </li>
+              <li><strong>Гаряча лінія для батьків:</strong> 
+                <a href="tel:+380671234567" class="text-primary hover:underline">+380 (67) 123-45-67</a>
+              </li>
+            </ul>
+            <p class="mt-6 text-sm text-gray-600">Робочий час: 8:00 – 17:00 (понеділок – п’ятниця)</p>
+          </div>
+
+          <!-- Email та месенджери -->
+          <div class="bg-white p-8 rounded-3xl shadow">
+            <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+              ✉️ Email та месенджери
+            </h3>
+            <ul class="space-y-4 text-gray-700">
+              <li><strong>Загальна пошта:</strong> 
+                <a href="mailto:udaytcizosch@gmail.com" class="text-primary hover:underline">udaytcizosch@gmail.com</a>
+              </li>
+              <li><strong>Для батьків:</strong> 
+                <a href="mailto:batkivska-linovitsa@ukr.net" class="text-primary hover:underline">batkivska-linovitsa@ukr.net</a>
+              </li>
+              <li><strong>Viber / Telegram:</strong> 
+                <a href="tel:+380671234567" class="text-primary hover:underline">+380 (67) 123-45-67</a>
+              </li>
+            </ul>
+            <p class="mt-6 text-sm text-gray-600">Відповіді на звернення — протягом 1–2 робочих днів.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Графік роботи -->
+    <section>
+      <h2 class="text-3xl font-bold text-primary text-center mb-8">Графік роботи</h2>
+      <div class="bg-white rounded-3xl shadow overflow-hidden">
+        <table class="w-full text-left">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="px-8 py-5 font-semibold text-primary">День</th>
+              <th class="px-8 py-5 font-semibold text-primary">Адміністрація</th>
+              <th class="px-8 py-5 font-semibold text-primary">Бібліотека</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y">
+            <tr>
+              <td class="px-8 py-5">Понеділок – П’ятниця</td>
+              <td class="px-8 py-5">8:00 – 17:00</td>
+              <td class="px-8 py-5">8:00 – 16:00</td>
+            </tr>
+            <tr>
+              <td class="px-8 py-5">Субота</td>
+              <td class="px-8 py-5">9:00 – 13:00</td>
+              <td class="px-8 py-5">—</td>
+            </tr>
+            <tr>
+              <td class="px-8 py-5">Неділя</td>
+              <td class="px-8 py-5 text-gray-500">Вихідний</td>
+              <td class="px-8 py-5 text-gray-500">Вихідний</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Адміністрація -->
+    <section>
+      <h2 class="text-3xl font-bold text-primary text-center mb-8">Адміністрація</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-3xl shadow text-center">
+          <div class="text-6xl mb-4">👨‍💼</div>
+          <h3 class="font-semibold">Завідувач</h3>
+          <p class="text-primary font-medium">Баєвський Олександр Олександрович</p>
+        </div>
+        <div class="bg-white p-6 rounded-3xl shadow text-center">
+          <div class="text-6xl mb-4">👩‍💼</div>
+          <h3 class="font-semibold">Заступник з НВР</h3>
+          <p class="text-primary font-medium">Петренко Марія Василівна</p>
+        </div>
+        <div class="bg-white p-6 rounded-3xl shadow text-center">
+          <div class="text-6xl mb-4">👩‍🏫</div>
+          <h3 class="font-semibold">Вихователька ГПД</h3>
+          <p class="text-primary font-medium">Сидоренко Наталія Петрівна</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Фотогалерея -->
+    <section>
+      <h2 class="text-3xl font-bold text-primary text-center mb-10">Наша школа</h2>
+      <div class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide">
+        <img src="1.jpg" alt="Будівля школи" class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
+        <img src="2.jpg" alt="Кабінети" class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
+        <img src="3.jpg" alt="Спортивний майданчик" class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
+        <img src="4.jpg" alt="Територія школи" class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white py-12 mt-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-xl font-semibold mb-2">Філія №1 Линовицького ліцею</p>
+      <p class="mb-6">с. Удайці, Линовицька громада</p>
+      
+      <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm opacity-90">
+        <a href="index.html" class="hover:underline">Головна</a>
+        <a href="about.html" class="hover:underline">Про нас</a>
+        <a href="news.html" class="hover:underline">Новини</a>
+        <a href="uchnyam.html" class="hover:underline">Учням</a>
+        <a href="kontakty.html" class="hover:underline">Контакти</a>
+      </div>
+
+      <p class="mt-10 text-sm opacity-75">
+        © 2026 Філія №1 Линовицького ліцею. Усі права захищені.
+      </p>
+    </div>
+  </footer>
 
 </body>
 </html>
