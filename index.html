@@ -6,10 +6,8 @@
   <meta name="description" content="Офіційний сайт Філії №1 Линовицького ліцею (с. Удайці). Якісна освіта, сучасні умови, дружній колектив. Новини, фото, контакти.">
   <title>Філія №1 Линовицького ліцею | Офіційний сайт</title>
 
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Ваш style.css (якщо хочете залишити деякі кастомні стилі) -->
   <link rel="stylesheet" href="style.css">
   
   <meta name="google-site-verification" content="nzQj2xGdQmcjNdkb7C-c_WhR6F7RKy_tW2y6L_GNDEY" />
@@ -20,8 +18,8 @@
       theme: {
         extend: {
           colors: {
-            primary: '#005bbb',   // синій (державний)
-            accent: '#ffd500',    // жовтий
+            primary: '#005bbb',
+            accent: '#ffd500',
           }
         }
       }
@@ -31,7 +29,33 @@
 
 <body class="bg-gray-50 font-sans">
 
-  <!-- HEADER + NAV -->
+  <!-- Фіксована навігація -->
+  <nav class="bg-white/95 backdrop-blur-md shadow-md fixed top-0 left-0 right-0 z-50 border-b">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="Логотип школи" class="h-10 w-auto">
+        <div>
+          <h1 class="text-xl font-bold text-primary leading-tight">Філія №1</h1>
+          <p class="text-xs text-gray-600 -mt-1">Линовицького ліцею</p>
+        </div>
+      </div>
+
+      <div class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="index.html" class="hover:text-primary transition active-link">Головна</a>
+        <a href="about.html" class="hover:text-primary transition">Про нас</a>
+        <a href="news.html" class="hover:text-primary transition">Новини</a>
+        <a href="uchnyam.html" class="hover:text-primary transition">Учням</a>
+        <a href="kontakty.html" class="hover:text-primary transition">Контакти</a>
+      </div>
+
+      <a href="kontakty.html" 
+         class="bg-primary hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-medium transition">
+        Задати питання
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero секція -->
   <header class="relative">
     <img src="main.jpg" 
          class="w-full h-[380px] md:h-[460px] object-cover brightness-75" 
@@ -39,35 +63,8 @@
 
     <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60"></div>
 
-    <!-- Фіксована навігація -->
-    <nav class="bg-white/95 backdrop-blur-md shadow-md fixed top-0 left-0 right-0 z-50 border-b">
-      <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <div class="flex items-center gap-3">
-          <img src="logo.png" alt="Логотип школи" class="h-10 w-auto"> <!-- додайте свій логотип -->
-          <div>
-            <h1 class="text-xl font-bold text-primary leading-tight">Філія №1</h1>
-            <p class="text-xs text-gray-600 -mt-1">Линовицького ліцею</p>
-          </div>
-        </div>
-
-        <div class="hidden md:flex gap-8 text-sm font-medium">
-          <a href="index.html" class="hover:text-primary transition">Головна</a>
-          <a href="about.html" class="hover:text-primary transition">Про нас</a>
-          <a href="news.html" class="hover:text-primary transition">Новини</a>
-          <a href="uchnyam.html" class="hover:text-primary transition">Учням</a>
-          <a href="kontakty.html" class="hover:text-primary transition">Контакти</a>
-        </div>
-
-        <a href="kontakty.html" 
-           class="bg-primary hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-medium transition">
-          Задати питання
-        </a>
-      </div>
-    </nav>
-
-    <!-- Hero overlay -->
     <div class="absolute inset-0 flex items-center justify-center text-center px-4">
-      <div class="max-w-3xl">
+      <div class="max-w-3xl hero-text">
         <h2 class="text-white text-4xl md:text-5xl font-bold mb-4 leading-tight">
           Ласкаво просимо до Філії №1
         </h2>
@@ -91,7 +88,7 @@
   <main class="max-w-7xl mx-auto px-4 py-12 space-y-16">
 
     <!-- Переваги -->
-    <section>
+    <section class="fade-in">
       <h2 class="text-3xl font-bold text-center text-primary mb-10">Чому обирають нас</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition text-center">
@@ -113,7 +110,7 @@
     </section>
 
     <!-- Останні новини -->
-    <section>
+    <section class="fade-in">
       <div class="flex justify-between items-center mb-8">
         <h2 class="text-3xl font-bold text-primary">Останні новини</h2>
         <a href="news.html" class="text-primary hover:underline font-medium flex items-center gap-2">
@@ -123,7 +120,8 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <article class="bg-white rounded-3xl overflow-hidden shadow hover:shadow-2xl transition group">
-          <img src="1.jpg" alt="Тиждень Шевченківської поезії" class="w-full h-56 object-cover group-hover:scale-105 transition">
+          <img src="1.jpg" alt="Тиждень Шевченківської поезії" 
+               class="w-full h-56 object-cover group-hover:scale-105 transition duration-300">
           <div class="p-6">
             <h3 class="font-semibold text-xl mb-3 line-clamp-2">Тиждень Шевченківської поезії</h3>
             <p class="text-gray-600 line-clamp-3 mb-4">Учні продовжили знайомство з творчістю Тараса Григоровича Шевченка...</p>
@@ -131,9 +129,9 @@
           </div>
         </article>
 
-        <!-- Другий і третій блоки аналогічно (замініть посилання та фото) -->
         <article class="bg-white rounded-3xl overflow-hidden shadow hover:shadow-2xl transition group">
-          <img src="2.jpg" alt="Вітаємо з 8 Березня" class="w-full h-56 object-cover group-hover:scale-105 transition">
+          <img src="2.jpg" alt="Вітаємо з 8 Березня" 
+               class="w-full h-56 object-cover group-hover:scale-105 transition duration-300">
           <div class="p-6">
             <h3 class="font-semibold text-xl mb-3 line-clamp-2">Вітаємо з 8 Березня!</h3>
             <p class="text-gray-600 line-clamp-3 mb-4">Щиро вітаємо наших вчительок, мам і бабусь зі святом весни...</p>
@@ -142,7 +140,8 @@
         </article>
 
         <article class="bg-white rounded-3xl overflow-hidden shadow hover:shadow-2xl transition group">
-          <img src="3.jpg" alt="День безпечного інтернету" class="w-full h-56 object-cover group-hover:scale-105 transition">
+          <img src="3.jpg" alt="День безпечного інтернету" 
+               class="w-full h-56 object-cover group-hover:scale-105 transition duration-300">
           <div class="p-6">
             <h3 class="font-semibold text-xl mb-3 line-clamp-2">День безпечного інтернету</h3>
             <p class="text-gray-600 line-clamp-3 mb-4">Інформаційно-просвітницькі заходи з кібербезпеки для учнів...</p>
@@ -152,18 +151,26 @@
       </div>
     </section>
 
-    <!-- Галерея -->
-    <section>
+    <!-- Фотогалерея -->
+    <section class="fade-in">
       <h2 class="text-3xl font-bold text-center text-primary mb-10">Фотогалерея</h2>
       <div class="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide">
-        <img src="1.jpg" alt="Новий кабінет" class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow">
-        <img src="2.jpg" alt="Учні на уроці" class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow">
-        <img src="3.jpg" alt="Спортивні змагання" class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow">
-        <img src="4.jpg" alt="Святковий захід" class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow">
-        <img src="5.jpg" alt="Колектив школи" class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow">
+        <img src="1.jpg" alt="Новий кабінет" 
+             class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow hover:scale-105 transition">
+        <img src="2.jpg" alt="Учні на уроці" 
+             class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow hover:scale-105 transition">
+        <img src="3.jpg" alt="Спортивні змагання" 
+             class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow hover:scale-105 transition">
+        <img src="4.jpg" alt="Святковий захід" 
+             class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow hover:scale-105 transition">
+        <img src="5.jpg" alt="Колектив школи" 
+             class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow hover:scale-105 transition">
       </div>
       <div class="text-center mt-8">
-        <a href="gallery.html" class="inline-block bg-primary text-white px-8 py-3 rounded-2xl hover:bg-blue-700 transition">Переглянути всю галерею</a>
+        <a href="gallery.html" 
+           class="inline-block bg-primary text-white px-8 py-3 rounded-2xl hover:bg-blue-700 transition">
+          Переглянути всю галерею
+        </a>
       </div>
     </section>
 
@@ -187,5 +194,7 @@
     </div>
   </footer>
 
+  <!-- Підключення JavaScript з анімаціями -->
+  <script src="modern.js"></script>
 </body>
 </html>
