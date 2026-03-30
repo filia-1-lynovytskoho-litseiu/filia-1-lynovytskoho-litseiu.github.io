@@ -41,7 +41,7 @@
       <div class="hidden md:flex gap-8 text-sm font-medium">
         <a href="../index.html" class="hover:text-primary transition">Головна</a>
         <a href="../about.html" class="hover:text-primary transition">Про нас</a>
-        <a href="../news.html" class="hover:text-primary transition">Новини</a>
+        <a href="../news.html" class="text-primary font-semibold active-link">Новини</a>
         <a href="../uchnyam.html" class="hover:text-primary transition">Учням</a>
         <a href="../kontakty.html" class="hover:text-primary transition">Контакти</a>
       </div>
@@ -62,7 +62,7 @@
     <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70"></div>
 
     <div class="absolute inset-0 flex items-center justify-center text-center px-4">
-      <div class="max-w-4xl">
+      <div class="max-w-4xl hero-text">
         <p class="text-white/80 text-sm md:text-base mb-3">15 березня 2026</p>
         <h1 class="text-white text-4xl md:text-5xl font-bold leading-tight">
           Відкриття нового кабінету інформатики
@@ -73,7 +73,7 @@
 
   <main class="max-w-4xl mx-auto px-4 py-12">
 
-    <article class="prose prose-lg max-w-none bg-white p-8 md:p-12 rounded-3xl shadow">
+    <article class="prose prose-lg max-w-none bg-white p-8 md:p-12 rounded-3xl shadow fade-in">
 
       <div class="flex flex-wrap gap-4 text-sm text-gray-500 mb-10">
         <span>15 березня 2026</span>
@@ -87,7 +87,7 @@
 
       <img src="../1.jpg" 
            alt="Сучасний кабінет інформатики з новими комп'ютерами" 
-           class="w-full rounded-2xl my-10 shadow-lg">
+           class="w-full rounded-2xl my-10 shadow-lg hover:scale-105 transition duration-300">
 
       <p>
         Завдяки спільним зусиллям батьківського комітету, спонсорів та місцевої влади заклад отримав 
@@ -108,17 +108,17 @@
       </p>
 
       <!-- Галерея фото з події -->
-      <div class="my-12">
+      <div class="my-12 fade-in">
         <h3 class="text-2xl font-semibold text-primary mb-6">Фото з відкриття</h3>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <img src="../news-cab-1.jpg" alt="Урочисте розрізання стрічки" 
-               class="rounded-2xl shadow hover:scale-105 transition cursor-pointer">
+               class="rounded-2xl shadow hover:scale-105 transition duration-300 cursor-pointer">
           <img src="../news-cab-2.jpg" alt="Учні за новими комп'ютерами" 
-               class="rounded-2xl shadow hover:scale-105 transition cursor-pointer">
+               class="rounded-2xl shadow hover:scale-105 transition duration-300 cursor-pointer">
           <img src="../news-cab-3.jpg" alt="Інтерактивна дошка в дії" 
-               class="rounded-2xl shadow hover:scale-105 transition cursor-pointer">
+               class="rounded-2xl shadow hover:scale-105 transition duration-300 cursor-pointer">
           <img src="../news-cab-4.jpg" alt="Директорка з учнями" 
-               class="rounded-2xl shadow hover:scale-105 transition cursor-pointer">
+               class="rounded-2xl shadow hover:scale-105 transition duration-300 cursor-pointer">
         </div>
       </div>
 
@@ -135,7 +135,7 @@
     </article>
 
     <!-- Кнопка повернення -->
-    <div class="mt-12 text-center">
+    <div class="mt-12 text-center fade-in">
       <a href="../news.html" 
          class="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-2xl hover:bg-blue-700 transition text-lg font-medium">
         ← Повернутися до всіх новин
@@ -164,5 +164,7 @@
     </div>
   </footer>
 
+  <!-- JavaScript з анімаціями -->
+  <script src="../modern.js"></script>
 </body>
 </html>
