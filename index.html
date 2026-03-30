@@ -2,84 +2,190 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>Линовицький ліцей – Філія №1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Офіційний сайт Філії №1 Линовицького ліцею (с. Удайці). Якісна освіта, сучасні умови, дружній колектив. Новини, фото, контакти.">
+  <title>Філія №1 Линовицького ліцею | Офіційний сайт</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Обов’язково для адаптивності! -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  
+  <!-- Ваш style.css (якщо хочете залишити деякі кастомні стилі) -->
   <link rel="stylesheet" href="style.css">
+  
   <meta name="google-site-verification" content="nzQj2xGdQmcjNdkb7C-c_WhR6F7RKy_tW2y6L_GNDEY" />
+  
+  <script>
+    tailwind.config = {
+      content: [],
+      theme: {
+        extend: {
+          colors: {
+            primary: '#005bbb',   // синій (державний)
+            accent: '#ffd500',    // жовтий
+          }
+        }
+      }
+    }
+  </script>
 </head>
 
-<body>
+<body class="bg-gray-50 font-sans">
 
-<header>
-    <img src="main.jpg" class="header-image" alt="Линовицький ліцей Філія №1">
-    <div class="header-overlay">
-        <h1>Офіційний сайт Філії №1 Линовицького ліцею</h1>
-    </div>
-</header>
+  <!-- HEADER + NAV -->
+  <header class="relative">
+    <img src="main.jpg" 
+         class="w-full h-[380px] md:h-[460px] object-cover brightness-75" 
+         alt="Філія №1 Линовицького ліцею – сучасна школа в с. Удайці">
 
-<nav class="main-nav">
-  <a href="index.html">Головна</a>
-  <a href="about.html">Про нас</a>
-  <a href="news.html">Новини</a>
-  <a href="uchnyam.html">Учням</a>
-  <a href="kontakty.html">Контакти</a>
-</nav>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60"></div>
 
-<main>
-  <section class="hero">
-    <h2>Ласкаво просимо!</h2>
-    <p>Раді вітати вас на офіційному сайті нашого навчального закладу.</p>
-  </section>
-
-  <section class="news">
-    <h2>Останні новини</h2>
-    <div class="news-grid">
-      <article class="news-item">
-        <img src="1.jpg" class="news-img" alt="Відкриття нового кабінету">
-        <div class="news-content">
-          <h3>Тиждень Шевченківської поезії</h3>
-          <p>Учні продовжили знайомство з творчістю Тараса Григоровича Шевченка</p>
-          <a href="vidkryttya-novogo-kabinetu.html" class="read-more">Читати далі →</a>
+    <!-- Фіксована навігація -->
+    <nav class="bg-white/95 backdrop-blur-md shadow-md fixed top-0 left-0 right-0 z-50 border-b">
+      <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+          <img src="logo.png" alt="Логотип школи" class="h-10 w-auto"> <!-- додайте свій логотип -->
+          <div>
+            <h1 class="text-xl font-bold text-primary leading-tight">Філія №1</h1>
+            <p class="text-xs text-gray-600 -mt-1">Линовицького ліцею</p>
+          </div>
         </div>
-      </article>
 
-      <article class="news-item">
-        <img src="2.jpg" class="news-img" alt="Спортивні змагання">
-        <div class="news-content">
-          <h3>Вітаємо з 8 Березня — святом весни</h3>
-          <p>Дорогі наші вчительки, мами, бабусі та всі жінки! Щиро вітаємо вас із прекрасним весняним святом — 8 Березня.</p>
-          <a href="vidkryttya-novogo-kabinetu.html" class="read-more">Читати далі →</a>
+        <div class="hidden md:flex gap-8 text-sm font-medium">
+          <a href="index.html" class="hover:text-primary transition">Головна</a>
+          <a href="about.html" class="hover:text-primary transition">Про нас</a>
+          <a href="news.html" class="hover:text-primary transition">Новини</a>
+          <a href="uchnyam.html" class="hover:text-primary transition">Учням</a>
+          <a href="kontakty.html" class="hover:text-primary transition">Контакти</a>
         </div>
-      </article>
-      <article class="news-item">
-        <img src="2.jpg" class="news-img" alt="Спортивні змагання">
-        <div class="news-content">
-          <h3>Заходи до Дня безпечного інтернету</h3>
-          <p>З 10 по 27 лютого в Україні проводяться інформаційно-просвітницькі заходи з кібербезпеки</p>
-          <a href="vidkryttya-novogo-kabinetu.html" class="read-more">Читати далі →</a>
+
+        <a href="kontakty.html" 
+           class="bg-primary hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-medium transition">
+          Задати питання
+        </a>
+      </div>
+    </nav>
+
+    <!-- Hero overlay -->
+    <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+      <div class="max-w-3xl">
+        <h2 class="text-white text-4xl md:text-5xl font-bold mb-4 leading-tight">
+          Ласкаво просимо до Філії №1
+        </h2>
+        <p class="text-white/90 text-lg md:text-xl max-w-lg mx-auto mb-8">
+          Сучасна освіта в дружній атмосфері. Разом ростемо, вчимося та творимо майбутнє!
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="about.html" 
+             class="bg-white text-primary px-8 py-3 rounded-2xl font-semibold hover:bg-gray-100 transition">
+            Дізнатися більше
+          </a>
+          <a href="news.html" 
+             class="border-2 border-white text-white px-8 py-3 rounded-2xl font-semibold hover:bg-white/10 transition">
+            Останні новини
+          </a>
         </div>
-      </article>
+      </div>
     </div>
-  </section>
+  </header>
 
-  <section class="gallery">
-    <h2>Фотогалерея</h2>
-    <div class="gallery-scroll">
-      <img src="1.jpg" alt="Фото 1">
-      <img src="2.jpg" alt="Фото 2">
-      <img src="3.jpg" alt="Фото 3">
-      <img src="4.jpg" alt="Фото 4">
-      <img src="5.jpg" alt="Фото 5">
+  <main class="max-w-7xl mx-auto px-4 py-12 space-y-16">
+
+    <!-- Переваги -->
+    <section>
+      <h2 class="text-3xl font-bold text-center text-primary mb-10">Чому обирають нас</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition text-center">
+          <div class="text-5xl mb-4">🏫</div>
+          <h3 class="font-semibold text-xl mb-3">Сучасні умови</h3>
+          <p class="text-gray-600">Новий кабінет інформатики, затишні класи та безпечне середовище</p>
+        </div>
+        <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition text-center">
+          <div class="text-5xl mb-4">👩‍🏫</div>
+          <h3 class="font-semibold text-xl mb-3">Досвідчені вчителі</h3>
+          <p class="text-gray-600">Професійний колектив, який любить свою справу</p>
+        </div>
+        <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition text-center">
+          <div class="text-5xl mb-4">🎉</div>
+          <h3 class="font-semibold text-xl mb-3">Активне життя</h3>
+          <p class="text-gray-600">Свята, спортивні заходи, творчі конкурси та Шевченківські тижні</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Останні новини -->
+    <section>
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-bold text-primary">Останні новини</h2>
+        <a href="news.html" class="text-primary hover:underline font-medium flex items-center gap-2">
+          Всі новини <span>→</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <article class="bg-white rounded-3xl overflow-hidden shadow hover:shadow-2xl transition group">
+          <img src="1.jpg" alt="Тиждень Шевченківської поезії" class="w-full h-56 object-cover group-hover:scale-105 transition">
+          <div class="p-6">
+            <h3 class="font-semibold text-xl mb-3 line-clamp-2">Тиждень Шевченківської поезії</h3>
+            <p class="text-gray-600 line-clamp-3 mb-4">Учні продовжили знайомство з творчістю Тараса Григоровича Шевченка...</p>
+            <a href="news/shevchenko-week.html" class="text-primary font-medium hover:underline">Читати далі →</a>
+          </div>
+        </article>
+
+        <!-- Другий і третій блоки аналогічно (замініть посилання та фото) -->
+        <article class="bg-white rounded-3xl overflow-hidden shadow hover:shadow-2xl transition group">
+          <img src="2.jpg" alt="Вітаємо з 8 Березня" class="w-full h-56 object-cover group-hover:scale-105 transition">
+          <div class="p-6">
+            <h3 class="font-semibold text-xl mb-3 line-clamp-2">Вітаємо з 8 Березня!</h3>
+            <p class="text-gray-600 line-clamp-3 mb-4">Щиро вітаємо наших вчительок, мам і бабусь зі святом весни...</p>
+            <a href="news/8-bereznya.html" class="text-primary font-medium hover:underline">Читати далі →</a>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-3xl overflow-hidden shadow hover:shadow-2xl transition group">
+          <img src="3.jpg" alt="День безпечного інтернету" class="w-full h-56 object-cover group-hover:scale-105 transition">
+          <div class="p-6">
+            <h3 class="font-semibold text-xl mb-3 line-clamp-2">День безпечного інтернету</h3>
+            <p class="text-gray-600 line-clamp-3 mb-4">Інформаційно-просвітницькі заходи з кібербезпеки для учнів...</p>
+            <a href="news/safe-internet.html" class="text-primary font-medium hover:underline">Читати далі →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Галерея -->
+    <section>
+      <h2 class="text-3xl font-bold text-center text-primary mb-10">Фотогалерея</h2>
+      <div class="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide">
+        <img src="1.jpg" alt="Новий кабінет" class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow">
+        <img src="2.jpg" alt="Учні на уроці" class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow">
+        <img src="3.jpg" alt="Спортивні змагання" class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow">
+        <img src="4.jpg" alt="Святковий захід" class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow">
+        <img src="5.jpg" alt="Колектив школи" class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow">
+      </div>
+      <div class="text-center mt-8">
+        <a href="gallery.html" class="inline-block bg-primary text-white px-8 py-3 rounded-2xl hover:bg-blue-700 transition">Переглянути всю галерею</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-primary text-white py-12 mt-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-xl font-semibold mb-2">Філія №1 Линовицького ліцею</p>
+      <p class="mb-6">с. Удайці, Линовицька громада</p>
+      
+      <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm opacity-90">
+        <a href="kontakty.html" class="hover:underline">Контакти</a>
+        <a href="uchnyam.html" class="hover:underline">Учням та батькам</a>
+        <a href="about.html" class="hover:underline">Про філію</a>
+      </div>
+
+      <p class="mt-10 text-sm opacity-75">
+        © 2026 Філія №1 Линовицького ліцею. Усі права захищені.
+      </p>
     </div>
-  </section>
-</main>
-
-<footer>
-  <p>© 2026 Філія №1 Линовицького ліцею</p>
-</footer>
+  </footer>
 
 </body>
 </html>
