@@ -41,7 +41,7 @@
       <div class="hidden md:flex gap-8 text-sm font-medium">
         <a href="index.html" class="hover:text-primary transition">Головна</a>
         <a href="about.html" class="hover:text-primary transition">Про нас</a>
-        <a href="news.html" class="text-primary font-semibold">Новини</a>
+        <a href="news.html" class="text-primary font-semibold active-link">Новини</a>
         <a href="uchnyam.html" class="hover:text-primary transition">Учням</a>
         <a href="kontakty.html" class="hover:text-primary transition">Контакти</a>
       </div>
@@ -62,7 +62,7 @@
     <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70"></div>
 
     <div class="absolute inset-0 flex items-center justify-center text-center px-4">
-      <div class="max-w-3xl">
+      <div class="max-w-3xl hero-text">
         <h1 class="text-white text-4xl md:text-5xl font-bold mb-4">Новини школи</h1>
         <p class="text-white/90 text-lg md:text-xl">
           Актуальні події, досягнення учнів та шкільне життя
@@ -74,7 +74,7 @@
   <main class="max-w-7xl mx-auto px-4 py-12">
 
     <!-- Список новин -->
-    <section>
+    <section class="fade-in">
       <h2 class="text-3xl font-bold text-primary mb-10">Всі новини</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -179,20 +179,23 @@
           </div>
         </article>
 
-        <!-- Додайте сюди нові новини за тим же шаблоном -->
-
       </div>
     </section>
 
-    <!-- Фотогалерея (невелика) -->
-    <section class="mt-20">
+    <!-- Фотогалерея подій -->
+    <section class="mt-20 fade-in">
       <h2 class="text-3xl font-bold text-primary text-center mb-10">Фотогалерея подій</h2>
       <div class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide">
-        <img src="1.jpg" alt="Відкриття кабінету" class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
-        <img src="2.jpg" alt="Шевченківський тиждень" class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
-        <img src="3.jpg" alt="Спортивні змагання" class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
-        <img src="4.jpg" alt="Шкільна вистава" class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
-        <img src="5.jpg" alt="Екскурсія" class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
+        <img src="1.jpg" alt="Відкриття кабінету" 
+             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start hover:scale-105 transition duration-300">
+        <img src="2.jpg" alt="Шевченківський тиждень" 
+             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start hover:scale-105 transition duration-300">
+        <img src="3.jpg" alt="Спортивні змагання" 
+             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start hover:scale-105 transition duration-300">
+        <img src="4.jpg" alt="Шкільна вистава" 
+             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start hover:scale-105 transition duration-300">
+        <img src="5.jpg" alt="Екскурсія" 
+             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start hover:scale-105 transition duration-300">
       </div>
       <div class="text-center mt-8">
         <a href="gallery.html" 
@@ -224,5 +227,7 @@
     </div>
   </footer>
 
+  <!-- JavaScript з анімаціями -->
+  <script src="modern.js"></script>
 </body>
 </html>
