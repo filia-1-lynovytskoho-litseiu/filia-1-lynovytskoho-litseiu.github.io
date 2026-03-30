@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="15 березня 2026 року в Філії №1 Линовицького ліцею урочисто відкрили сучасний кабінет інформатики з новими комп'ютерами та інтерактивною дошкою.">
+  <title>Відкриття нового кабінету інформатики – Філія №1 Линовицького ліцею</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../style.css">
+
+  <script>
+    tailwind.config = {
+      content: [],
+      theme: {
+        extend: {
+          colors: {
+            primary: '#005bbb',
+            accent: '#ffd500',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-50 font-sans">
+
+  <!-- Фіксована навігація -->
+  <nav class="bg-white/95 backdrop-blur-md shadow-md fixed top-0 left-0 right-0 z-50 border-b">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <img src="../logo.png" alt="Логотип школи" class="h-10 w-auto">
+        <div>
+          <h1 class="text-xl font-bold text-primary leading-tight">Філія №1</h1>
+          <p class="text-xs text-gray-600 -mt-1">Линовицького ліцею</p>
+        </div>
+      </div>
+
+      <div class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="../index.html" class="hover:text-primary transition">Головна</a>
+        <a href="../about.html" class="hover:text-primary transition">Про нас</a>
+        <a href="../news.html" class="hover:text-primary transition">Новини</a>
+        <a href="../uchnyam.html" class="hover:text-primary transition">Учням</a>
+        <a href="../kontakty.html" class="hover:text-primary transition">Контакти</a>
+      </div>
+
+      <a href="../kontakty.html" 
+         class="bg-primary hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-medium transition">
+        Задати питання
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero-секція статті -->
+  <header class="relative mt-16">
+    <img src="../1.jpg" 
+         class="w-full h-[420px] md:h-[500px] object-cover brightness-75" 
+         alt="Новий кабінет інформатики Філії №1">
+
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70"></div>
+
+    <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+      <div class="max-w-4xl">
+        <p class="text-white/80 text-sm md:text-base mb-3">15 березня 2026</p>
+        <h1 class="text-white text-4xl md:text-5xl font-bold leading-tight">
+          Відкриття нового кабінету інформатики
+        </h1>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-12">
+
+    <article class="prose prose-lg max-w-none bg-white p-8 md:p-12 rounded-3xl shadow">
+
+      <div class="flex flex-wrap gap-4 text-sm text-gray-500 mb-10">
+        <span>15 березня 2026</span>
+        <span>•</span>
+        <span>Адміністрація ліцею</span>
+      </div>
+
+      <p class="text-xl leading-relaxed text-gray-700">
+        15 березня 2026 року в нашій філії відбулася довгоочікувана подія — урочисте відкриття сучасного кабінету інформатики!
+      </p>
+
+      <img src="../1.jpg" 
+           alt="Сучасний кабінет інформатики з новими комп'ютерами" 
+           class="w-full rounded-2xl my-10 shadow-lg">
+
+      <p>
+        Завдяки спільним зусиллям батьківського комітету, спонсорів та місцевої влади заклад отримав 
+        <strong>18 нових потужних комп'ютерів</strong>, велику інтерактивну дошку, швидкісний інтернет 
+        та сучасне програмне забезпечення.
+      </p>
+
+      <blockquote class="border-l-4 border-primary pl-6 my-10 italic text-lg text-gray-700">
+        «Цей кабінет — не просто кімната з технікою. Це інвестиція в майбутнє наших дітей. 
+        Тепер уроки інформатики, програмування, робототехніки та цифрової грамотності стануть ще цікавішими та ефективнішими.»
+        <br><br>
+        <span class="text-sm not-italic font-medium text-primary">— Олена Миколаївна Іваненко, директорка філії</span>
+      </blockquote>
+
+      <p>
+        На урочистостях були присутні учні, вчителі, батьки та гості. Учні вже встигли протестувати нове обладнання під час перших занять. 
+        Особливо їм сподобалася інтерактивна дошка — на ній можна малювати, писати код, вирішувати задачі в реальному часі.
+      </p>
+
+      <!-- Галерея фото з події -->
+      <div class="my-12">
+        <h3 class="text-2xl font-semibold text-primary mb-6">Фото з відкриття</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <img src="../news-cab-1.jpg" alt="Урочисте розрізання стрічки" 
+               class="rounded-2xl shadow hover:scale-105 transition cursor-pointer">
+          <img src="../news-cab-2.jpg" alt="Учні за новими комп'ютерами" 
+               class="rounded-2xl shadow hover:scale-105 transition cursor-pointer">
+          <img src="../news-cab-3.jpg" alt="Інтерактивна дошка в дії" 
+               class="rounded-2xl shadow hover:scale-105 transition cursor-pointer">
+          <img src="../news-cab-4.jpg" alt="Директорка з учнями" 
+               class="rounded-2xl shadow hover:scale-105 transition cursor-pointer">
+        </div>
+      </div>
+
+      <p>
+        Новий кабінет уже активно використовується не тільки для уроків інформатики, а й для занять гуртка робототехніки, 
+        підготовки до олімпіад та проєктної діяльності. 
+      </p>
+
+      <p class="font-medium text-lg mt-10">
+        Ще раз щиро дякуємо всім, хто долучився до цієї важливої справи! 
+        Разом ми робимо нашу школу сучаснішою та кращою 💙💛
+      </p>
+
+    </article>
+
+    <!-- Кнопка повернення -->
+    <div class="mt-12 text-center">
+      <a href="../news.html" 
+         class="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-2xl hover:bg-blue-700 transition text-lg font-medium">
+        ← Повернутися до всіх новин
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white py-12 mt-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-xl font-semibold mb-2">Філія №1 Линовицького ліцею</p>
+      <p class="mb-6">с. Удайці, Линовицька громада</p>
+      
+      <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm opacity-90">
+        <a href="../index.html" class="hover:underline">Головна</a>
+        <a href="../about.html" class="hover:underline">Про нас</a>
+        <a href="../news.html" class="hover:underline">Новини</a>
+        <a href="../uchnyam.html" class="hover:underline">Учням</a>
+        <a href="../kontakty.html" class="hover:underline">Контакти</a>
+      </div>
+
+      <p class="mt-10 text-sm opacity-75">
+        © 2026 Філія №1 Линовицького ліцею. Усі права захищені.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
