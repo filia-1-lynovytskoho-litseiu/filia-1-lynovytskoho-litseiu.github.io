@@ -27,7 +27,7 @@
 
 <body class="bg-gray-50 font-sans">
 
-  <!-- Фіксована навігація (така ж, як на головній) -->
+  <!-- Фіксована навігація -->
   <nav class="bg-white/95 backdrop-blur-md shadow-md fixed top-0 left-0 right-0 z-50 border-b">
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
       <div class="flex items-center gap-3">
@@ -40,7 +40,7 @@
 
       <div class="hidden md:flex gap-8 text-sm font-medium">
         <a href="index.html" class="hover:text-primary transition">Головна</a>
-        <a href="about.html" class="text-primary font-semibold">Про нас</a>
+        <a href="about.html" class="text-primary font-semibold active-link">Про нас</a>
         <a href="news.html" class="hover:text-primary transition">Новини</a>
         <a href="uchnyam.html" class="hover:text-primary transition">Учням</a>
         <a href="kontakty.html" class="hover:text-primary transition">Контакти</a>
@@ -53,7 +53,7 @@
     </div>
   </nav>
 
-  <!-- Hero-секція з великим фото -->
+  <!-- Hero-секція -->
   <header class="relative mt-16">
     <img src="main.jpg" 
          class="w-full h-[380px] md:h-[460px] object-cover brightness-75" 
@@ -62,7 +62,7 @@
     <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70"></div>
 
     <div class="absolute inset-0 flex items-center justify-center text-center px-4">
-      <div class="max-w-3xl">
+      <div class="max-w-3xl hero-text">
         <h1 class="text-white text-4xl md:text-5xl font-bold mb-4">Про нашу філію</h1>
         <p class="text-white/90 text-lg md:text-xl">
           Сучасна школа з традиціями, де кожна дитина важлива
@@ -74,7 +74,7 @@
   <main class="max-w-7xl mx-auto px-4 py-12 space-y-16">
 
     <!-- Історія та місія -->
-    <section class="prose max-w-none">
+    <section class="fade-in">
       <h2 class="text-3xl font-bold text-primary mb-8">Історія та місія</h2>
       <div class="grid md:grid-cols-2 gap-10 items-center">
         <div class="space-y-6 text-gray-700 leading-relaxed">
@@ -91,49 +91,49 @@
         <div>
           <img src="1.jpg" 
                alt="Школа та учні" 
-               class="rounded-3xl shadow-lg w-full">
+               class="rounded-3xl shadow-lg w-full hover:scale-105 transition duration-300">
         </div>
       </div>
     </section>
 
-    <!-- Наші переваги (картки) -->
-    <section>
+    <!-- Наші переваги -->
+    <section class="fade-in">
       <h2 class="text-3xl font-bold text-primary text-center mb-10">Наші переваги</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white p-7 rounded-3xl shadow hover:shadow-xl transition flex gap-5">
-          <div class="text-4xl">👩‍🏫</div>
+        <div class="bg-white p-7 rounded-3xl shadow hover:shadow-xl transition flex gap-5 group">
+          <div class="text-4xl transition-transform group-hover:scale-110">👩‍🏫</div>
           <div>
             <h3 class="font-semibold text-xl mb-2">Досвідчені вчителі</h3>
             <p class="text-gray-600">Кваліфікований педагогічний колектив, який любить дітей і свою справу.</p>
           </div>
         </div>
 
-        <div class="bg-white p-7 rounded-3xl shadow hover:shadow-xl transition flex gap-5">
-          <div class="text-4xl">🖥️</div>
+        <div class="bg-white p-7 rounded-3xl shadow hover:shadow-xl transition flex gap-5 group">
+          <div class="text-4xl transition-transform group-hover:scale-110">🖥️</div>
           <div>
             <h3 class="font-semibold text-xl mb-2">Сучасні кабінети</h3>
             <p class="text-gray-600">Новий кабінет інформатики та обладнані класи для комфортного навчання.</p>
           </div>
         </div>
 
-        <div class="bg-white p-7 rounded-3xl shadow hover:shadow-xl transition flex gap-5">
-          <div class="text-4xl">🎉</div>
+        <div class="bg-white p-7 rounded-3xl shadow hover:shadow-xl transition flex gap-5 group">
+          <div class="text-4xl transition-transform group-hover:scale-110">🎉</div>
           <div>
             <h3 class="font-semibold text-xl mb-2">Активне шкільне життя</h3>
             <p class="text-gray-600">Свята, конкурси, спортивні змагання та творчі заходи.</p>
           </div>
         </div>
 
-        <div class="bg-white p-7 rounded-3xl shadow hover:shadow-xl transition flex gap-5">
-          <div class="text-4xl">🏆</div>
+        <div class="bg-white p-7 rounded-3xl shadow hover:shadow-xl transition flex gap-5 group">
+          <div class="text-4xl transition-transform group-hover:scale-110">🏆</div>
           <div>
             <h3 class="font-semibold text-xl mb-2">Участь у змаганнях</h3>
             <p class="text-gray-600">Учні регулярно беруть участь в олімпіадах, конкурсах та спортивних змаганнях.</p>
           </div>
         </div>
 
-        <div class="bg-white p-7 rounded-3xl shadow hover:shadow-xl transition flex gap-5">
-          <div class="text-4xl">🇺🇦</div>
+        <div class="bg-white p-7 rounded-3xl shadow hover:shadow-xl transition flex gap-5 group">
+          <div class="text-4xl transition-transform group-hover:scale-110">🇺🇦</div>
           <div>
             <h3 class="font-semibold text-xl mb-2">Патріотичне виховання</h3>
             <p class="text-gray-600">Формування любові до України та національної свідомості.</p>
@@ -143,14 +143,19 @@
     </section>
 
     <!-- Фотогалерея -->
-    <section>
+    <section class="fade-in">
       <h2 class="text-3xl font-bold text-primary text-center mb-10">Наша школа в фото</h2>
       <div class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide">
-        <img src="1.jpg" alt="Кабінет інформатики" class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
-        <img src="2.jpg" alt="Учні на уроці" class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
-        <img src="3.jpg" alt="Шкільне свято" class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
-        <img src="4.jpg" alt="Колектив школи" class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
-        <img src="5.jpg" alt="Зовнішній вигляд школи" class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
+        <img src="1.jpg" alt="Кабінет інформатики" 
+             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start hover:scale-105 transition duration-300">
+        <img src="2.jpg" alt="Учні на уроці" 
+             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start hover:scale-105 transition duration-300">
+        <img src="3.jpg" alt="Шкільне свято" 
+             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start hover:scale-105 transition duration-300">
+        <img src="4.jpg" alt="Колектив школи" 
+             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start hover:scale-105 transition duration-300">
+        <img src="5.jpg" alt="Зовнішній вигляд школи" 
+             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start hover:scale-105 transition duration-300">
       </div>
       <div class="text-center mt-6">
         <a href="gallery.html" 
@@ -162,7 +167,7 @@
 
   </main>
 
-  <!-- Footer (той самий) -->
+  <!-- Footer -->
   <footer class="bg-primary text-white py-12 mt-16">
     <div class="max-w-7xl mx-auto px-4 text-center">
       <p class="text-xl font-semibold mb-2">Філія №1 Линовицького ліцею</p>
@@ -182,5 +187,7 @@
     </div>
   </footer>
 
+  <!-- JavaScript з анімаціями -->
+  <script src="modern.js"></script>
 </body>
 </html>
