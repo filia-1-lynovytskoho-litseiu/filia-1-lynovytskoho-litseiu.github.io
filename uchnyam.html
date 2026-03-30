@@ -42,7 +42,7 @@
         <a href="index.html" class="hover:text-primary transition">Головна</a>
         <a href="about.html" class="hover:text-primary transition">Про нас</a>
         <a href="news.html" class="hover:text-primary transition">Новини</a>
-        <a href="uchnyam.html" class="text-primary font-semibold">Учням</a>
+        <a href="uchnyam.html" class="text-primary font-semibold active-link">Учням</a>
         <a href="kontakty.html" class="hover:text-primary transition">Контакти</a>
       </div>
 
@@ -62,7 +62,7 @@
     <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70"></div>
 
     <div class="absolute inset-0 flex items-center justify-center text-center px-4">
-      <div class="max-w-3xl">
+      <div class="max-w-3xl hero-text">
         <h1 class="text-white text-4xl md:text-5xl font-bold mb-4">Учням та батькам</h1>
         <p class="text-white/90 text-lg md:text-xl">
           Все найважливіше для успішного навчання та шкільного життя
@@ -74,7 +74,7 @@
   <main class="max-w-7xl mx-auto px-4 py-12 space-y-16">
 
     <!-- Вступний блок -->
-    <section class="text-center max-w-3xl mx-auto">
+    <section class="fade-in text-center max-w-3xl mx-auto">
       <h2 class="text-3xl font-bold text-primary mb-6">Інформація для учнів</h2>
       <p class="text-lg text-gray-700">
         Тут зібрано все, що допоможе тобі вчитися комфортно, бути в курсі подій та розвиватися.
@@ -85,7 +85,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
       <!-- Розклад уроків -->
-      <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition">
+      <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition fade-in">
         <div class="text-5xl mb-6">🕒</div>
         <h3 class="text-2xl font-semibold text-primary mb-4">Розклад уроків</h3>
         <p class="text-gray-700 mb-5">Актуальний розклад на поточний тиждень та чверть. Перевіряйте регулярно!</p>
@@ -103,7 +103,7 @@
       </div>
 
       <!-- Правила поведінки -->
-      <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition">
+      <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition fade-in">
         <div class="text-5xl mb-6">📋</div>
         <h3 class="text-2xl font-semibold text-primary mb-4">Правила поведінки</h3>
         <ul class="space-y-3 text-gray-700">
@@ -119,7 +119,7 @@
       </div>
 
       <!-- Електронні ресурси -->
-      <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition lg:col-span-2">
+      <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition fade-in lg:col-span-2">
         <div class="text-5xl mb-6">💻</div>
         <h3 class="text-2xl font-semibold text-primary mb-6">Електронні ресурси для навчання</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -143,7 +143,7 @@
       </div>
 
       <!-- Кабінети та лабораторії -->
-      <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition">
+      <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition fade-in">
         <div class="text-5xl mb-6">🧪</div>
         <h3 class="text-2xl font-semibold text-primary mb-4">Сучасні кабінети</h3>
         <ul class="space-y-3 text-gray-700">
@@ -155,7 +155,7 @@
       </div>
 
       <!-- Бібліотека -->
-      <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition">
+      <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition fade-in">
         <div class="text-5xl mb-6">📚</div>
         <h3 class="text-2xl font-semibold text-primary mb-4">Шкільна бібліотека</h3>
         <p class="text-gray-700 mb-4">
@@ -169,22 +169,22 @@
     </div>
 
     <!-- Міні-галерея уроків -->
-    <section>
+    <section class="fade-in">
       <h3 class="text-3xl font-bold text-primary text-center mb-10">Так виглядають наші уроки</h3>
       <div class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide">
         <img src="lessons1.jpg" alt="Урок з інтерактивною дошкою" 
-             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
+             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start hover:scale-105 transition duration-300">
         <img src="lessons2.jpg" alt="Групова робота на уроці" 
-             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
+             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start hover:scale-105 transition duration-300">
         <img src="lessons3.jpg" alt="Проєктна діяльність" 
-             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
+             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start hover:scale-105 transition duration-300">
         <img src="lessons4.jpg" alt="Інтерактивний урок" 
-             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start">
+             class="w-80 md:w-96 h-64 object-cover rounded-3xl shadow flex-shrink-0 snap-start hover:scale-105 transition duration-300">
       </div>
     </section>
 
     <!-- Заключний блок -->
-    <div class="bg-white p-10 rounded-3xl shadow text-center">
+    <div class="bg-white p-10 rounded-3xl shadow text-center fade-in">
       <p class="text-xl text-gray-700">
         Маєш питання, ідею чи пропозицію? 
         <span class="font-semibold text-primary">Звертайся до класного керівника або адміністрації</span> — ми завжди відкриті до діалогу!
@@ -213,5 +213,7 @@
     </div>
   </footer>
 
+  <!-- JavaScript з анімаціями -->
+  <script src="modern.js"></script>
 </body>
 </html>
