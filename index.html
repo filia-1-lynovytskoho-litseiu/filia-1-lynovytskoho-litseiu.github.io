@@ -517,6 +517,128 @@
             transition: 0.2s;
         }
 
+        /* ================= МАТЕРІАЛИ / ПРЕДМЕТИ ================= */
+        #materials-section {
+            margin: clamp(2rem, 5vw, 4rem) 0;
+            scroll-margin-top: 20px;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+            gap: clamp(16px, 2.5vw, 22px);
+        }
+
+        .subject-card {
+            background: #fff;
+            border-radius: clamp(18px, 3vw, 24px);
+            padding: clamp(1.4rem, 3vw, 1.8rem);
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            border: 2px solid transparent;
+            text-decoration: none;
+            color: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subject-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--subject-color, linear-gradient(90deg, var(--primary), var(--accent-pink)));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s;
+        }
+
+        @media (hover: hover) {
+            .subject-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 25px 50px -15px rgba(99, 102, 241, 0.35);
+                border-color: rgba(99, 102, 241, 0.15);
+            }
+            .subject-card:hover::before {
+                transform: scaleX(1);
+            }
+            .subject-card:hover .subject-icon {
+                transform: rotate(-8deg) scale(1.08);
+            }
+            .subject-card:hover .subject-link {
+                gap: 12px;
+                color: var(--accent-pink);
+            }
+        }
+
+        .subject-card:active {
+            transform: scale(0.98);
+        }
+
+        .subject-icon {
+            width: clamp(52px, 9vw, 64px);
+            height: clamp(52px, 9vw, 64px);
+            border-radius: clamp(14px, 2.5vw, 18px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+            color: #fff;
+            margin-bottom: 1rem;
+            box-shadow: 0 8px 20px -5px rgba(99, 102, 241, 0.4);
+            transition: transform 0.35s;
+            flex-shrink: 0;
+        }
+
+        .subject-card h3 {
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            font-weight: 800;
+            margin-bottom: 0.4rem;
+            color: var(--dark);
+            letter-spacing: -0.3px;
+        }
+
+        .subject-card p {
+            color: var(--gray);
+            font-size: clamp(0.82rem, 2vw, 0.9rem);
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .subject-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: clamp(0.8rem, 1.8vw, 0.88rem);
+            margin-top: auto;
+            transition: 0.2s;
+        }
+
+        .subject-link i {
+            font-size: 0.8em;
+        }
+
+        /* Кольори для предметів */
+        .subject-icon.info { background: linear-gradient(135deg, #06b6d4, #3b82f6); }
+        .subject-icon.math { background: linear-gradient(135deg, #8b5cf6, #6366f1); }
+        .subject-icon.ukr { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+        .subject-icon.eng { background: linear-gradient(135deg, #ec4899, #f43f5e); }
+        .subject-icon.hist { background: linear-gradient(135deg, #f97316, #f59e0b); }
+        .subject-icon.geo { background: linear-gradient(135deg, #10b981, #84cc16); }
+        .subject-icon.bio { background: linear-gradient(135deg, #22c55e, #16a34a); }
+        .subject-icon.phys { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+        .subject-icon.chem { background: linear-gradient(135deg, #14b8a6, #10b981); }
+        .subject-icon.art { background: linear-gradient(135deg, #f43f5e, #ec4899); }
+        .subject-icon.pe { background: linear-gradient(135deg, #f59e0b, #84cc16); }
+        .subject-icon.tech { background: linear-gradient(135deg, #64748b, #475569); }
+
         /* ================= ВКЛАДКИ ================= */
         #tabs-section {
             margin: clamp(2rem, 5vw, 4rem) 0;
@@ -1217,6 +1339,7 @@
                         <li><a href="#" class="active" data-nav="home">Головна</a></li>
                         <li><a href="#news" data-nav="news">Новини</a></li>
                         <li><a href="#gallery" data-nav="gallery">Галерея</a></li>
+                        <li><a href="#materials-section" data-nav="materials">Матеріали</a></li>
                         <li><a href="#tabs-section" data-nav="tabs">Про заклад</a></li>
                         <li><a href="#contacts" data-nav="contacts">Контакти</a></li>
                     </ul>
@@ -1238,6 +1361,15 @@
     <section id="gallery" class="gallery-section">
         <h2 class="section-title"><span class="emoji">📸</span> <span class="line">Фотогалерея</span></h2>
         <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+    <!-- ================= МАТЕРІАЛИ / ПРЕДМЕТИ ================= -->
+    <section id="materials-section">
+        <h2 class="section-title"><span class="emoji">📚</span> <span class="line">Матеріали</span></h2>
+        <p style="color: var(--gray); font-size: clamp(0.9rem, 2vw, 1rem); margin-bottom: 1.5rem; max-width: 700px;">
+            Оберіть предмет, щоб переглянути матеріали до уроків, відео, практичні завдання та тести для учнів 1–9 класів.
+        </p>
+        <div class="subjects-grid" id="subjectsGrid"></div>
     </section>
 
     <section id="tabs-section">
@@ -1332,6 +1464,7 @@
                 <h4>Посилання</h4>
                 <a href="#news"><i class="fas fa-chevron-right"></i> Новини</a>
                 <a href="#gallery"><i class="fas fa-chevron-right"></i> Галерея</a>
+                <a href="#materials-section"><i class="fas fa-chevron-right"></i> Матеріали</a>
                 <a href="#tabs-section"><i class="fas fa-chevron-right"></i> Про заклад</a>
                 <a href="#contacts"><i class="fas fa-chevron-right"></i> Контакти</a>
             </div>
@@ -1381,9 +1514,8 @@
        📌 ДАНІ НОВИН
        ===================================================================== */
     const newsList = [
-                {
+        {
             id: "den-zdorovoho-kharchuvannya",
-            // ✅ ВИПРАВЛЕНО: закрито лапку в title
             title: "16 жовтня — Всесвітній день здорового харчування",
             date: "16 жовтня 2026",
             icon: "fas fa-apple-alt",
@@ -1392,7 +1524,7 @@
             preview: "Здорове харчування — важлива складова гарного самопочуття, гармонійного розвитку та активного життя.",
             gallery: ["images/news/dobrota-1.jpg", "images/news/dobrota-2.jpg"],
             content: `
-                <<p>🍏 <strong>16 жовтня — Всесвітній день здорового харчування!</strong> 🥗</p>
+                <p>🍏 <strong>16 жовтня — Всесвітній день здорового харчування!</strong> 🥗</p>
                 <p>Здорове харчування — важлива складова гарного самопочуття, гармонійного розвитку та активного життя. Те, що ми їмо щодня, впливає на наше самопочуття, рівень енергії та здатність навчатися й працювати.</p>
                 <p>🥦 <strong>Чому важливо харчуватися збалансовано?</strong></p>
                 <p>Різноманітний раціон, що містить овочі, фрукти, зелень, цільнозернові продукти, рибу, яйця, бобові та горіхи, допомагає організму отримувати необхідні поживні речовини.</p>
@@ -1411,7 +1543,6 @@
         },
         {
             id: "urok-dobroty",
-            // ✅ ВИПРАВЛЕНО: закрито лапку в title
             title: "Урок доброти «Тварини потребують нашої турботи»",
             date: "13 жовтня 2026",
             icon: "fas fa-paw",
@@ -1508,7 +1639,6 @@
         },
         {
             id: "den-myru",
-            // ✅ ВИПРАВЛЕНО: id з латинською "u" замість кириличної "у"
             title: "Міжнародний день миру: найзаповітніша мрія українців",
             date: "21 вересня 2026",
             icon: "fas fa-dove",
@@ -1583,15 +1713,106 @@
         }
     ];
 
-    const galleryImages = [
-        "images/gallery/photo-1.jpg",
-        "images/gallery/photo-2.jpg",
-        "images/gallery/photo-3.jpg",
-        "images/gallery/photo-4.jpg",
-        "images/gallery/photo-5.jpg",
-        "images/gallery/photo-6.jpg",
-        "images/gallery/photo-7.jpg",
-        "images/gallery/photo-8.jpg"
+    /* =====================================================================
+       📚 ПРЕДМЕТИ (для секції "Матеріали")
+       ===================================================================== */
+    const subjects = [
+        {
+            name: "Інформатика",
+            desc: "Алгоритми, програмування, комп'ютерна графіка",
+            icon: "fas fa-laptop-code",
+            iconClass: "info",
+            link: "informatika.html",
+            grades: "1–9 класи"
+        },
+        {
+            name: "Математика",
+            desc: "Арифметика, алгебра, геометрія",
+            icon: "fas fa-calculator",
+            iconClass: "math",
+            link: "materials/matematyka.html",
+            grades: "1–9 класи"
+        },
+        {
+            name: "Українська мова",
+            desc: "Мова, література, читання",
+            icon: "fas fa-book",
+            iconClass: "ukr",
+            link: "materials/ukrainska-mova.html",
+            grades: "1–9 класи"
+        },
+        {
+            name: "Англійська мова",
+            desc: "Grammar, vocabulary, listening",
+            icon: "fas fa-language",
+            iconClass: "eng",
+            link: "materials/english.html",
+            grades: "1–9 класи"
+        },
+        {
+            name: "Історія",
+            desc: "Історія України та всесвітня історія",
+            icon: "fas fa-landmark",
+            iconClass: "hist",
+            link: "materials/istoriya.html",
+            grades: "5–9 класи"
+        },
+        {
+            name: "Географія",
+            desc: "Карти, природа, країни та народи",
+            icon: "fas fa-globe",
+            iconClass: "geo",
+            link: "materials/heohrafiya.html",
+            grades: "6–9 класи"
+        },
+        {
+            name: "Біологія",
+            desc: "Жива природа, організми, екосистеми",
+            icon: "fas fa-leaf",
+            iconClass: "bio",
+            link: "materials/biolohiya.html",
+            grades: "6–9 класи"
+        },
+        {
+            name: "Фізика",
+            desc: "Явища природи, закони, експерименти",
+            icon: "fas fa-atom",
+            iconClass: "phys",
+            link: "materials/fizyka.html",
+            grades: "7–9 класи"
+        },
+        {
+            name: "Хімія",
+            desc: "Речовини, реакції, елементи",
+            icon: "fas fa-flask",
+            iconClass: "chem",
+            link: "materials/khimiya.html",
+            grades: "7–9 класи"
+        },
+        {
+            name: "Мистецтво",
+            desc: "Малювання, музика, творчість",
+            icon: "fas fa-palette",
+            iconClass: "art",
+            link: "materials/mystetstvo.html",
+            grades: "1–9 класи"
+        },
+        {
+            name: "Фізична культура",
+            desc: "Спорт, рухливі ігри, здоров'я",
+            icon: "fas fa-futbol",
+            iconClass: "pe",
+            link: "materials/fizkultura.html",
+            grades: "1–9 класи"
+        },
+        {
+            name: "Трудове навчання",
+            desc: "Технології, рукоділля, проєкти",
+            icon: "fas fa-tools",
+            iconClass: "tech",
+            link: "materials/trudove-navchannya.html",
+            grades: "1–9 класи"
+        }
     ];
 
     /* =====================================================================
@@ -1657,8 +1878,42 @@
     });
 
     /* =====================================================================
+       📚 ГЕНЕРАЦІЯ КАРТОК ПРЕДМЕТІВ
+       ===================================================================== */
+    const subjectsGrid = document.getElementById('subjectsGrid');
+    if (subjectsGrid) {
+        subjects.forEach(subject => {
+            const card = document.createElement('a');
+            card.className = 'subject-card';
+            card.href = subject.link;
+            card.innerHTML = `
+                <div class="subject-icon ${subject.iconClass}">
+                    <i class="${subject.icon}"></i>
+                </div>
+                <h3>${subject.name}</h3>
+                <p>${subject.desc}</p>
+                <span class="subject-link">
+                    ${subject.grades} <i class="fas fa-arrow-right"></i>
+                </span>
+            `;
+            subjectsGrid.appendChild(card);
+        });
+    }
+
+    /* =====================================================================
        📸 ГАЛЕРЕЯ
        ===================================================================== */
+    const galleryImages = [
+        "images/gallery/photo-1.jpg",
+        "images/gallery/photo-2.jpg",
+        "images/gallery/photo-3.jpg",
+        "images/gallery/photo-4.jpg",
+        "images/gallery/photo-5.jpg",
+        "images/gallery/photo-6.jpg",
+        "images/gallery/photo-7.jpg",
+        "images/gallery/photo-8.jpg"
+    ];
+
     const galleryGrid = document.getElementById('galleryGrid');
     if (galleryGrid) {
         galleryImages.forEach((src, index) => {
@@ -1861,14 +2116,6 @@
             transition: all 0.2s; z-index: 10;
         `;
         closeBtn.addEventListener('click', closeLightbox);
-        closeBtn.addEventListener('mouseenter', () => {
-            closeBtn.style.background = '#fff';
-            closeBtn.style.transform = 'rotate(90deg)';
-        });
-        closeBtn.addEventListener('mouseleave', () => {
-            closeBtn.style.background = 'rgba(255,255,255,0.9)';
-            closeBtn.style.transform = 'rotate(0deg)';
-        });
 
         const counter = document.createElement('div');
         counter.textContent = `${lightboxIndex + 1} / ${images.length}`;
@@ -1926,14 +2173,6 @@
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 onClick();
-            });
-            btn.addEventListener('mouseenter', () => {
-                btn.style.background = '#fff';
-                btn.style.transform = 'translateY(-50%) scale(1.1)';
-            });
-            btn.addEventListener('mouseleave', () => {
-                btn.style.background = 'rgba(255,255,255,0.9)';
-                btn.style.transform = 'translateY(-50%) scale(1)';
             });
             if (window.innerWidth < 480) {
                 btn.style.width = '42px';
@@ -2034,7 +2273,7 @@
     }
 
     /* =====================================================================
-       📑 ВКЛАДКИ
+       📑 ВКЛАДКИ "ПРО ЗАКЛАД"
        ===================================================================== */
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabPanes = document.querySelectorAll('.tab-pane');
@@ -2139,6 +2378,7 @@
                     const sectionToNav = {
                         'news': 'news',
                         'gallery': 'gallery',
+                        'materials-section': 'materials',
                         'tabs-section': 'tabs',
                         'contacts': 'contacts'
                     };
