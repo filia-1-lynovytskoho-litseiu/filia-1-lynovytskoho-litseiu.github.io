@@ -1,200 +1,1867 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Офіційний сайт Філії №1 Линовицького ліцею (с. Удайці). Якісна освіта, сучасні умови, дружній колектив. Новини, фото, контакти.">
-  <title>Філія №1 Линовицького ліцею | Офіційний сайт</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="google-site-verification" content="nzQj2xGdQmcjNdkb7C-c_WhR6F7RKy_tW2y6L_GNDEY" />
+    <title>Філія №1 Линовицького ліцею</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css">
-  
-  <meta name="google-site-verification" content="nzQj2xGdQmcjNdkb7C-c_WhR6F7RKy_tW2y6L_GNDEY" />
-  
-  <script>
-    tailwind.config = {
-      content: [],
-      theme: {
-        extend: {
-          colors: {
-            primary: '#005bbb',
-            accent: '#ffd500',
-          }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
-      }
-    }
-  </script>
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --accent-pink: #ec4899;
+            --accent-lime: #84cc16;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f1f5f9;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+            background: #fafbff;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            min-height: 100dvh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15), transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -300px;
+            left: -300px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.12), transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 4vw, 24px);
+        }
+
+        /* ================= HEADER ================= */
+        header {
+            position: relative;
+            padding: clamp(0.8rem, 2vw, 1.2rem) 0 0;
+            margin-bottom: clamp(1.5rem, 4vw, 3rem);
+        }
+
+        .header-inner {
+            background: #0b2b4b;
+            border-radius: clamp(20px, 4vw, 32px);
+            padding: clamp(1.5rem, 3.5vw, 2.2rem) clamp(1.2rem, 3vw, 2.2rem) clamp(0.6rem, 2vw, 1rem);
+            box-shadow: 0 20px 60px -20px rgba(99, 102, 241, 0.5);
+            position: relative;
+            overflow: hidden;
+            min-height: clamp(260px, 40vw, 380px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .header-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .header-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 8s ease-in-out;
+        }
+
+        .header-inner:hover .header-bg img {
+            transform: scale(1.05);
+        }
+
+        .header-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                rgba(99, 102, 241, 0.88) 0%,
+                rgba(139, 92, 246, 0.78) 40%,
+                rgba(236, 72, 153, 0.88) 100%);
+        }
+
+        .header-inner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .header-inner::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: 20%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: clamp(10px, 2vw, 16px);
+        }
+
+        .logo-icon {
+            width: clamp(52px, 9vw, 72px);
+            height: clamp(52px, 9vw, 72px);
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            border-radius: clamp(14px, 2.5vw, 20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.4rem, 3.2vw, 2rem);
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(245, 158, 11, 0.5);
+            transform: rotate(-5deg);
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-icon:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        .school-name h1 {
+            font-size: clamp(1.05rem, 3.5vw, 1.75rem);
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .school-name p {
+            font-size: clamp(0.72rem, 2vw, 0.92rem);
+            color: rgba(255, 255, 255, 0.92);
+            font-weight: 500;
+            margin-top: 4px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .contact-chip {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2vw, 16px);
+            border-radius: 50px;
+            color: #fff;
+            font-size: clamp(0.72rem, 1.8vw, 0.85rem);
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            white-space: nowrap;
+        }
+
+        .contact-chip i {
+            color: #fbbf24;
+        }
+
+        /* ================= НАВІГАЦІЯ ================= */
+        .nav-wrapper {
+            position: relative;
+            z-index: 2;
+            margin-top: clamp(1.2rem, 3vw, 1.8rem);
+            padding-bottom: clamp(0.6rem, 1.5vw, 1rem);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-container {
+            flex: 1;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-behavior: smooth;
+        }
+
+        .nav-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 6px;
+            list-style: none;
+            min-width: fit-content;
+            padding: 2px 0;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: clamp(8px, 1.8vw, 10px) clamp(14px, 2.5vw, 20px);
+            border-radius: 50px;
+            font-size: clamp(0.82rem, 1.8vw, 0.95rem);
+            transition: all 0.25s;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            white-space: nowrap;
+            display: block;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-links a.active {
+            background: #fff;
+            color: var(--primary-dark);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            border-color: #fff;
+        }
+
+        /* Кнопки-стрілки прокрутки */
+        .nav-arrow {
+            flex-shrink: 0;
+            width: clamp(36px, 6vw, 42px);
+            height: clamp(36px, 6vw, 42px);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s;
+            flex-shrink: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-arrow:hover:not(:disabled) {
+            background: #fff;
+            color: var(--primary-dark);
+            transform: scale(1.08);
+        }
+
+        .nav-arrow:active:not(:disabled) {
+            transform: scale(0.95);
+        }
+
+        .nav-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* На великих екранах, де навігація поміщається — ховаємо стрілки */
+        @media (min-width: 1000px) {
+            .nav-arrow {
+                display: none;
+            }
+        }
+
+        /* ================= СЕКЦІЇ ================= */
+        .section-title {
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: clamp(1.2rem, 3vw, 2rem);
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            scroll-margin-top: 20px;
+        }
+
+        .section-title .emoji {
+            font-size: clamp(1.4rem, 4vw, 2rem);
+        }
+
+        .section-title span.line {
+            background: linear-gradient(90deg, var(--primary), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ================= НОВИНИ ================= */
+        .news-section {
+            margin: clamp(1rem, 3vw, 2rem) 0 clamp(2rem, 5vw, 4rem);
+            scroll-margin-top: 20px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+            gap: clamp(16px, 2.5vw, 24px);
+        }
+
+        .news-card {
+            background: #fff;
+            border-radius: clamp(18px, 3vw, 24px);
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            border: 2px solid transparent;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        @media (hover: hover) {
+            .news-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 25px 50px -15px rgba(99, 102, 241, 0.35);
+                border-color: rgba(99, 102, 241, 0.2);
+            }
+
+            .news-card:hover .news-img img {
+                transform: scale(1.08);
+            }
+
+            .news-card:hover .news-img i {
+                transform: scale(1.15) rotate(-5deg);
+            }
+
+            .news-card:hover .read-more {
+                gap: 12px;
+                color: var(--accent-pink);
+            }
+        }
+
+        .news-card:active {
+            transform: scale(0.98);
+        }
+
+        .news-img {
+            height: clamp(160px, 24vw, 200px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-img img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 0;
+        }
+
+        .news-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .news-img i {
+            filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.25));
+            position: relative;
+            z-index: 2;
+            transition: transform 0.4s;
+        }
+
+        .img-purple { background: linear-gradient(135deg, #8b5cf6, #6366f1); }
+        .img-pink { background: linear-gradient(135deg, #ec4899, #f43f5e); }
+        .img-green { background: linear-gradient(135deg, #10b981, #84cc16); }
+        .img-cyan { background: linear-gradient(135deg, #06b6d4, #3b82f6); }
+        .img-orange { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+        .img-indigo { background: linear-gradient(135deg, #6366f1, #06b6d4); }
+
+        .news-content {
+            padding: clamp(1rem, 2.5vw, 1.4rem) clamp(1rem, 2.5vw, 1.4rem) clamp(1.2rem, 2.5vw, 1.6rem);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-date {
+            font-size: clamp(0.68rem, 1.6vw, 0.75rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .news-card h3 {
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            color: var(--dark);
+            line-height: 1.4;
+            letter-spacing: -0.3px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-card p {
+            color: var(--gray);
+            font-size: clamp(0.85rem, 2vw, 0.9rem);
+            margin-bottom: 1.2rem;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: clamp(0.8rem, 1.8vw, 0.88rem);
+            margin-top: auto;
+            width: fit-content;
+            transition: 0.2s;
+        }
+
+        /* ================= ВКЛАДКИ ================= */
+        #tabs-section {
+            margin: clamp(2rem, 5vw, 4rem) 0;
+            scroll-margin-top: 20px;
+        }
+
+        .info-tabs {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+            background: #fff;
+            padding: 8px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .info-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: clamp(0.6rem, 1.8vw, 0.8rem) clamp(1rem, 2.5vw, 1.6rem);
+            border-radius: 14px;
+            font-weight: 700;
+            color: var(--gray);
+            cursor: pointer;
+            transition: all 0.25s;
+            font-size: clamp(0.78rem, 1.8vw, 0.95rem);
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .tab-btn i {
+            color: var(--primary);
+            transition: 0.2s;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--accent-pink));
+            color: #fff;
+            box-shadow: 0 8px 20px -5px rgba(99, 102, 241, 0.5);
+        }
+
+        .tab-btn.active i {
+            color: #fff;
+        }
+
+        .tab-content {
+            background: #fff;
+            border-radius: clamp(18px, 3vw, 28px);
+            padding: clamp(1.2rem, 3vw, 2.5rem);
+            box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+            border: 1px solid #eef2f8;
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.35s ease;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-pane h3 {
+            color: var(--dark);
+            margin-bottom: 1.2rem;
+            font-size: clamp(1.15rem, 3vw, 1.5rem);
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tab-pane h3 i {
+            background: linear-gradient(135deg, var(--primary), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+        }
+
+        .tab-pane p {
+            color: #475569;
+            margin-bottom: 1rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .tab-pane ul {
+            list-style: none;
+        }
+
+        .tab-pane li {
+            padding: clamp(0.5rem, 1.5vw, 0.7rem) 0;
+            color: #334155;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: clamp(0.88rem, 2vw, 1rem);
+        }
+
+        .tab-pane li:last-child {
+            border-bottom: none;
+        }
+
+        .tab-pane li i {
+            color: var(--accent-lime);
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        /* ================= КОНТАКТИ ================= */
+        #contacts {
+            margin: clamp(2rem, 5vw, 4rem) 0;
+            scroll-margin-top: 20px;
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+            gap: clamp(14px, 2vw, 20px);
+        }
+
+        .contact-card {
+            background: #fff;
+            border-radius: clamp(18px, 3vw, 24px);
+            padding: clamp(1.4rem, 3vw, 2rem) clamp(1.2rem, 2.5vw, 1.5rem);
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+
+        @media (hover: hover) {
+            .contact-card:hover {
+                transform: translateY(-6px);
+                border-color: rgba(99, 102, 241, 0.2);
+                box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.25);
+            }
+        }
+
+        .contact-icon {
+            width: clamp(48px, 8vw, 56px);
+            height: clamp(48px, 8vw, 56px);
+            border-radius: clamp(14px, 2.5vw, 18px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: #fff;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 8px 20px -5px rgba(99, 102, 241, 0.4);
+            overflow: hidden;
+        }
+
+        .contact-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        .contact-card:nth-child(1) .contact-icon { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+        .contact-card:nth-child(2) .contact-icon { background: linear-gradient(135deg, #ec4899, #f43f5e); }
+        .contact-card:nth-child(3) .contact-icon { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+        .contact-card:nth-child(4) .contact-icon { background: linear-gradient(135deg, #06b6d4, #3b82f6); }
+
+        .contact-card h4 {
+            font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+            font-weight: 800;
+            margin-bottom: 0.4rem;
+            color: var(--dark);
+        }
+
+        .contact-card p {
+            color: var(--gray);
+            font-size: clamp(0.82rem, 2vw, 0.9rem);
+            word-break: break-word;
+        }
+
+        /* ================= ГАЛЕРЕЯ ================= */
+        .gallery-section {
+            margin: clamp(2rem, 5vw, 4rem) 0;
+            scroll-margin-top: 20px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+            gap: clamp(10px, 2vw, 16px);
+        }
+
+        .gallery-item {
+            aspect-ratio: 1 / 1;
+            border-radius: clamp(14px, 2vw, 20px);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item::after {
+            content: '\f00e';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            inset: 0;
+            background: rgba(99, 102, 241, 0.6);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        @media (hover: hover) {
+            .gallery-item:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 16px 32px rgba(99, 102, 241, 0.25);
+            }
+            .gallery-item:hover img {
+                transform: scale(1.1);
+            }
+            .gallery-item:hover::after {
+                opacity: 1;
+            }
+        }
+
+        /* ================= МОДАЛЬНЕ ВІКНО ================= */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(10px, 3vw, 20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: clamp(18px, 3vw, 28px);
+            max-width: 720px;
+            width: 100%;
+            max-height: calc(100vh - 20px);
+            max-height: calc(100dvh - 20px);
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.4);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .modal-overlay.open .modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            height: clamp(180px, 35vw, 280px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-radius: clamp(18px, 3vw, 28px) clamp(18px, 3vw, 28px) 0 0;
+            overflow: hidden;
+        }
+
+        .modal-header img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .modal-header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);
+            z-index: 1;
+        }
+
+        .modal-header i {
+            font-size: clamp(3rem, 8vw, 5rem);
+            color: #fff;
+            filter: drop-shadow(2px 4px 12px rgba(0,0,0,0.3));
+            position: relative;
+            z-index: 2;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: clamp(10px, 2vw, 16px);
+            right: clamp(10px, 2vw, 16px);
+            width: clamp(38px, 8vw, 44px);
+            height: clamp(38px, 8vw, 44px);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: var(--dark);
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: #fff;
+            transform: rotate(90deg);
+        }
+
+        .modal-close:active {
+            transform: scale(0.9) rotate(90deg);
+        }
+
+        .modal-body {
+            padding: clamp(1.2rem, 4vw, 2rem) clamp(1.2rem, 5vw, 2.5rem) clamp(1.5rem, 4vw, 2.5rem);
+        }
+
+        .modal-date {
+            font-size: clamp(0.72rem, 1.8vw, 0.8rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--primary);
+            margin-bottom: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-body h2 {
+            font-size: clamp(1.2rem, 4vw, 1.7rem);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+        }
+
+        .modal-body .modal-text {
+            color: #475569;
+            font-size: clamp(0.9rem, 2.2vw, 1rem);
+            line-height: 1.8;
+        }
+
+        .modal-body .modal-text p {
+            margin-bottom: 1rem;
+        }
+
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 140px), 1fr));
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .modal-gallery img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .modal-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* ================= КНОПКА "ВГОРУ" ================= */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: clamp(20px, 4vw, 30px);
+            right: clamp(20px, 4vw, 30px);
+            width: clamp(44px, 8vw, 52px);
+            height: clamp(44px, 8vw, 52px);
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent-pink));
+            color: #fff;
+            border: none;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            z-index: 500;
+        }
+
+        .scroll-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-top-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(99, 102, 241, 0.5);
+        }
+
+        .scroll-top-btn:active {
+            transform: translateY(0) scale(0.95);
+        }
+
+        /* ================= ФУТЕР ================= */
+        footer {
+            background: var(--dark);
+            color: #94a3b8;
+            padding: clamp(2rem, 5vw, 3rem) 0 1.5rem;
+            margin-top: clamp(2rem, 5vw, 4rem);
+            border-radius: clamp(20px, 4vw, 32px) clamp(20px, 4vw, 32px) 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: 10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.3), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+            gap: clamp(1.5rem, 4vw, 2.5rem);
+            position: relative;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-col h4::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(180deg, #fbbf24, var(--accent-pink));
+            border-radius: 2px;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: clamp(0.85rem, 2vw, 0.92rem);
+            display: block;
+            margin-bottom: 0.7rem;
+            transition: 0.2s;
+            word-break: break-word;
+        }
+
+        .footer-col a:hover {
+            color: #fbbf24;
+        }
+
+        .footer-col i {
+            width: 22px;
+            color: #fbbf24;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: clamp(1.5rem, 4vw, 2.5rem);
+            padding-top: 1.5rem;
+            border-top: 1px solid #1e293b;
+            font-size: clamp(0.75rem, 2vw, 0.88rem);
+            color: #64748b;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        @media (max-width: 400px) {
+            .contact-info {
+                display: none;
+            }
+            .logo-area {
+                gap: 10px;
+            }
+            .news-img {
+                height: 150px;
+            }
+            .news-content {
+                padding: 1rem;
+            }
+            .read-more {
+                font-size: 0.8rem;
+            }
+            .header-inner {
+                min-height: 200px;
+            }
+            .scroll-top-btn {
+                bottom: 16px;
+                right: 16px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @supports (padding: max(0px)) {
+            .container {
+                padding-left: max(clamp(16px, 4vw, 24px), env(safe-area-inset-left));
+                padding-right: max(clamp(16px, 4vw, 24px), env(safe-area-inset-right));
+            }
+            footer {
+                padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+            }
+            .scroll-top-btn {
+                bottom: max(clamp(20px, 4vw, 30px), env(safe-area-inset-bottom));
+                right: max(clamp(20px, 4vw, 30px), env(safe-area-inset-right));
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
 </head>
+<body>
 
-<body class="bg-gray-50 font-sans">
+<header>
+    <div class="container">
+        <div class="header-inner">
+            <div class="header-bg">
+                <img src="images/school.jpg"
+                     alt="Будівля Філії №1 Линовицького ліцею"
+                     loading="eager"
+                     onerror="this.parentElement.style.display='none';">
+            </div>
 
-  <!-- Фіксована навігація -->
-  <nav class="bg-white/95 backdrop-blur-md shadow-md fixed top-0 left-0 right-0 z-50 border-b">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <img src="logo.png" alt="Логотип школи" class="h-10 w-auto">
-        <div>
-          <h1 class="text-xl font-bold text-primary leading-tight">Філія №1</h1>
-          <p class="text-xs text-gray-600 -mt-1">Линовицького ліцею</p>
+            <div class="header-content">
+                <div class="logo-area">
+                    <div class="logo-icon">
+                        <img src="images/logo.png"
+                             alt="Логотип"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-graduation-cap\'></i>';">
+                    </div>
+                    <div class="school-name">
+                        <h1>Філія №1 Линовицького ліцею</h1>
+                        <p>Заклад загальної середньої освіти</p>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-chip"><i class="fas fa-map-pin"></i> с. Линовиця</div>
+                    <div class="contact-chip"><i class="fas fa-phone-alt"></i> (046) 123-45-67</div>
+                </div>
+            </div>
+
+            <!-- Оновлена навігація зі стрілками -->
+            <div class="nav-wrapper">
+                <button class="nav-arrow nav-arrow-left" id="navArrowLeft" aria-label="Прокрутити вліво">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="nav-container" id="navContainer">
+                    <ul class="nav-links">
+                        <li><a href="#" class="active" data-nav="home">Головна</a></li>
+                        <li><a href="#news" data-nav="news">Новини</a></li>
+                        <li><a href="#gallery" data-nav="gallery">Галерея</a></li>
+                        <li><a href="#tabs-section" data-nav="tabs">Про заклад</a></li>
+                        <li><a href="#contacts" data-nav="contacts">Контакти</a></li>
+                    </ul>
+                </div>
+                <button class="nav-arrow nav-arrow-right" id="navArrowRight" aria-label="Прокрутити вправо">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
         </div>
-      </div>
-
-      <div class="hidden md:flex gap-8 text-sm font-medium">
-        <a href="index.html" class="hover:text-primary transition">Головна</a>
-        <a href="about.html" class="hover:text-primary transition">Про нас</a>
-        <a href="news.html" class="hover:text-primary transition">Новини</a>
-        <a href="uchnyam.html" class="hover:text-primary transition">Учням</a>
-        <a href="kontakty.html" class="hover:text-primary transition">Контакти</a>
-      </div>
-
-      <a href="kontakty.html" 
-         class="bg-primary hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-medium transition">
-        Задати питання
-      </a>
     </div>
-  </nav>
+</header>
 
-  <!-- Hero секція -->
-  <header class="relative">
-    <img src="main.jpg" 
-         class="w-full h-[380px] md:h-[460px] object-cover brightness-75" 
-         alt="Філія №1 Линовицького ліцею – сучасна школа в с. Удайці">
-
-    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60"></div>
-
-    <div class="absolute inset-0 flex items-center justify-center text-center px-4">
-      <div class="max-w-3xl hero-text">
-        <h2 class="text-white text-4xl md:text-5xl font-bold mb-4 leading-tight">
-          Ласкаво просимо до Філії №1
-        </h2>
-        <p class="text-white/90 text-lg md:text-xl max-w-lg mx-auto mb-8">
-          Сучасна освіта в дружній атмосфері. Разом ростемо, вчимося та творимо майбутнє!
-        </p>
-        <div class="flex flex-wrap gap-4 justify-center">
-          <a href="about.html" 
-             class="bg-white text-primary px-8 py-3 rounded-2xl font-semibold hover:bg-gray-100 transition">
-            Дізнатися більше
-          </a>
-          <a href="news.html" 
-             class="border-2 border-white text-white px-8 py-3 rounded-2xl font-semibold hover:bg-white/10 transition">
-            Останні новини
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main class="max-w-7xl mx-auto px-4 py-12 space-y-16">
-
-    <!-- Переваги -->
-    <section class="fade-in">
-      <h2 class="text-3xl font-bold text-center text-primary mb-10">Чому обирають нас</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition text-center">
-          <div class="text-5xl mb-4">🏫</div>
-          <h3 class="font-semibold text-xl mb-3">Сучасні умови</h3>
-          <p class="text-gray-600">Сучасні навчальні кабінети, затишні класи та безпечне середовище</p>
-        </div>
-        <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition text-center">
-          <div class="text-5xl mb-4">👩‍🏫</div>
-          <h3 class="font-semibold text-xl mb-3">Досвідчені вчителі</h3>
-          <p class="text-gray-600">Професійний колектив, який любить свою справу</p>
-        </div>
-        <div class="bg-white p-8 rounded-3xl shadow hover:shadow-xl transition text-center">
-          <div class="text-5xl mb-4">🎉</div>
-          <h3 class="font-semibold text-xl mb-3">Активне життя</h3>
-          <p class="text-gray-600">Свята, спортивні заходи, творчі конкурси та Шевченківські тижні</p>
-        </div>
-      </div>
+<main class="container">
+    <!-- НОВИНИ -->
+    <section id="news" class="news-section">
+        <h2 class="section-title"><span class="emoji">📰</span> <span class="line">Останні новини</span></h2>
+        <div class="news-grid" id="newsGrid"></div>
     </section>
 
-    <!-- Останні новини -->
-    <section class="fade-in">
-      <div class="flex justify-between items-center mb-8">
-        <h2 class="text-3xl font-bold text-primary">Останні новини</h2>
-        <a href="news.html" class="text-primary hover:underline font-medium flex items-center gap-2">
-          Всі новини <span>→</span>
-        </a>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <article class="bg-white rounded-3xl overflow-hidden shadow hover:shadow-2xl transition group">
-          <img src="https://scontent-iev1-1.xx.fbcdn.net/v/t39.30808-6/649816516_1529545092508041_8451181558404890490_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=e06c5d&_nc_ohc=kA_U_VvnFFsQ7kNvwG77DmB&_nc_oc=Adrygb6I9gFwQ4MoQX9c3MPgWmk4ruocbvTLi9r6raTjRuoVHlaPdS48__fxHYjutlo&_nc_zt=23&_nc_ht=scontent-iev1-1.xx&_nc_gid=_ovMkfVvIiV0uHmZC7JBUg&_nc_ss=7a3a8&oh=00_AfyOlYWM-I_-LtSXx9G0vtytFTzyEJlcIkyGplaAJuimaA&oe=69D0634D" alt="Тиждень Шевченківської поезії" 
-               class="w-full h-56 object-cover group-hover:scale-105 transition duration-300">
-          <div class="p-6">
-            <h3 class="font-semibold text-xl mb-3 line-clamp-2">Тиждень Шевченківської поезії</h3>
-            <p class="text-gray-600 line-clamp-3 mb-4">Учні продовжили знайомство з творчістю Тараса Григоровича Шевченка...</p>
-            <a href="news/shevchenko-week.html" class="text-primary font-medium hover:underline">Читати далі →</a>
-          </div>
-        </article>
-
-        <article class="bg-white rounded-3xl overflow-hidden shadow hover:shadow-2xl transition group">
-          <img src="https://images.unian.net/photos/2020_03/thumb_files/1200_0_1583251320-2292.jpg" alt="Вітаємо з 8 Березня" 
-               class="w-full h-56 object-cover group-hover:scale-105 transition duration-300">
-          <div class="p-6">
-            <h3 class="font-semibold text-xl mb-3 line-clamp-2">Вітаємо з 8 Березня!</h3>
-            <p class="text-gray-600 line-clamp-3 mb-4">Щиро вітаємо наших вчительок, мам і бабусь зі святом весни...</p>
-            <a href="news/8-bereznya.html" class="text-primary font-medium hover:underline">Читати далі →</a>
-          </div>
-        </article>
-
-        <article class="bg-white rounded-3xl overflow-hidden shadow hover:shadow-2xl transition group">
-          <img src="https://scontent-iev1-1.xx.fbcdn.net/v/t39.30808-6/642787371_1517156017080282_2073242800516284073_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=e06c5d&_nc_ohc=UQo-Lw7mEpIQ7kNvwEifhw4&_nc_oc=AdpqmJki1qmbV1OWrqMq4Rio95RHfuKAd3CtRwu9bCuexJmac5ZV26fe28L7b4-bt1o&_nc_zt=23&_nc_ht=scontent-iev1-1.xx&_nc_gid=59Vgd_wTehEAMLNvtjH6JA&_nc_ss=7a3a8&oh=00_Afx4Djq1x_zoDleBrGZzrc83wrgG4IfbkWavyOKGAVBURg&oe=69D04DF5" alt="День безпечного інтернету" 
-               class="w-full h-56 object-cover group-hover:scale-105 transition duration-300">
-          <div class="p-6">
-            <h3 class="font-semibold text-xl mb-3 line-clamp-2">День безпечного інтернету</h3>
-            <p class="text-gray-600 line-clamp-3 mb-4">Інформаційно-просвітницькі заходи з кібербезпеки для учнів...</p>
-            <a href="news/safe-internet.html" class="text-primary font-medium hover:underline">Читати далі →</a>
-          </div>
-        </article>
-      </div>
+    <!-- ГАЛЕРЕЯ -->
+    <section id="gallery" class="gallery-section">
+        <h2 class="section-title"><span class="emoji">📸</span> <span class="line">Фотогалерея</span></h2>
+        <div class="gallery-grid" id="galleryGrid"></div>
     </section>
 
-    <!-- Фотогалерея -->
-    <section class="fade-in">
-      <h2 class="text-3xl font-bold text-center text-primary mb-10">Фотогалерея</h2>
-      <div class="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide">
-        <img src="1.jpg" alt="Новий кабінет" 
-             class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow hover:scale-105 transition">
-        <img src="2.jpg" alt="Учні на уроці" 
-             class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow hover:scale-105 transition">
-        <img src="3.jpg" alt="Спортивні змагання" 
-             class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow hover:scale-105 transition">
-        <img src="4.jpg" alt="Святковий захід" 
-             class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow hover:scale-105 transition">
-        <img src="5.jpg" alt="Колектив школи" 
-             class="w-80 md:w-96 h-60 object-cover rounded-3xl snap-start flex-shrink-0 shadow hover:scale-105 transition">
-      </div>
-      <div class="text-center mt-8">
-        <a href="gallery.html" 
-           class="inline-block bg-primary text-white px-8 py-3 rounded-2xl hover:bg-blue-700 transition">
-          Переглянути всю галерею
-        </a>
-      </div>
+    <!-- ВКЛАДКИ -->
+    <section id="tabs-section">
+        <h2 class="section-title"><span class="emoji">🏫</span> <span class="line">Про заклад</span></h2>
+        <div class="info-tabs">
+            <button class="tab-btn active" data-tab="tab-1"><i class="fas fa-info-circle"></i> Про філію</button>
+            <button class="tab-btn" data-tab="tab-2"><i class="fas fa-users"></i> Колектив</button>
+            <button class="tab-btn" data-tab="tab-3"><i class="fas fa-clock"></i> Розклад</button>
+            <button class="tab-btn" data-tab="tab-4"><i class="fas fa-utensils"></i> Харчування</button>
+        </div>
+
+        <div class="tab-content">
+            <div id="tab-1" class="tab-pane active">
+                <h3><i class="fas fa-school"></i> Про філію №1</h3>
+                <p>Філія №1 Линовицького ліцею — заклад загальної середньої освіти І-ІІІ ступенів, що забезпечує якісну освіту для учнів 1-11 класів. Працюємо з 1987 року.</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Сучасні кабінети та комп'ютерний клас</li>
+                    <li><i class="fas fa-check-circle"></i> Інклюзивна освіта та підтримка кожної дитини</li>
+                    <li><i class="fas fa-check-circle"></i> Поглиблене вивчення української мови та математики</li>
+                    <li><i class="fas fa-check-circle"></i> Розвиток творчих здібностей через гуртки та секції</li>
+                </ul>
+            </div>
+            <div id="tab-2" class="tab-pane">
+                <h3><i class="fas fa-chalkboard-teacher"></i> Наші вчителі</h3>
+                <p>У філії працює 24 досвідчені педагоги, серед яких 8 вчителів вищої категорії та 5 старших учителів.</p>
+                <ul>
+                    <li><i class="fas fa-user-tie"></i> <strong>Директор філії:</strong> Петренко Олена Василівна</li>
+                    <li><i class="fas fa-user-tie"></i> <strong>Заступник директора:</strong> Іваненко Сергій Миколайович</li>
+                    <li><i class="fas fa-user-tie"></i> <strong>Педагог-організатор:</strong> Ковальчук Марія Іванівна</li>
+                    <li><i class="fas fa-user-tie"></i> <strong>Практичний психолог:</strong> Сидоренко Анна Петрівна</li>
+                </ul>
+            </div>
+            <div id="tab-3" class="tab-pane">
+                <h3><i class="fas fa-calendar-alt"></i> Розклад дзвінків</h3>
+                <ul>
+                    <li><i class="fas fa-bell"></i> 1 урок: 8:00 – 8:45</li>
+                    <li><i class="fas fa-bell"></i> 2 урок: 8:55 – 9:40</li>
+                    <li><i class="fas fa-bell"></i> 3 урок: 9:50 – 10:35</li>
+                    <li><i class="fas fa-bell"></i> 4 урок: 10:50 – 11:35</li>
+                    <li><i class="fas fa-bell"></i> 5 урок: 11:50 – 12:35</li>
+                    <li><i class="fas fa-bell"></i> 6 урок: 12:45 – 13:30</li>
+                    <li><i class="fas fa-bell"></i> 7 урок: 13:40 – 14:25</li>
+                </ul>
+            </div>
+            <div id="tab-4" class="tab-pane">
+                <h3><i class="fas fa-apple-alt"></i> Організація харчування</h3>
+                <p>У філії працює їдальня на 60 місць. Гарячим харчуванням охоплено 100% учнів початкової школи та пільгових категорій.</p>
+                <ul>
+                    <li><i class="fas fa-coffee"></i> Сніданок: 9:40 – 10:20</li>
+                    <li><i class="fas fa-utensils"></i> Обід: 12:30 – 13:00</li>
+                    <li><i class="fas fa-coins"></i> Вартість: 25 грн/день (для пільгових — безкоштовно)</li>
+                    <li><i class="fas fa-clipboard-list"></i> Меню оновлюється щотижня</li>
+                </ul>
+            </div>
+        </div>
     </section>
 
-  </main>
+    <!-- КОНТАКТИ -->
+    <section id="contacts">
+        <h2 class="section-title"><span class="emoji">📍</span> <span class="line">Як нас знайти</span></h2>
+        <div class="contacts-grid">
+            <div class="contact-card">
+                <div class="contact-icon"><i class="fas fa-location-dot"></i></div>
+                <h4>Адреса</h4>
+                <p>17584, Чернігівська обл., Прилуцький р-н, с. Линовиця, вул. Шкільна, 1</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                <h4>Телефон</h4>
+                <p>(046) 123-45-67</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <h4>Email</h4>
+                <p>filia1.lynovytsia@ukr.net</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                <h4>Графік роботи</h4>
+                <p>Пн-Пт: 8:00 – 17:00</p>
+            </div>
+        </div>
+    </section>
+</main>
 
-  <!-- FOOTER -->
-  <footer class="bg-primary text-white py-12 mt-16">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <p class="text-xl font-semibold mb-2">Філія №1 Линовицького ліцею</p>
-      <p class="mb-6">с. Удайці, Линовицька громада</p>
-      
-      <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm opacity-90">
-        <a href="kontakty.html" class="hover:underline">Контакти</a>
-        <a href="uchnyam.html" class="hover:underline">Учням та батькам</a>
-        <a href="about.html" class="hover:underline">Про філію</a>
-      </div>
-
-      <p class="mt-10 text-sm opacity-75">
-        © 2026 Філія №1 Линовицького ліцею. Усі права захищені.
-      </p>
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Філія №1</h4>
+                <p>Линовицький ліцей</p>
+                <p>Заклад загальної середньої освіти</p>
+            </div>
+            <div class="footer-col">
+                <h4>Посилання</h4>
+                <a href="#news"><i class="fas fa-chevron-right"></i> Новини</a>
+                <a href="#gallery"><i class="fas fa-chevron-right"></i> Галерея</a>
+                <a href="#tabs-section"><i class="fas fa-chevron-right"></i> Про заклад</a>
+                <a href="#contacts"><i class="fas fa-chevron-right"></i> Контакти</a>
+            </div>
+            <div class="footer-col">
+                <h4>Контакти</h4>
+                <p><i class="fas fa-phone-alt"></i> (046) 123-45-67</p>
+                <p><i class="fas fa-envelope"></i> filia1.lynovytsia@ukr.net</p>
+                <p><i class="fas fa-map-pin"></i> вул. Шкільна, 1, с. Линовиця</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Філія №1 Линовицького ліцею. Всі права захищені.
+        </div>
     </div>
-  </footer>
+</footer>
 
-  <!-- Підключення JavaScript з анімаціями -->
-  <script src="modern.js"></script>
+<!-- Кнопка "Вгору" -->
+<button class="scroll-top-btn" id="scrollTopBtn" aria-label="Вгору">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- ================= МОДАЛЬНЕ ВІКНО ================= -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal" role="dialog" aria-modal="true">
+        <div class="modal-header" id="modalHeader">
+            <button class="modal-close" id="modalClose" aria-label="Закрити"><i class="fas fa-times"></i></button>
+            <img id="modalImg" src="" alt="" style="display:none;">
+            <i class="fas fa-newspaper" id="modalIcon"></i>
+        </div>
+        <div class="modal-body">
+            <div class="modal-date" id="modalDate"></div>
+            <h2 id="modalTitle"></h2>
+            <div class="modal-text" id="modalText"></div>
+            <div class="modal-gallery" id="modalGallery"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    /* =====================================================================
+       📌 ДАНІ НОВИН
+       ===================================================================== */
+    const newsList = [
+        {
+            id: "olimpiada",
+            title: "Перемога на районній олімпіаді",
+            date: "15 травня 2025",
+            icon: "fas fa-trophy",
+            color: "purple",
+            image: "images/news/olimpiada.jpg",
+            preview: "Учні 10-А класу здобули І місце з математики та фізики. Вітаємо переможців!",
+            gallery: ["images/news/olimpiada-1.jpg", "images/news/olimpiada-2.jpg"],
+            content: `
+                <p>З великою радістю повідомляємо, що учні 10-А класу нашої філії здобули перемогу на районній олімпіаді з математики та фізики!</p>
+                <p><strong>Переможці:</strong></p>
+                <p>🥇 <strong>Бойко Андрій</strong> — І місце з математики<br>
+                🥇 <strong>Мельник Софія</strong> — І місце з фізики<br>
+                🥈 <strong>Шевченко Дмитро</strong> — ІІ місце з математики</p>
+                <p>Щиро вітаємо наших учнів та їхніх наставників — учителя математики Коваленко О.І. та учителя фізики Петренка М.В. Бажаємо подальших успіхів!</p>
+            `
+        },
+        {
+            id: "mystectvo",
+            title: "Тиждень мистецтв",
+            date: "7 травня 2025",
+            icon: "fas fa-palette",
+            color: "pink",
+            image: "images/news/mystectvo.jpg",
+            preview: "Виставка малюнків, конкурс читців та музичний вечір — тиждень був яскравим!",
+            gallery: [],
+            content: `
+                <p>У нашій філії відбувся яскравий Тиждень мистецтв, який об'єднав учнів, учителів та батьків!</p>
+                <p>Протягом тижня було проведено безліч цікавих заходів:</p>
+                <p>🎨 Виставка дитячих малюнків «Світ очима дітей»<br>
+                📖 Конкурс читців поезії Тараса Шевченка<br>
+                🎵 Музичний вечір «Пісня — душа народу»<br>
+                🎭 Театральна вистава «Казка на новий лад»</p>
+                <p>Дякуємо всім учасникам за творчість та натхнення!</p>
+            `
+        },
+        {
+            id: "ekologiya",
+            title: "Екологічна акція «Зелений двір»",
+            date: "28 квітня 2025",
+            icon: "fas fa-seedling",
+            color: "green",
+            image: "images/news/ekologiya.jpg",
+            preview: "Учні 8-9 класів висадили дерева та квіти на території філії.",
+            gallery: ["images/news/eko-1.jpg", "images/news/eko-2.jpg", "images/news/eko-3.jpg"],
+            content: `
+                <p>Учні 8-9 класів нашої філії долучилися до екологічної акції «Зелений двір».</p>
+                <p>Разом з учителями та батьками було висаджено понад 30 дерев та кущів, а також створено квіткові клумби біля головного входу.</p>
+                <p>🌳 Висаджено: клени, липи, туї<br>
+                🌸 Висаджено квіти: чорнобривці, петунії, троянди</p>
+                <p>Дякуємо всім, хто долучився до озеленення нашої школи!</p>
+            `
+        },
+        {
+            id: "stem",
+            title: "Відкрито STEM-лабораторію",
+            date: "20 квітня 2025",
+            icon: "fas fa-laptop-code",
+            color: "cyan",
+            image: "images/news/stem.jpg",
+            preview: "Запрацював сучасний кабінет робототехніки та 3D-друку.",
+            gallery: [],
+            content: `
+                <p>Завдяки співпраці з місцевою громадою та партнерами у нашій філії відкрито сучасну STEM-лабораторію!</p>
+                <p>У новому кабінеті учні зможуть:</p>
+                <p>🤖 Вивчати робототехніку<br>
+                🖨️ Опановувати 3D-друк<br>
+                💡 Працювати з електронікою та Arduino<br>
+                🔬 Проводити наукові експерименти</p>
+                <p>Запрошуємо всіх охочих долучатися до гуртка робототехніки!</p>
+            `
+        },
+        {
+            id: "futbol",
+            title: "Турнір з міні-футболу",
+            date: "12 квітня 2025",
+            icon: "fas fa-futbol",
+            color: "orange",
+            image: "images/news/futbol.jpg",
+            preview: "Збірна філії посіла друге місце у змаганнях серед шкіл громади.",
+            gallery: ["images/news/futbol-1.jpg", "images/news/futbol-2.jpg"],
+            content: `
+                <p>Збірна команда нашої філії взяла участь у турнірі з міні-футболу серед шкіл Линовицької громади.</p>
+                <p>У запеклій боротьбі наші хлопці посіли почесне <strong>друге місце</strong>!</p>
+                <p>⚽ Склад команди:<br>
+                Бондаренко Олег, Гриценко Максим, Іванов Артем, Коваль Денис, Лисенко Богдан, Мороз Нікіта</p>
+                <p>Вітаємо наших спортсменів та їхнього тренера з чудовим результатом!</p>
+            `
+        },
+        {
+            id: "knyga",
+            title: "Тиждень дитячої книги",
+            date: "2 квітня 2025",
+            icon: "fas fa-book-open",
+            color: "indigo",
+            image: "images/news/knyga.jpg",
+            preview: "Зустрічі з письменниками, книжковий ярмарок та конкурс буктрейлерів.",
+            gallery: [],
+            content: `
+                <p>У нашій філії пройшов насичений Тиждень дитячої книги!</p>
+                <p>На учнів чекала цікава програма:</p>
+                <p>📚 Зустріч з дитячою письменницею Оксаною Лущевською<br>
+                📖 Книжковий ярмарок<br>
+                🎬 Конкурс буктрейлерів<br>
+                📝 Літературний квест «Стежками улюблених героїв»</p>
+                <p>Дякуємо всім за активну участь! Читайте книги — вони роблять нас мудрішими!</p>
+            `
+        }
+    ];
+
+    const galleryImages = [
+        "images/gallery/photo-1.jpg",
+        "images/gallery/photo-2.jpg",
+        "images/gallery/photo-3.jpg",
+        "images/gallery/photo-4.jpg",
+        "images/gallery/photo-5.jpg",
+        "images/gallery/photo-6.jpg",
+        "images/gallery/photo-7.jpg",
+        "images/gallery/photo-8.jpg"
+    ];
+
+    /* =====================================================================
+       🔧 ГЕНЕРАЦІЯ КАРТОК НОВИН
+       ===================================================================== */
+    const colorMap = {
+        purple: "img-purple", pink: "img-pink", green: "img-green",
+        cyan: "img-cyan", orange: "img-orange", indigo: "img-indigo"
+    };
+
+    const gradientMap = {
+        purple: "linear-gradient(135deg, #8b5cf6, #6366f1)",
+        pink: "linear-gradient(135deg, #ec4899, #f43f5e)",
+        green: "linear-gradient(135deg, #10b981, #84cc16)",
+        cyan: "linear-gradient(135deg, #06b6d4, #3b82f6)",
+        orange: "linear-gradient(135deg, #f59e0b, #ef4444)",
+        indigo: "linear-gradient(135deg, #6366f1, #06b6d4)"
+    };
+
+    const newsGrid = document.getElementById('newsGrid');
+    const newsData = {};
+
+    newsList.forEach(news => {
+        newsData[news.id] = news;
+
+        const card = document.createElement('article');
+        card.className = 'news-card';
+        card.setAttribute('data-news', news.id);
+
+        const imgClass = colorMap[news.color] || 'img-purple';
+        let imgBlockHTML = '';
+
+        if (news.image) {
+            imgBlockHTML = `
+                <div class="news-img ${imgClass}">
+                    <img src="${news.image}" alt="${news.title}" loading="lazy" onerror="this.remove();">
+                    <i class="${news.icon}"></i>
+                </div>
+            `;
+        } else {
+            imgBlockHTML = `
+                <div class="news-img ${imgClass}"><i class="${news.icon}"></i></div>
+            `;
+        }
+
+        card.innerHTML = `
+            ${imgBlockHTML}
+            <div class="news-content">
+                <div class="news-date"><i class="far fa-calendar-alt"></i> ${news.date}</div>
+                <h3>${news.title}</h3>
+                <p>${news.preview}</p>
+                <span class="read-more">Читати далі <i class="fas fa-arrow-right"></i></span>
+            </div>
+        `;
+
+        card.addEventListener('click', () => {
+            location.hash = 'news/' + news.id;
+        });
+
+        newsGrid.appendChild(card);
+    });
+
+    /* =====================================================================
+       📸 ГАЛЕРЕЯ
+       ===================================================================== */
+    const galleryGrid = document.getElementById('galleryGrid');
+    if (galleryGrid) {
+        galleryImages.forEach((src, index) => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.innerHTML = `<img src="${src}" alt="Фото ${index + 1}" loading="lazy" onerror="this.parentElement.style.display='none';">`;
+            item.addEventListener('click', () => openImageLightbox(src));
+            galleryGrid.appendChild(item);
+        });
+    }
+
+    /* =====================================================================
+       🪟 МОДАЛЬНЕ ВІКНО
+       ===================================================================== */
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalHeader = document.getElementById('modalHeader');
+    const modalImg = document.getElementById('modalImg');
+    const modalIcon = document.getElementById('modalIcon');
+    const modalDate = document.getElementById('modalDate');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalText = document.getElementById('modalText');
+    const modalGallery = document.getElementById('modalGallery');
+    const modalClose = document.getElementById('modalClose');
+
+    function openNews(id) {
+        const data = newsData[id];
+        if (!data) return;
+
+        modalHeader.style.background = gradientMap[data.color] || gradientMap.purple;
+
+        if (data.image) {
+            modalImg.src = data.image;
+            modalImg.alt = data.title;
+            modalImg.style.display = 'block';
+            modalImg.onerror = () => {
+                modalImg.style.display = 'none';
+                modalIcon.style.display = 'block';
+            };
+            modalIcon.style.display = 'none';
+        } else {
+            modalImg.style.display = 'none';
+            modalIcon.style.display = 'block';
+            modalIcon.className = data.icon;
+        }
+
+        modalDate.innerHTML = '<i class="far fa-calendar-alt"></i> ' + data.date;
+        modalTitle.textContent = data.title;
+        modalText.innerHTML = data.content;
+
+        modalGallery.innerHTML = '';
+        if (data.gallery && data.gallery.length > 0) {
+            data.gallery.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = 'Фото до новини';
+                img.loading = 'lazy';
+                img.onerror = () => img.remove();
+                img.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openImageLightbox(src);
+                });
+                modalGallery.appendChild(img);
+            });
+        }
+
+        modalOverlay.classList.add('open');
+        document.body.classList.add('modal-open');
+        modalOverlay.scrollTop = 0;
+    }
+
+    function closeModal() {
+        modalOverlay.classList.remove('open');
+        document.body.classList.remove('modal-open');
+        if (location.hash.startsWith('#news/')) {
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+        }
+    }
+
+    function handleHash() {
+        const hash = location.hash;
+        if (!hash.startsWith('#news/')) {
+            if (modalOverlay.classList.contains('open')) {
+                modalOverlay.classList.remove('open');
+                document.body.classList.remove('modal-open');
+            }
+            return;
+        }
+        const newsId = hash.replace('#news/', '');
+        if (newsData[newsId]) openNews(newsId);
+    }
+
+    window.addEventListener('hashchange', handleHash);
+    window.addEventListener('popstate', handleHash);
+    window.addEventListener('DOMContentLoaded', handleHash);
+
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) closeModal();
+    });
+
+    modalClose.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalOverlay.classList.contains('open')) closeModal();
+    });
+
+    /* =====================================================================
+       🖼️ ЛАЙТБОКС
+       ===================================================================== */
+    function openImageLightbox(src) {
+        const lightbox = document.createElement('div');
+        lightbox.style.cssText = `
+            position: fixed; inset: 0; z-index: 2000;
+            background: rgba(0, 0, 0, 0.92);
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px; cursor: zoom-out;
+            opacity: 0; transition: opacity 0.3s;
+        `;
+        const img = document.createElement('img');
+        img.src = src;
+        img.style.cssText = `
+            max-width: 95%; max-height: 95%;
+            object-fit: contain; border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            transform: scale(0.9); transition: transform 0.3s;
+        `;
+        lightbox.appendChild(img);
+        document.body.appendChild(lightbox);
+        document.body.style.overflow = 'hidden';
+
+        requestAnimationFrame(() => {
+            lightbox.style.opacity = '1';
+            img.style.transform = 'scale(1)';
+        });
+
+        const closeLightbox = () => {
+            lightbox.style.opacity = '0';
+            img.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                lightbox.remove();
+                document.body.style.overflow = '';
+            }, 300);
+        };
+
+        lightbox.addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', function escHandler(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+                document.removeEventListener('keydown', escHandler);
+            }
+        });
+    }
+
+    /* =====================================================================
+       📑 ВКЛАДКИ
+       ===================================================================== */
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            const tabId = this.getAttribute('data-tab');
+            tabPanes.forEach(pane => pane.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+
+    /* =====================================================================
+       🔗 НАВІГАЦІЯ: СТРІЛКИ ПРОКРУТКИ + АКТИВНА КНОПКА
+       ===================================================================== */
+    const navContainer = document.getElementById('navContainer');
+    const navArrowLeft = document.getElementById('navArrowLeft');
+    const navArrowRight = document.getElementById('navArrowRight');
+    const navLinks = document.querySelectorAll('.nav-links a[data-nav]');
+
+    // Оновлення стану стрілок
+    function updateArrows() {
+        const scrollLeft = navContainer.scrollLeft;
+        const maxScroll = navContainer.scrollWidth - navContainer.clientWidth;
+        const tolerance = 5;
+
+        if (navArrowLeft) {
+            navArrowLeft.disabled = scrollLeft <= tolerance;
+        }
+        if (navArrowRight) {
+            navArrowRight.disabled = scrollLeft >= maxScroll - tolerance;
+        }
+    }
+
+    // Прокрутка вліво/вправо
+    if (navArrowLeft) {
+        navArrowLeft.addEventListener('click', () => {
+            navContainer.scrollBy({ left: -200, behavior: 'smooth' });
+        });
+    }
+
+    if (navArrowRight) {
+        navArrowRight.addEventListener('click', () => {
+            navContainer.scrollBy({ left: 200, behavior: 'smooth' });
+        });
+    }
+
+    if (navContainer) {
+        navContainer.addEventListener('scroll', updateArrows);
+        window.addEventListener('resize', updateArrows);
+        // Початкова перевірка
+        setTimeout(updateArrows, 100);
+    }
+
+    // Активна кнопка "Головна" при наявності вгорі сторінки
+    function setActiveNav(id) {
+        navLinks.forEach(link => {
+            link.classList.toggle('active', link.dataset.nav === id);
+        });
+    }
+
+    // Плавний скрол по кліку на навігацію
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Якщо "Головна" — скролимо вгору
+            if (href === '#' || this.dataset.nav === 'home') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setActiveNav('home');
+                return;
+            }
+
+            // Інакше — скрол до секції
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 20;
+                window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                setActiveNav(this.dataset.nav);
+            }
+        });
+    });
+
+    // Відслідковування скролу для активної кнопки
+    const sections = document.querySelectorAll('section[id]');
+    let ticking = false;
+
+    function handleScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const scrollPos = window.scrollY;
+                const windowHeight = window.innerHeight;
+
+                // Якщо ми вгорі сторінки — активна "Головна"
+                if (scrollPos < 100) {
+                    setActiveNav('home');
+                } else {
+                    // Інакше — визначаємо, яка секція зараз видима
+                    let currentSection = '';
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop - 150;
+                        const sectionBottom = sectionTop + section.offsetHeight;
+                        if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                            currentSection = section.id;
+                        }
+                    });
+
+                    // Мапимо id секції на data-nav
+                    const sectionToNav = {
+                        'news': 'news',
+                        'gallery': 'gallery',
+                        'tabs-section': 'tabs',
+                        'contacts': 'contacts'
+                    };
+
+                    if (currentSection && sectionToNav[currentSection]) {
+                        setActiveNav(sectionToNav[currentSection]);
+                    }
+                }
+
+                // Кнопка "Вгору"
+                const scrollTopBtn = document.getElementById('scrollTopBtn');
+                if (scrollTopBtn) {
+                    if (scrollPos > 400) {
+                        scrollTopBtn.classList.add('visible');
+                    } else {
+                        scrollTopBtn.classList.remove('visible');
+                    }
+                }
+
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Кнопка "Вгору"
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    if (scrollTopBtn) {
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setActiveNav('home');
+        });
+    }
+
+    // Ініціалізація
+    window.addEventListener('DOMContentLoaded', () => {
+        setActiveNav('home');
+        updateArrows();
+    });
+
+    /* =====================================================================
+       🖱️ КОЛЕСО МИШІ ПО ГОРИЗОНТАЛІ ДЛЯ НАВІГАЦІЇ
+       ===================================================================== */
+    if (navContainer) {
+        navContainer.addEventListener('wheel', (e) => {
+            if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                e.preventDefault();
+                navContainer.scrollLeft += e.deltaY;
+            }
+        }, { passive: false });
+    }
+
+    /* =====================================================================
+       👆 ПЕРЕТЯГУВАННЯ НАВІГАЦІЇ (DRAG TO SCROLL)
+       ===================================================================== */
+    if (navContainer) {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        navContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            navContainer.style.cursor = 'grabbing';
+            startX = e.pageX - navContainer.offsetLeft;
+            scrollLeft = navContainer.scrollLeft;
+        });
+
+        navContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+            navContainer.style.cursor = '';
+        });
+
+        navContainer.addEventListener('mouseup', () => {
+            isDown = false;
+            navContainer.style.cursor = '';
+        });
+
+        navContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - navContainer.offsetLeft;
+            const walk = (x - startX) * 2;
+            navContainer.scrollLeft = scrollLeft - walk;
+        });
+    }
+</script>
+
 </body>
 </html>
