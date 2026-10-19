@@ -9,22 +9,66 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
+        /* ================= СВІТЛА ТЕМА (за замовчуванням) ================= */
         :root {
             --primary: #6366f1;
             --primary-dark: #4f46e5;
             --accent-pink: #ec4899;
             --accent-lime: #84cc16;
-            --dark: #0f172a;
-            --gray: #64748b;
-            --light: #f1f5f9;
-            --white: #ffffff;
+
+            --bg-body: #fafbff;
+            --bg-card: #ffffff;
+            --bg-card-hover: #ffffff;
+            --bg-tab: #ffffff;
+            --bg-lesson: #fafbff;
+            --bg-lesson-hover: #ffffff;
+            --bg-num: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --border-color: #eef2f8;
+            --border-light: #f1f5f9;
+            --border-num: #e2e8f0;
+            --shadow-card: 0 4px 20px rgba(15, 23, 42, 0.05);
+            --shadow-card-hover: 0 8px 24px -10px rgba(99, 102, 241, 0.3);
+            --footer-bg: #0f172a;
+            --footer-text: #94a3b8;
+            --back-home-bg: #ffffff;
+            --back-home-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+            --arrow-color: #cbd5e1;
+            --header-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 40%, #ec4899 100%);
+        }
+
+        /* ================= ТЕМНА ТЕМА ================= */
+        [data-theme="dark"] {
+            --bg-body: #0a0f1c;
+            --bg-card: #151d2e;
+            --bg-card-hover: #1a2438;
+            --bg-tab: #151d2e;
+            --bg-lesson: #1a2438;
+            --bg-lesson-hover: #1f2a40;
+            --bg-num: #1f2a40;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+            --border-light: #1e293b;
+            --border-num: #334155;
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --shadow-card-hover: 0 8px 24px -10px rgba(99, 102, 241, 0.5);
+            --footer-bg: #050810;
+            --footer-text: #94a3b8;
+            --back-home-bg: #151d2e;
+            --back-home-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --arrow-color: #64748b;
+            --header-gradient: linear-gradient(135deg, #4338ca 0%, #6d28d9 40%, #be185d 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html {
@@ -34,12 +78,13 @@
 
         body {
             font-family: 'Manrope', system-ui, -apple-system, sans-serif;
-            background: #fafbff;
-            color: var(--dark);
+            background: var(--bg-body);
+            color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
             min-height: 100dvh;
+            transition: background-color 0.35s ease, color 0.35s ease;
         }
 
         body::before {
@@ -55,6 +100,10 @@
             pointer-events: none;
         }
 
+        [data-theme="dark"] body::before {
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.25), transparent 70%);
+        }
+
         body::after {
             content: '';
             position: fixed;
@@ -66,6 +115,10 @@
             border-radius: 50%;
             z-index: -1;
             pointer-events: none;
+        }
+
+        [data-theme="dark"] body::after {
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.18), transparent 70%);
         }
 
         .container {
@@ -82,12 +135,13 @@
         }
 
         .header-inner {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 40%, #ec4899 100%);
+            background: var(--header-gradient);
             border-radius: clamp(20px, 4vw, 32px);
             padding: clamp(1.5rem, 3.5vw, 2.5rem) clamp(1.2rem, 3vw, 2.5rem);
             box-shadow: 0 20px 60px -20px rgba(99, 102, 241, 0.5);
             position: relative;
             overflow: hidden;
+            transition: background 0.35s ease;
         }
 
         .header-inner::before {
@@ -117,6 +171,16 @@
         .header-content {
             position: relative;
             z-index: 2;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .header-main {
+            flex: 1;
+            min-width: 0;
         }
 
         .breadcrumb {
@@ -183,17 +247,74 @@
             text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
         }
 
+        /* ================= КНОПКА ТЕМИ ================= */
+        .theme-toggle {
+            width: clamp(44px, 8vw, 50px);
+            height: clamp(44px, 8vw, 50px);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-toggle:hover {
+            background: #fff;
+            color: var(--primary-dark);
+            transform: rotate(20deg) scale(1.08);
+        }
+
+        .theme-toggle:active {
+            transform: rotate(20deg) scale(0.95);
+        }
+
+        .theme-toggle i {
+            position: absolute;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .theme-toggle .icon-sun {
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.5);
+        }
+
+        .theme-toggle .icon-moon {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+        }
+
+        [data-theme="dark"] .theme-toggle .icon-sun {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+        }
+
+        [data-theme="dark"] .theme-toggle .icon-moon {
+            opacity: 0;
+            transform: rotate(90deg) scale(0.5);
+        }
+
         /* ================= СЕКЦІЯ ================= */
         .section-title {
             font-size: clamp(1.4rem, 4vw, 2rem);
             font-weight: 800;
-            color: var(--dark);
+            color: var(--text-primary);
             margin-bottom: clamp(1.2rem, 3vw, 1.8rem);
             letter-spacing: -1px;
             display: flex;
             align-items: center;
             gap: 10px;
             flex-wrap: wrap;
+            transition: color 0.35s;
         }
 
         .section-title .emoji {
@@ -217,14 +338,15 @@
             flex-wrap: nowrap;
             gap: 8px;
             margin-bottom: 1.5rem;
-            background: #fff;
+            background: var(--bg-tab);
             padding: 8px;
             border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+            box-shadow: var(--shadow-card);
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
             -ms-overflow-style: none;
+            transition: background-color 0.35s;
         }
 
         .class-tabs::-webkit-scrollbar {
@@ -237,7 +359,7 @@
             padding: clamp(0.6rem, 1.8vw, 0.8rem) clamp(1rem, 2.5vw, 1.4rem);
             border-radius: 14px;
             font-weight: 700;
-            color: var(--gray);
+            color: var(--text-muted);
             cursor: pointer;
             transition: all 0.25s;
             font-size: clamp(0.85rem, 2vw, 1rem);
@@ -265,11 +387,12 @@
         }
 
         .class-content {
-            background: #fff;
+            background: var(--bg-card);
             border-radius: clamp(18px, 3vw, 28px);
             padding: clamp(1.2rem, 3vw, 2.2rem);
-            box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
-            border: 1px solid #eef2f8;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.35s, border-color 0.35s;
         }
 
         .class-pane {
@@ -292,8 +415,9 @@
             gap: 16px;
             margin-bottom: 1.5rem;
             padding-bottom: 1.2rem;
-            border-bottom: 2px solid #f1f5f9;
+            border-bottom: 2px solid var(--border-light);
             flex-wrap: wrap;
+            transition: border-color 0.35s;
         }
 
         .class-badge {
@@ -323,12 +447,13 @@
         .class-header h2 {
             font-size: clamp(1.1rem, 3vw, 1.5rem);
             font-weight: 800;
-            color: var(--dark);
+            color: var(--text-primary);
             letter-spacing: -0.5px;
+            transition: color 0.35s;
         }
 
         .class-header p {
-            color: var(--gray);
+            color: var(--text-muted);
             font-size: clamp(0.82rem, 2vw, 0.92rem);
             margin-top: 2px;
         }
@@ -345,11 +470,11 @@
             align-items: center;
             gap: 14px;
             padding: clamp(0.8rem, 2vw, 1rem) clamp(1rem, 2.5vw, 1.2rem);
-            background: #fafbff;
+            background: var(--bg-lesson);
             border-radius: 16px;
-            border: 1px solid #eef2f8;
+            border: 1px solid var(--border-color);
             text-decoration: none;
-            color: var(--dark);
+            color: var(--text-primary);
             transition: all 0.25s;
             position: relative;
             overflow: hidden;
@@ -369,10 +494,10 @@
 
         @media (hover: hover) {
             .lesson-item:hover {
-                background: #fff;
+                background: var(--bg-lesson-hover);
                 border-color: rgba(99, 102, 241, 0.25);
                 transform: translateX(6px);
-                box-shadow: 0 8px 24px -10px rgba(99, 102, 241, 0.3);
+                box-shadow: var(--shadow-card-hover);
             }
             .lesson-item:hover::before {
                 opacity: 1;
@@ -396,8 +521,8 @@
             width: clamp(36px, 6vw, 42px);
             height: clamp(36px, 6vw, 42px);
             border-radius: 12px;
-            background: #fff;
-            border: 2px solid #e2e8f0;
+            background: var(--bg-num);
+            border: 2px solid var(--border-num);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -416,9 +541,10 @@
         .lesson-info h3 {
             font-size: clamp(0.88rem, 2.2vw, 1rem);
             font-weight: 700;
-            color: var(--dark);
+            color: var(--text-primary);
             line-height: 1.4;
             margin-bottom: 2px;
+            transition: color 0.35s;
         }
 
         .lesson-info .lesson-meta {
@@ -427,7 +553,7 @@
             gap: 12px;
             flex-wrap: wrap;
             font-size: clamp(0.7rem, 1.6vw, 0.8rem);
-            color: var(--gray);
+            color: var(--text-muted);
         }
 
         .lesson-meta span {
@@ -458,8 +584,14 @@
         .tag.theory { background: #faf5ff; color: #9333ea; }
         .tag.game { background: #fefce8; color: #ca8a04; }
 
+        [data-theme="dark"] .tag.video { background: rgba(220, 38, 38, 0.2); color: #fca5a5; }
+        [data-theme="dark"] .tag.practice { background: rgba(5, 150, 105, 0.2); color: #6ee7b7; }
+        [data-theme="dark"] .tag.test { background: rgba(37, 99, 235, 0.2); color: #93c5fd; }
+        [data-theme="dark"] .tag.theory { background: rgba(147, 51, 234, 0.2); color: #d8b4fe; }
+        [data-theme="dark"] .tag.game { background: rgba(202, 138, 4, 0.2); color: #fde68a; }
+
         .lesson-arrow {
-            color: #cbd5e1;
+            color: var(--arrow-color);
             font-size: clamp(0.85rem, 2vw, 1rem);
             transition: all 0.25s;
             flex-shrink: 0;
@@ -472,14 +604,14 @@
             gap: 8px;
             margin: 2rem 0 3rem;
             padding: 12px 24px;
-            background: #fff;
+            background: var(--back-home-bg);
             border-radius: 50px;
             color: var(--primary);
             font-weight: 700;
             text-decoration: none;
             font-size: clamp(0.85rem, 2vw, 0.95rem);
-            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
-            border: 1px solid #eef2f8;
+            box-shadow: var(--back-home-shadow);
+            border: 1px solid var(--border-color);
             transition: all 0.25s;
         }
 
@@ -491,11 +623,12 @@
         }
 
         footer {
-            background: var(--dark);
-            color: #94a3b8;
+            background: var(--footer-bg);
+            color: var(--footer-text);
             padding: clamp(1.5rem, 4vw, 2rem) 0;
             text-align: center;
             font-size: clamp(0.78rem, 2vw, 0.88rem);
+            transition: background-color 0.35s;
         }
 
         footer a {
@@ -510,6 +643,15 @@
             }
         }
     </style>
+    <script>
+        // Застосовуємо тему ДО рендерингу (без блимання)
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
 </head>
 <body>
 
@@ -517,16 +659,22 @@
     <div class="container">
         <div class="header-inner">
             <div class="header-content">
-                <a href="index.html" class="breadcrumb">
-                    <i class="fas fa-arrow-left"></i> На головну
-                </a>
-                <div class="header-title">
-                    <div class="header-icon"><i class="fas fa-laptop-code"></i></div>
-                    <div>
-                        <h1>Інформатика</h1>
-                        <p>Матеріали до уроків для учнів 1–9 класів</p>
+                <div class="header-main">
+                    <a href="index.html" class="breadcrumb">
+                        <i class="fas fa-arrow-left"></i> На головну
+                    </a>
+                    <div class="header-title">
+                        <div class="header-icon"><i class="fas fa-laptop-code"></i></div>
+                        <div>
+                            <h1>Інформатика</h1>
+                            <p>Матеріали до уроків для учнів 1–9 класів</p>
+                        </div>
                     </div>
                 </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Перемкнути тему">
+                    <i class="fas fa-moon icon-moon"></i>
+                    <i class="fas fa-sun icon-sun"></i>
+                </button>
             </div>
         </div>
     </div>
@@ -536,7 +684,6 @@
     <section class="classes-section">
         <h2 class="section-title"><span class="emoji">📚</span> <span class="line">Оберіть клас</span></h2>
 
-        <!-- Вкладки класів -->
         <div class="class-tabs" id="classTabs">
             <button class="class-tab active" data-class="class-1"><i class="fas fa-child"></i> 1 клас</button>
             <button class="class-tab" data-class="class-2"><i class="fas fa-child"></i> 2 клас</button>
@@ -549,7 +696,6 @@
             <button class="class-tab" data-class="class-9"><i class="fas fa-user-graduate"></i> 9 клас</button>
         </div>
 
-        <!-- Контент класів -->
         <div class="class-content" id="classContent">
             <!-- 1 КЛАС -->
             <div class="class-pane active" id="class-1">
@@ -1022,6 +1168,40 @@
 
 <script>
     /* =====================================================================
+       🌓 ПЕРЕМИКАННЯ ТЕМИ
+       ===================================================================== */
+    const themeToggle = document.getElementById('themeToggle');
+
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if (metaTheme) metaTheme.setAttribute('content', '#0a0f1c');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if (metaTheme) metaTheme.setAttribute('content', '#6366f1');
+        }
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const newTheme = isDark ? 'light' : 'dark';
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    }
+
+    if (!localStorage.getItem('theme') && window.matchMedia) {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        if (mediaQuery.matches) applyTheme('dark');
+        mediaQuery.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) applyTheme(e.matches ? 'dark' : 'light');
+        });
+    }
+
+    /* =====================================================================
        📚 ВКЛАДКИ КЛАСІВ
        ===================================================================== */
     const classTabs = document.querySelectorAll('.class-tab');
@@ -1031,19 +1211,15 @@
         tab.addEventListener('click', function() {
             const targetId = this.dataset.class;
 
-            // Активна вкладка
             classTabs.forEach(t => t.classList.remove('active'));
             this.classList.add('active');
 
-            // Показати відповідний клас
             classPanes.forEach(pane => pane.classList.remove('active'));
             const targetPane = document.getElementById(targetId);
             if (targetPane) targetPane.classList.add('active');
 
-            // Прокрутити вкладку в видиму область (на мобільних)
             this.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
 
-            // Оновити URL з хешем
             history.replaceState(null, '', '#' + targetId);
         });
     });
