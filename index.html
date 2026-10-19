@@ -163,47 +163,24 @@
             transform: scale(1.05);
         }
 
+        /* Щільне темне перекриття поверх картинки */
         .header-bg::after {
             content: '';
             position: absolute;
             inset: 0;
             background: linear-gradient(135deg,
-                rgba(99, 102, 241, 0.10) 0%,
-                rgba(139, 92, 246, 0.00) 40%,
-                rgba(236, 72, 153, 0.10) 100%);
+                rgba(11, 43, 75, 0.82) 0%,
+                rgba(15, 23, 42, 0.72) 50%,
+                rgba(11, 43, 75, 0.82) 100%);
+            z-index: 1;
+            pointer-events: none;
         }
 
         [data-theme="dark"] .header-bg::after {
             background: linear-gradient(135deg,
-                rgba(15, 23, 42, 0.7) 0%,
-                rgba(30, 41, 59, 0.5) 40%,
-                rgba(15, 23, 42, 0.7) 100%);
-        }
-
-        .header-inner::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 400px;
-            height: 400px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .header-inner::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            left: 20%;
-            width: 300px;
-            height: 300px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 1;
+                rgba(5, 8, 16, 0.9) 0%,
+                rgba(15, 23, 42, 0.82) 50%,
+                rgba(5, 8, 16, 0.9) 100%);
         }
 
         .header-content {
@@ -258,7 +235,7 @@
             color: #fff;
             letter-spacing: -0.5px;
             line-height: 1.2;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
         }
 
         .school-name p {
@@ -266,7 +243,7 @@
             color: rgba(255, 255, 255, 0.92);
             font-weight: 500;
             margin-top: 4px;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
         }
 
         .header-right {
@@ -286,7 +263,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            background: rgba(255, 255, 255, 0.22);
+            background: rgba(11, 43, 75, 0.65);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2vw, 16px);
@@ -294,8 +271,9 @@
             color: #fff;
             font-size: clamp(0.72rem, 1.8vw, 0.85rem);
             font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.35);
             white-space: nowrap;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         .contact-chip i {
@@ -307,10 +285,10 @@
             width: clamp(44px, 8vw, 50px);
             height: clamp(44px, 8vw, 50px);
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.22);
+            background: rgba(11, 43, 75, 0.65);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             color: #fff;
             font-size: clamp(1rem, 2.5vw, 1.15rem);
             cursor: pointer;
@@ -321,6 +299,7 @@
             flex-shrink: 0;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .theme-toggle:hover {
@@ -399,24 +378,26 @@
             border-radius: 50px;
             font-size: clamp(0.82rem, 1.8vw, 0.95rem);
             transition: all 0.25s;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(11, 43, 75, 0.6);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             white-space: nowrap;
             display: block;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
         }
 
         .nav-links a:hover {
             background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
         .nav-links a.active {
             background: #fff;
             color: var(--primary-dark);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
             border-color: #fff;
+            text-shadow: none;
         }
 
         .nav-arrow {
@@ -424,10 +405,10 @@
             width: clamp(36px, 6vw, 42px);
             height: clamp(36px, 6vw, 42px);
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(11, 43, 75, 0.65);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.35);
             color: #fff;
             font-size: clamp(0.85rem, 2vw, 1rem);
             cursor: pointer;
@@ -436,6 +417,7 @@
             justify-content: center;
             transition: all 0.25s;
             flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .nav-arrow:hover:not(:disabled) {
