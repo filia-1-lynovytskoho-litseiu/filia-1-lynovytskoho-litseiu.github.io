@@ -1383,13 +1383,14 @@
     const newsList = [
         {
             id: "urok-dobroty",
-            title: "Урок доброти «Тварини потребують нашої турботи»,
+            // ✅ ВИПРАВЛЕНО: закрито лапку в title
+            title: "Урок доброти «Тварини потребують нашої турботи»",
             date: "13 жовтня 2026",
             icon: "fas fa-paw",
             color: "orange",
-            image: "images/news/den-pratsivnykiv-osvity.jpg",
+            image: "images/news/urok-dobroty.jpg",
             preview: "Учні обговорили відповідальне ставлення до тварин, допомогу безпритульним улюбленцям та важливість турботи про них.",
-            gallery: ["images/news/olimpiada-1.jpg", "images/news/olimpiada-2.jpg"],
+            gallery: ["images/news/dobrota-1.jpg", "images/news/dobrota-2.jpg"],
             content: `
                 <p>❤️ <strong>Урок доброти «Тварини потребують нашої турботи»</strong></p>
                 <p>У нашому закладі відбувся урок доброти, присвячений турботі про домашніх і безпритульних тварин. Під час заходу учні обговорили правила відповідального ставлення до улюбленців, проблеми покинутих тварин, важливу роботу притулків і волонтерів, а також допомогу тваринам, які постраждали від війни.</p>
@@ -1404,9 +1405,9 @@
             date: "5 жовтня 2026",
             icon: "fas fa-shield-halved",
             color: "cyan",
-            image: "images/news/den-pratsivnykiv-osvity.jpg",
+            image: "images/news/bezpeka-v-interneti.jpg",
             preview: "Онлайн-шахрайство, кібербулінг, грумінг та маніпуляції — важливо знати, як розпізнати небезпеку та захистити себе в мережі.",
-            gallery: ["images/news/olimpiada-1.jpg", "images/news/olimpiada-2.jpg"],
+            gallery: ["images/news/bezpeka-1.jpg", "images/news/bezpeka-2.jpg"],
             content: `
                 <p>🌐 <strong>Інтернет має бути безпечним простором для кожного!</strong></p>
                 <p>Щодня ми спілкуємося, навчаємося, працюємо та отримуємо інформацію онлайн. Водночас цифрове середовище може приховувати небезпеки: онлайн-шахрайство, кібербулінг, грумінг, маніпуляції та поширення шкідливого контенту.</p>
@@ -1424,7 +1425,7 @@
             color: "pink",
             image: "images/news/den-pratsivnykiv-osvity.jpg",
             preview: "Свято тих, хто формує цінності та виховує майбутнє країни — дякуємо кожному за невтомну працю та віру в нове покоління!",
-            gallery: ["images/news/olimpiada-1.jpg", "images/news/olimpiada-2.jpg"],
+            gallery: ["images/news/vchyteli-1.jpg", "images/news/vchyteli-2.jpg"],
             content: `
                 <p>💼✨ <strong>З Днем працівників освіти!</strong></p>
                 <p>Сьогодні свято тих, хто відкриває двері у світ знань, формує цінності та виховує майбутнє нашої країни. Дякуємо кожному вчителю, вихователю, викладачу та всім працівникам освітньої сфери за вашу невтомну працю, стійкість у складні часи та віру в кожне нове покоління.</p>
@@ -1447,14 +1448,14 @@
             color: "indigo",
             image: "images/news/den-zakhysnykiv.jpg",
             preview: "У день Покрови Пресвятої Богородиці та Дня Українського козацтва висловлюємо безмежну вдячність тим, хто тримає небо над Україною.",
-            gallery: ["images/news/olimpiada-1.jpg", "images/news/olimpiada-2.jpg"],
+            gallery: ["images/news/zakhysnyky-1.jpg", "images/news/zakhysnyky-2.jpg"],
             content: `
                 <p>🔱 <strong>Сьогодні, 1 жовтня, у день Покрови Пресвятої Богородиці та День Українського козацтва, наша шкільна родина висловлює безмежну вдячність тим, хто тримає небо над Україною.</strong></p>
                 <p><strong>День захисників та захисниць України</strong> — це свято кожного воїна, який щомиті виборює наше право вчитися, мріяти та жити на рідній землі.</p>
                 <p>Наші Захисники — це втілення справжньої відваги, честі та патріотизму. Завдяки їхній незламності у наших класах лунає дзвоник, а в коридорах чути дитячий сміх.</p>
                 <p>У цей день ми також схиляємо голови у глибокій пошані та хвилині мовчання перед пам'яттю всіх Героїв, які віддали найцінніше — своє життя — за свободу України. Їхній подвиг назавжди вписаний в історію нашої держави.</p>
                 <p>Низький уклін усім захисникам і захисницям! Бажаємо вам міцного здоров'я, надійного янгольського крила над головою, витримки та найочікуванішої, швидкої Перемоги!</p>
-                <<p>Нехай Покрова Пресвятої Богородиці оберігає кожного воїна у бою!</p>
+                <p>Нехай Покрова Пресвятої Богородиці оберігає кожного воїна у бою!</p>
                 <p><strong>Слава нашим захисникам і захисницям! 🔱</strong></p>
                 <p><strong>Слава Україні! 🇺🇦</strong></p>
                 <p style="color: #6366f1; font-weight: 600; font-size: 0.9em;">#ДеньЗахисниківІЗахисниць #ДякуємоЗСУ</p>
@@ -1472,20 +1473,21 @@
             content: `
                 <p>🌍 <strong>Маленькі звички — великі зміни: як зробити наш простір енергоефективним!</strong></p>
                 <p>Чи замислювалися ви, що кожен із нас може зробити свій внесок у збереження природних ресурсів? Кожен із нас може стати справжнім супергероєм і зробити свій внесок у збереження планети! Для цього достатньо простих щоденних екозвичок.</p>
-                <p>💡 <strong>Енергоефективність і ресурсозбереження</strong> — це вміння розумно використовувати те, що щодня нас оточує: електроенергію, воду та тепло.</p
+                <p>💡 <strong>Енергоефективність і ресурсозбереження</strong> — це вміння розумно використовувати те, що щодня нас оточує: електроенергію, воду та тепло.</p>
                 <p>Збереження ресурсів — це наша спільна справа. Вимкнули зайве світло, закрили кран, не залишили відкритим вікно при ввімкненому опаленні — зробили маленький, але важливий крок до збереження енергії та ресурсів. 💚</p>
                 <p style="color: #16a34a; font-weight: 600; font-size: 0.9em;">#Енергоефективність #Ресурсозбереження #Екозвички #ЗбережемоПланету</p>
             `
         },
         {
-            id: "den-myrу",
+            id: "den-myru",
+            // ✅ ВИПРАВЛЕНО: id з латинською "u" замість кириличної "у"
             title: "Міжнародний день миру: найзаповітніша мрія українців",
             date: "21 вересня 2026",
             icon: "fas fa-dove",
             color: "cyan",
-            image: "images/news/den-myrу.jpg",
+            image: "images/news/den-myru.jpg",
             preview: "Для українців мир — не абстрактне побажання, а мрія, яку ми щодня виборюємо ціною неймовірних зусиль.",
-            gallery: ["images/news/eko-1.jpg", "images/news/eko-2.jpg", "images/news/eko-3.jpg"],
+            gallery: ["images/news/myru-1.jpg", "images/news/myru-2.jpg", "images/news/myru-3.jpg"],
             content: `
                 <p>🕊️ <strong>Сьогодні, у Міжнародний день миру, це слово звучить для нас зовсім інакше, ніж колись.</strong></p>
                 <p>Для українців мир — це не просто абстрактне побажання чи гарна фраза. Це найзаповітніша мрія, яку ми щодня виборюємо ціною неймовірних зусиль.</p>
@@ -1520,7 +1522,7 @@
             color: "orange",
             image: "images/news/bezpeka-dorozhnoho-rukhu.jpg",
             preview: "У закладі триває Місячник безпеки дорожнього руху — нагадуємо дітям про важливість правил на дорозі.",
-            gallery: ["images/news/futbol-1.jpg", "images/news/futbol-2.jpg"],
+            gallery: ["images/news/dorozhniy-1.jpg", "images/news/dorozhniy-2.jpg"],
             content: `
                 <p>🚦 <strong>Місячник безпеки дорожнього руху</strong></p>
                 <p>У нашому закладі освіти триває Місячник безпеки дорожнього руху, мета якого — нагадати дітям про важливість дотримання правил дорожнього руху та формування відповідальної поведінки на дорозі.</p>
@@ -1709,12 +1711,10 @@
     }
 
     function updateModalNav() {
-        // Лічильник
         if (modalCounter) {
             modalCounter.textContent = `${currentNewsIndex + 1} / ${newsIds.length}`;
         }
 
-        // Стан стрілок
         if (modalPrev) {
             modalPrev.disabled = currentNewsIndex <= 0;
         }
@@ -1806,7 +1806,6 @@
         lightboxImages = images;
         lightboxIndex = Math.max(0, Math.min(startIndex, images.length - 1));
 
-        // Видаляємо попередній, якщо є
         if (lightboxElement) {
             lightboxElement.remove();
             lightboxElement = null;
@@ -1822,7 +1821,6 @@
             opacity: 0; transition: opacity 0.3s;
         `;
 
-        // Кнопка закриття
         const closeBtn = document.createElement('button');
         closeBtn.innerHTML = '<i class="fas fa-times"></i>';
         closeBtn.setAttribute('aria-label', 'Закрити');
@@ -1844,7 +1842,6 @@
             closeBtn.style.transform = 'rotate(0deg)';
         });
 
-        // Лічильник
         const counter = document.createElement('div');
         counter.textContent = `${lightboxIndex + 1} / ${images.length}`;
         counter.style.cssText = `
@@ -1858,7 +1855,6 @@
             z-index: 10;
         `;
 
-        // Зображення
         const img = document.createElement('img');
         img.id = 'lightboxImg';
         img.style.cssText = `
@@ -1869,7 +1865,6 @@
             user-select: none;
         `;
 
-        // Стрілки (тільки якщо більше одного фото)
         let prevBtn = null;
         let nextBtn = null;
 
@@ -1912,7 +1907,6 @@
                 btn.style.background = 'rgba(255,255,255,0.9)';
                 btn.style.transform = 'translateY(-50%) scale(1)';
             });
-            // Мобільні — стрілки менші
             if (window.innerWidth < 480) {
                 btn.style.width = '42px';
                 btn.style.height = '42px';
@@ -1949,12 +1943,10 @@
             img.style.transform = 'scale(1)';
         });
 
-        // Клік по фону — закрити
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
         });
 
-        // Клавіатура
         function keyHandler(e) {
             if (e.key === 'Escape') {
                 closeLightbox();
@@ -1969,7 +1961,6 @@
         }
         document.addEventListener('keydown', keyHandler);
 
-        // Свайпи на мобільних
         let touchStartX = 0;
         let touchEndX = 0;
 
@@ -1992,7 +1983,6 @@
             }
         }, { passive: true });
 
-        // Зберігаємо keyHandler для видалення
         lightbox._keyHandler = keyHandler;
     }
 
