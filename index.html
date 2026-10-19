@@ -10,13 +10,6 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
         :root {
             --primary: #6366f1;
             --primary-dark: #4f46e5;
@@ -26,6 +19,53 @@
             --gray: #64748b;
             --light: #f1f5f9;
             --white: #ffffff;
+
+            --bg-body: #fafbff;
+            --bg-card: #ffffff;
+            --bg-card-hover: #ffffff;
+            --bg-header: #0b2b4b;
+            --bg-tab: #ffffff;
+            --bg-input: #fafbff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --border-color: #eef2f8;
+            --border-light: #f1f5f9;
+            --shadow-card: 0 4px 20px rgba(15, 23, 42, 0.06);
+            --shadow-card-hover: 0 25px 50px -15px rgba(99, 102, 241, 0.35);
+            --lesson-bg: #fafbff;
+            --lesson-border: #eef2f8;
+            --footer-bg: #0f172a;
+            --footer-text: #94a3b8;
+            --footer-border: #1e293b;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #0a0f1c;
+            --bg-card: #151d2e;
+            --bg-card-hover: #1a2438;
+            --bg-header: #0b2b4b;
+            --bg-tab: #151d2e;
+            --bg-input: #1a2438;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+            --border-light: #1e293b;
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --shadow-card-hover: 0 25px 50px -15px rgba(99, 102, 241, 0.5);
+            --lesson-bg: #1a2438;
+            --lesson-border: #1e293b;
+            --footer-bg: #050810;
+            --footer-text: #94a3b8;
+            --footer-border: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html {
@@ -35,12 +75,13 @@
 
         body {
             font-family: 'Manrope', system-ui, -apple-system, sans-serif;
-            background: #fafbff;
-            color: var(--dark);
+            background: var(--bg-body);
+            color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
             min-height: 100dvh;
+            transition: background-color 0.35s ease, color 0.35s ease;
         }
 
         body::before {
@@ -56,6 +97,10 @@
             pointer-events: none;
         }
 
+        [data-theme="dark"] body::before {
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.25), transparent 70%);
+        }
+
         body::after {
             content: '';
             position: fixed;
@@ -67,6 +112,10 @@
             border-radius: 50%;
             z-index: -1;
             pointer-events: none;
+        }
+
+        [data-theme="dark"] body::after {
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.18), transparent 70%);
         }
 
         .container {
@@ -83,7 +132,7 @@
         }
 
         .header-inner {
-            background: #0b2b4b;
+            background: var(--bg-header);
             border-radius: clamp(20px, 4vw, 32px);
             padding: clamp(1.5rem, 3.5vw, 2.2rem) clamp(1.2rem, 3vw, 2.2rem) clamp(0.6rem, 2vw, 1rem);
             box-shadow: 0 20px 60px -20px rgba(99, 102, 241, 0.5);
@@ -122,6 +171,13 @@
                 rgba(99, 102, 241, 0.35) 0%,
                 rgba(139, 92, 246, 0.15) 40%,
                 rgba(236, 72, 153, 0.35) 100%);
+        }
+
+        [data-theme="dark"] .header-bg::after {
+            background: linear-gradient(135deg,
+                rgba(15, 23, 42, 0.7) 0%,
+                rgba(30, 41, 59, 0.5) 40%,
+                rgba(15, 23, 42, 0.7) 100%);
         }
 
         .header-inner::before {
@@ -213,6 +269,13 @@
             text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
         }
 
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
         .contact-info {
             display: flex;
             gap: 8px;
@@ -237,6 +300,62 @@
 
         .contact-chip i {
             color: #fbbf24;
+        }
+
+        /* ================= КНОПКА ПЕРЕМИКАННЯ ТЕМИ ================= */
+        .theme-toggle {
+            width: clamp(44px, 8vw, 50px);
+            height: clamp(44px, 8vw, 50px);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-toggle:hover {
+            background: #fff;
+            color: var(--primary-dark);
+            transform: rotate(20deg) scale(1.08);
+        }
+
+        .theme-toggle:active {
+            transform: rotate(20deg) scale(0.95);
+        }
+
+        .theme-toggle i {
+            position: absolute;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .theme-toggle .icon-sun {
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.5);
+        }
+
+        .theme-toggle .icon-moon {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+        }
+
+        [data-theme="dark"] .theme-toggle .icon-sun {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+        }
+
+        [data-theme="dark"] .theme-toggle .icon-moon {
+            opacity: 0;
+            transform: rotate(90deg) scale(0.5);
         }
 
         /* ================= НАВІГАЦІЯ ================= */
@@ -317,8 +436,6 @@
             justify-content: center;
             transition: all 0.25s;
             flex-shrink: 0;
-            opacity: 1;
-            visibility: visible;
         }
 
         .nav-arrow:hover:not(:disabled) {
@@ -346,7 +463,7 @@
         .section-title {
             font-size: clamp(1.4rem, 4vw, 2.2rem);
             font-weight: 800;
-            color: var(--dark);
+            color: var(--text-primary);
             margin-bottom: clamp(1.2rem, 3vw, 2rem);
             letter-spacing: -1px;
             display: flex;
@@ -380,10 +497,10 @@
         }
 
         .news-card {
-            background: #fff;
+            background: var(--bg-card);
             border-radius: clamp(18px, 3vw, 24px);
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+            box-shadow: var(--shadow-card);
             transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
@@ -396,18 +513,15 @@
         @media (hover: hover) {
             .news-card:hover {
                 transform: translateY(-8px);
-                box-shadow: 0 25px 50px -15px rgba(99, 102, 241, 0.35);
+                box-shadow: var(--shadow-card-hover);
                 border-color: rgba(99, 102, 241, 0.2);
             }
-
             .news-card:hover .news-img img {
                 transform: scale(1.08);
             }
-
             .news-card:hover .news-img i {
                 transform: scale(1.15) rotate(-5deg);
             }
-
             .news-card:hover .read-more {
                 gap: 12px;
                 color: var(--accent-pink);
@@ -485,7 +599,7 @@
             font-size: clamp(1rem, 2.5vw, 1.15rem);
             font-weight: 700;
             margin-bottom: 0.6rem;
-            color: var(--dark);
+            color: var(--text-primary);
             line-height: 1.4;
             letter-spacing: -0.3px;
             display: -webkit-box;
@@ -495,7 +609,7 @@
         }
 
         .news-card p {
-            color: var(--gray);
+            color: var(--text-muted);
             font-size: clamp(0.85rem, 2vw, 0.9rem);
             margin-bottom: 1.2rem;
             flex: 1;
@@ -530,17 +644,17 @@
         }
 
         .subject-card {
-            background: #fff;
+            background: var(--bg-card);
             border-radius: clamp(18px, 3vw, 24px);
             padding: clamp(1.4rem, 3vw, 1.8rem);
-            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+            box-shadow: var(--shadow-card);
             transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             cursor: pointer;
             border: 2px solid transparent;
             text-decoration: none;
-            color: var(--dark);
+            color: var(--text-primary);
             position: relative;
             overflow: hidden;
         }
@@ -561,7 +675,7 @@
         @media (hover: hover) {
             .subject-card:hover {
                 transform: translateY(-6px);
-                box-shadow: 0 25px 50px -15px rgba(99, 102, 241, 0.35);
+                box-shadow: var(--shadow-card-hover);
                 border-color: rgba(99, 102, 241, 0.15);
             }
             .subject-card:hover::before {
@@ -599,12 +713,12 @@
             font-size: clamp(1rem, 2.5vw, 1.15rem);
             font-weight: 800;
             margin-bottom: 0.4rem;
-            color: var(--dark);
+            color: var(--text-primary);
             letter-spacing: -0.3px;
         }
 
         .subject-card p {
-            color: var(--gray);
+            color: var(--text-muted);
             font-size: clamp(0.82rem, 2vw, 0.9rem);
             margin-bottom: 1rem;
             flex: 1;
@@ -625,7 +739,6 @@
             font-size: 0.8em;
         }
 
-        /* Кольори для предметів */
         .subject-icon.info { background: linear-gradient(135deg, #06b6d4, #3b82f6); }
         .subject-icon.math { background: linear-gradient(135deg, #8b5cf6, #6366f1); }
         .subject-icon.ukr { background: linear-gradient(135deg, #f59e0b, #ef4444); }
@@ -639,7 +752,229 @@
         .subject-icon.pe { background: linear-gradient(135deg, #f59e0b, #84cc16); }
         .subject-icon.tech { background: linear-gradient(135deg, #64748b, #475569); }
 
-        /* ================= ВКЛАДКИ ================= */
+        /* ================= ТАБІР ================= */
+        #tabor-section {
+            margin: clamp(2rem, 5vw, 4rem) 0;
+            scroll-margin-top: 20px;
+        }
+
+        .tabor-hero {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 50%, #ec4899 100%);
+            border-radius: clamp(20px, 4vw, 32px);
+            padding: clamp(1.8rem, 4vw, 3rem);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px -20px rgba(245, 158, 11, 0.5);
+            color: #fff;
+        }
+
+        [data-theme="dark"] .tabor-hero {
+            background: linear-gradient(135deg, #b45309 0%, #c2410c 50%, #be185d 100%);
+            box-shadow: 0 20px 60px -20px rgba(245, 158, 11, 0.35);
+        }
+
+        .tabor-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .tabor-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .tabor-hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: clamp(16px, 3vw, 28px);
+            align-items: center;
+        }
+
+        .tabor-hero-icon {
+            width: clamp(72px, 14vw, 110px);
+            height: clamp(72px, 14vw, 110px);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: clamp(20px, 4vw, 28px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            flex-shrink: 0;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+            animation: floatTent 3s ease-in-out infinite;
+        }
+
+        @keyframes floatTent {
+            0%, 100% { transform: translateY(0) rotate(-3deg); }
+            50% { transform: translateY(-8px) rotate(3deg); }
+        }
+
+        .tabor-hero h2 {
+            font-size: clamp(1.5rem, 5vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.15;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 0.5rem;
+        }
+
+        .tabor-hero p {
+            font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 500;
+            max-width: 600px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .tabor-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+            gap: clamp(14px, 2.5vw, 20px);
+            margin-top: clamp(1.5rem, 4vw, 2.5rem);
+        }
+
+        .tabor-info-card {
+            background: var(--bg-card);
+            border-radius: clamp(18px, 3vw, 24px);
+            padding: clamp(1.4rem, 3vw, 1.8rem);
+            box-shadow: var(--shadow-card);
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        @media (hover: hover) {
+            .tabor-info-card:hover {
+                transform: translateY(-6px);
+                border-color: rgba(245, 158, 11, 0.3);
+                box-shadow: 0 25px 50px -15px rgba(245, 158, 11, 0.3);
+            }
+        }
+
+        .tabor-info-icon {
+            width: clamp(48px, 8vw, 56px);
+            height: clamp(48px, 8vw, 56px);
+            border-radius: clamp(14px, 2.5vw, 18px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: #fff;
+            margin-bottom: 0.4rem;
+            box-shadow: 0 8px 20px -5px rgba(245, 158, 11, 0.4);
+        }
+
+        .tabor-info-card:nth-child(1) .tabor-info-icon { background: linear-gradient(135deg, #f59e0b, #f97316); }
+        .tabor-info-card:nth-child(2) .tabor-info-icon { background: linear-gradient(135deg, #ec4899, #f43f5e); }
+        .tabor-info-card:nth-child(3) .tabor-info-icon { background: linear-gradient(135deg, #06b6d4, #3b82f6); }
+        .tabor-info-card:nth-child(4) .tabor-info-icon { background: linear-gradient(135deg, #10b981, #84cc16); }
+
+        .tabor-info-card h4 {
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .tabor-info-card p {
+            color: var(--text-muted);
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+            line-height: 1.6;
+        }
+
+        .tabor-info-card strong {
+            color: var(--text-primary);
+        }
+
+        .tabor-link-box {
+            margin-top: clamp(1.5rem, 4vw, 2.5rem);
+            background: var(--bg-card);
+            border-radius: clamp(18px, 3vw, 24px);
+            padding: clamp(1.4rem, 3vw, 2rem);
+            box-shadow: var(--shadow-card);
+            border: 2px dashed rgba(245, 158, 11, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        [data-theme="dark"] .tabor-link-box {
+            border-color: rgba(245, 158, 11, 0.5);
+        }
+
+        .tabor-link-box h4 {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tabor-link-box h4 i {
+            color: #f59e0b;
+        }
+
+        .tabor-link-box p {
+            color: var(--text-muted);
+            font-size: clamp(0.88rem, 2vw, 0.95rem);
+        }
+
+        .tabor-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #f59e0b, #ec4899);
+            color: #fff;
+            font-weight: 700;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 24px -5px rgba(245, 158, 11, 0.5);
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .tabor-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px -5px rgba(245, 158, 11, 0.6);
+            gap: 14px;
+        }
+
+        .tabor-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .tabor-btn i {
+            font-size: 0.9em;
+        }
+
+        /* ================= ВКЛАДКИ "ПРО ЗАКЛАД" ================= */
         #tabs-section {
             margin: clamp(2rem, 5vw, 4rem) 0;
             scroll-margin-top: 20px;
@@ -650,10 +985,10 @@
             flex-wrap: nowrap;
             gap: 8px;
             margin-bottom: 1.5rem;
-            background: #fff;
+            background: var(--bg-tab);
             padding: 8px;
             border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+            box-shadow: var(--shadow-card);
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
@@ -670,7 +1005,7 @@
             padding: clamp(0.6rem, 1.8vw, 0.8rem) clamp(1rem, 2.5vw, 1.6rem);
             border-radius: 14px;
             font-weight: 700;
-            color: var(--gray);
+            color: var(--text-muted);
             cursor: pointer;
             transition: all 0.25s;
             font-size: clamp(0.78rem, 1.8vw, 0.95rem);
@@ -698,11 +1033,11 @@
         }
 
         .tab-content {
-            background: #fff;
+            background: var(--bg-card);
             border-radius: clamp(18px, 3vw, 28px);
             padding: clamp(1.2rem, 3vw, 2.5rem);
-            box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
-            border: 1px solid #eef2f8;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-color);
         }
 
         .tab-pane {
@@ -720,7 +1055,7 @@
         }
 
         .tab-pane h3 {
-            color: var(--dark);
+            color: var(--text-primary);
             margin-bottom: 1.2rem;
             font-size: clamp(1.15rem, 3vw, 1.5rem);
             font-weight: 800;
@@ -739,7 +1074,7 @@
         }
 
         .tab-pane p {
-            color: #475569;
+            color: var(--text-secondary);
             margin-bottom: 1rem;
             font-size: clamp(0.9rem, 2vw, 1rem);
         }
@@ -750,11 +1085,11 @@
 
         .tab-pane li {
             padding: clamp(0.5rem, 1.5vw, 0.7rem) 0;
-            color: #334155;
+            color: var(--text-secondary);
             display: flex;
             align-items: flex-start;
             gap: 12px;
-            border-bottom: 1px solid #f1f5f9;
+            border-bottom: 1px solid var(--border-light);
             font-size: clamp(0.88rem, 2vw, 1rem);
         }
 
@@ -781,10 +1116,10 @@
         }
 
         .contact-card {
-            background: #fff;
+            background: var(--bg-card);
             border-radius: clamp(18px, 3vw, 24px);
             padding: clamp(1.4rem, 3vw, 2rem) clamp(1.2rem, 2.5vw, 1.5rem);
-            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+            box-shadow: var(--shadow-card);
             transition: 0.3s;
             border: 2px solid transparent;
         }
@@ -793,7 +1128,7 @@
             .contact-card:hover {
                 transform: translateY(-6px);
                 border-color: rgba(99, 102, 241, 0.2);
-                box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.25);
+                box-shadow: var(--shadow-card-hover);
             }
         }
 
@@ -827,11 +1162,11 @@
             font-size: clamp(0.95rem, 2.2vw, 1.05rem);
             font-weight: 800;
             margin-bottom: 0.4rem;
-            color: var(--dark);
+            color: var(--text-primary);
         }
 
         .contact-card p {
-            color: var(--gray);
+            color: var(--text-muted);
             font-size: clamp(0.82rem, 2vw, 0.9rem);
             word-break: break-word;
         }
@@ -917,7 +1252,7 @@
         }
 
         .modal {
-            background: #fff;
+            background: var(--bg-card);
             border-radius: clamp(18px, 3vw, 28px);
             max-width: 720px;
             width: 100%;
@@ -987,7 +1322,7 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.4);
-            color: var(--dark);
+            color: #0f172a;
             font-size: clamp(1rem, 2.5vw, 1.2rem);
             cursor: pointer;
             display: flex;
@@ -1025,14 +1360,14 @@
         .modal-body h2 {
             font-size: clamp(1.2rem, 4vw, 1.7rem);
             font-weight: 800;
-            color: var(--dark);
+            color: var(--text-primary);
             margin-bottom: 1.2rem;
             letter-spacing: -0.5px;
             line-height: 1.3;
         }
 
         .modal-body .modal-text {
-            color: #475569;
+            color: var(--text-secondary);
             font-size: clamp(0.9rem, 2.2vw, 1rem);
             line-height: 1.8;
         }
@@ -1061,7 +1396,6 @@
             transform: scale(1.05);
         }
 
-        /* ============ СТРІЛКИ НАВІГАЦІЇ В МОДАЛЬНОМУ ВІКНІ ============ */
         .modal-nav-arrow {
             position: absolute;
             top: 50%;
@@ -1073,7 +1407,7 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.5);
-            color: var(--dark);
+            color: #0f172a;
             font-size: clamp(0.9rem, 2vw, 1.1rem);
             cursor: pointer;
             display: flex;
@@ -1107,7 +1441,6 @@
             right: clamp(8px, 2vw, 16px);
         }
 
-        /* Індикатор новин (1 з 5) */
         .modal-counter {
             position: absolute;
             top: clamp(10px, 2vw, 16px);
@@ -1126,7 +1459,6 @@
             white-space: nowrap;
         }
 
-        /* Кнопка "Вгору" */
         .scroll-top-btn {
             position: fixed;
             bottom: clamp(20px, 4vw, 30px);
@@ -1167,8 +1499,8 @@
 
         /* ================= ФУТЕР ================= */
         footer {
-            background: var(--dark);
-            color: #94a3b8;
+            background: var(--footer-bg);
+            color: var(--footer-text);
             padding: clamp(2rem, 5vw, 3rem) 0 1.5rem;
             margin-top: clamp(2rem, 5vw, 4rem);
             border-radius: clamp(20px, 4vw, 32px) clamp(20px, 4vw, 32px) 0 0;
@@ -1214,7 +1546,7 @@
         }
 
         .footer-col p, .footer-col a {
-            color: #94a3b8;
+            color: var(--footer-text);
             text-decoration: none;
             font-size: clamp(0.85rem, 2vw, 0.92rem);
             display: block;
@@ -1236,13 +1568,26 @@
             text-align: center;
             margin-top: clamp(1.5rem, 4vw, 2.5rem);
             padding-top: 1.5rem;
-            border-top: 1px solid #1e293b;
+            border-top: 1px solid var(--footer-border);
             font-size: clamp(0.75rem, 2vw, 0.88rem);
-            color: #64748b;
+            color: var(--text-muted);
         }
 
         body.modal-open {
             overflow: hidden;
+        }
+
+        @media (max-width: 600px) {
+            .tabor-hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .tabor-hero-icon {
+                margin: 0 auto;
+            }
+            .tabor-hero p {
+                margin: 0 auto;
+            }
         }
 
         @media (max-width: 400px) {
@@ -1299,6 +1644,14 @@
             }
         }
     </style>
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
 </head>
 <body>
 
@@ -1324,9 +1677,15 @@
                         <p>Заклад загальної середньої освіти</p>
                     </div>
                 </div>
-                <div class="contact-info">
-                    <div class="contact-chip"><i class="fas fa-map-pin"></i> с. Удайці</div>
-                    <div class="contact-chip"><i class="fas fa-phone-alt"></i> (066)8792738</div>
+                <div class="header-right">
+                    <div class="contact-info">
+                        <div class="contact-chip"><i class="fas fa-map-pin"></i> с. Удайці</div>
+                        <div class="contact-chip"><i class="fas fa-phone-alt"></i> (066)8792738</div>
+                    </div>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Перемкнути тему">
+                        <i class="fas fa-moon icon-moon"></i>
+                        <i class="fas fa-sun icon-sun"></i>
+                    </button>
                 </div>
             </div>
 
@@ -1340,6 +1699,7 @@
                         <li><a href="#news" data-nav="news">Новини</a></li>
                         <li><a href="#gallery" data-nav="gallery">Галерея</a></li>
                         <li><a href="#materials-section" data-nav="materials">Матеріали</a></li>
+                        <li><a href="#tabor-section" data-nav="tabor">Табір</a></li>
                         <li><a href="#tabs-section" data-nav="tabs">Про заклад</a></li>
                         <li><a href="#contacts" data-nav="contacts">Контакти</a></li>
                     </ul>
@@ -1363,13 +1723,61 @@
         <div class="gallery-grid" id="galleryGrid"></div>
     </section>
 
-    <!-- ================= МАТЕРІАЛИ / ПРЕДМЕТИ ================= -->
     <section id="materials-section">
         <h2 class="section-title"><span class="emoji">📚</span> <span class="line">Матеріали</span></h2>
-        <p style="color: var(--gray); font-size: clamp(0.9rem, 2vw, 1rem); margin-bottom: 1.5rem; max-width: 700px;">
+        <p style="color: var(--text-muted); font-size: clamp(0.9rem, 2vw, 1rem); margin-bottom: 1.5rem; max-width: 700px;">
             Оберіть предмет, щоб переглянути матеріали до уроків, відео, практичні завдання та тести для учнів 1–9 класів.
         </p>
         <div class="subjects-grid" id="subjectsGrid"></div>
+    </section>
+
+    <!-- ================= ТАБІР ================= -->
+    <section id="tabor-section">
+        <h2 class="section-title"><span class="emoji">🏕️</span> <span class="line">Пришкільний табір</span></h2>
+
+        <div class="tabor-hero">
+            <div class="tabor-hero-content">
+                <div class="tabor-hero-icon">
+                    <i class="fas fa-campground"></i>
+                </div>
+                <div>
+                    <h2>Пришкільний табір «Супутник»</h2>
+                    <p>Літній відпочинок, ігри, творчість та нові друзі — усе це чекає на учнів у нашому пришкільному таборі!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabor-info-grid">
+            <div class="tabor-info-card">
+                <div class="tabor-info-icon"><i class="fas fa-calendar-days"></i></div>
+                <h4>Коли працює</h4>
+                <p><strong>Перші 14 робочих днів</strong> після завершення навчального року. Табір розпочинає роботу одразу після останнього дзвоника.</p>
+            </div>
+            <div class="tabor-info-card">
+                <div class="tabor-info-icon"><i class="fas fa-users"></i></div>
+                <h4>Для кого</h4>
+                <p>Для учнів <strong>1–9 класів</strong> нашої філії. Діти проводять час у знайомому середовищі з улюбленими вчителями та друзями.</p>
+            </div>
+            <div class="tabor-info-card">
+                <div class="tabor-info-icon"><i class="fas fa-palette"></i></div>
+                <h4>Що чекає</h4>
+                <p>Рухливі ігри, творчі майстер-класи, конкурси, екскурсії, спортивні змагання та багато цікавих активностей щодня.</p>
+            </div>
+            <div class="tabor-info-card">
+                <div class="tabor-info-icon"><i class="fas fa-utensils"></i></div>
+                <h4>Харчування</h4>
+                <p>Організоване <strong>безкоштовне гаряче харчування</strong> для всіх вихованців табору протягом усього дня.</p>
+            </div>
+        </div>
+
+        <div class="tabor-link-box">
+            <h4><i class="fas fa-link"></i> Окреме посилання на табір</h4>
+            <p>Детальна інформація про табір, розклад занять, документи для зарахування та контакти вихователів — на окремій сторінці.</p>
+            <a href="tabor.html" class="tabor-btn">
+                <i class="fas fa-arrow-right"></i>
+                Перейти на сторінку табору «Супутник»
+            </a>
+        </div>
     </section>
 
     <section id="tabs-section">
@@ -1465,6 +1873,8 @@
                 <a href="#news"><i class="fas fa-chevron-right"></i> Новини</a>
                 <a href="#gallery"><i class="fas fa-chevron-right"></i> Галерея</a>
                 <a href="#materials-section"><i class="fas fa-chevron-right"></i> Матеріали</a>
+                <a href="#tabor-section"><i class="fas fa-chevron-right"></i> Табір</a>
+                <a href="tabor.html"><i class="fas fa-chevron-right"></i> Табір «Супутник» (сторінка)</a>
                 <a href="#tabs-section"><i class="fas fa-chevron-right"></i> Про заклад</a>
                 <a href="#contacts"><i class="fas fa-chevron-right"></i> Контакти</a>
             </div>
@@ -1485,7 +1895,6 @@
     <i class="fas fa-arrow-up"></i>
 </button>
 
-<!-- ================= МОДАЛЬНЕ ВІКНО ================= -->
 <div class="modal-overlay" id="modalOverlay">
     <div class="modal" role="dialog" aria-modal="true">
         <div class="modal-header" id="modalHeader">
@@ -1510,6 +1919,40 @@
 </div>
 
 <script>
+    /* =====================================================================
+       🌓 ПЕРЕМИКАННЯ ТЕМИ
+       ===================================================================== */
+    const themeToggle = document.getElementById('themeToggle');
+
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if (metaTheme) metaTheme.setAttribute('content', '#0a0f1c');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if (metaTheme) metaTheme.setAttribute('content', '#6366f1');
+        }
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const newTheme = isDark ? 'light' : 'dark';
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    }
+
+    if (!localStorage.getItem('theme') && window.matchMedia) {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        if (mediaQuery.matches) applyTheme('dark');
+        mediaQuery.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) applyTheme(e.matches ? 'dark' : 'light');
+        });
+    }
+
     /* =====================================================================
        📌 ДАНІ НОВИН
        ===================================================================== */
@@ -1714,105 +2157,21 @@
     ];
 
     /* =====================================================================
-       📚 ПРЕДМЕТИ (для секції "Матеріали")
+       📚 ПРЕДМЕТИ
        ===================================================================== */
     const subjects = [
-        {
-            name: "Інформатика",
-            desc: "Алгоритми, програмування, комп'ютерна графіка",
-            icon: "fas fa-laptop-code",
-            iconClass: "info",
-            link: "informatika.html",
-            grades: "1–9 класи"
-        },
-        {
-            name: "Математика",
-            desc: "Арифметика, алгебра, геометрія",
-            icon: "fas fa-calculator",
-            iconClass: "math",
-            link: "materials/matematyka.html",
-            grades: "1–9 класи"
-        },
-        {
-            name: "Українська мова",
-            desc: "Мова, література, читання",
-            icon: "fas fa-book",
-            iconClass: "ukr",
-            link: "materials/ukrainska-mova.html",
-            grades: "1–9 класи"
-        },
-        {
-            name: "Англійська мова",
-            desc: "Grammar, vocabulary, listening",
-            icon: "fas fa-language",
-            iconClass: "eng",
-            link: "materials/english.html",
-            grades: "1–9 класи"
-        },
-        {
-            name: "Історія",
-            desc: "Історія України та всесвітня історія",
-            icon: "fas fa-landmark",
-            iconClass: "hist",
-            link: "materials/istoriya.html",
-            grades: "5–9 класи"
-        },
-        {
-            name: "Географія",
-            desc: "Карти, природа, країни та народи",
-            icon: "fas fa-globe",
-            iconClass: "geo",
-            link: "materials/heohrafiya.html",
-            grades: "6–9 класи"
-        },
-        {
-            name: "Біологія",
-            desc: "Жива природа, організми, екосистеми",
-            icon: "fas fa-leaf",
-            iconClass: "bio",
-            link: "materials/biolohiya.html",
-            grades: "6–9 класи"
-        },
-        {
-            name: "Фізика",
-            desc: "Явища природи, закони, експерименти",
-            icon: "fas fa-atom",
-            iconClass: "phys",
-            link: "materials/fizyka.html",
-            grades: "7–9 класи"
-        },
-        {
-            name: "Хімія",
-            desc: "Речовини, реакції, елементи",
-            icon: "fas fa-flask",
-            iconClass: "chem",
-            link: "materials/khimiya.html",
-            grades: "7–9 класи"
-        },
-        {
-            name: "Мистецтво",
-            desc: "Малювання, музика, творчість",
-            icon: "fas fa-palette",
-            iconClass: "art",
-            link: "materials/mystetstvo.html",
-            grades: "1–9 класи"
-        },
-        {
-            name: "Фізична культура",
-            desc: "Спорт, рухливі ігри, здоров'я",
-            icon: "fas fa-futbol",
-            iconClass: "pe",
-            link: "materials/fizkultura.html",
-            grades: "1–9 класи"
-        },
-        {
-            name: "Трудове навчання",
-            desc: "Технології, рукоділля, проєкти",
-            icon: "fas fa-tools",
-            iconClass: "tech",
-            link: "materials/trudove-navchannya.html",
-            grades: "1–9 класи"
-        }
+        { name: "Інформатика", desc: "Алгоритми, програмування, комп'ютерна графіка", icon: "fas fa-laptop-code", iconClass: "info", link: "informatika.html", grades: "1–9 класи" },
+        { name: "Математика", desc: "Арифметика, алгебра, геометрія", icon: "fas fa-calculator", iconClass: "math", link: "materials/matematyka.html", grades: "1–9 класи" },
+        { name: "Українська мова", desc: "Мова, література, читання", icon: "fas fa-book", iconClass: "ukr", link: "materials/ukrainska-mova.html", grades: "1–9 класи" },
+        { name: "Англійська мова", desc: "Grammar, vocabulary, listening", icon: "fas fa-language", iconClass: "eng", link: "materials/english.html", grades: "1–9 класи" },
+        { name: "Історія", desc: "Історія України та всесвітня історія", icon: "fas fa-landmark", iconClass: "hist", link: "materials/istoriya.html", grades: "5–9 класи" },
+        { name: "Географія", desc: "Карти, природа, країни та народи", icon: "fas fa-globe", iconClass: "geo", link: "materials/heohrafiya.html", grades: "6–9 класи" },
+        { name: "Біологія", desc: "Жива природа, організми, екосистеми", icon: "fas fa-leaf", iconClass: "bio", link: "materials/biolohiya.html", grades: "6–9 класи" },
+        { name: "Фізика", desc: "Явища природи, закони, експерименти", icon: "fas fa-atom", iconClass: "phys", link: "materials/fizyka.html", grades: "7–9 класи" },
+        { name: "Хімія", desc: "Речовини, реакції, елементи", icon: "fas fa-flask", iconClass: "chem", link: "materials/khimiya.html", grades: "7–9 класи" },
+        { name: "Мистецтво", desc: "Малювання, музика, творчість", icon: "fas fa-palette", iconClass: "art", link: "materials/mystetstvo.html", grades: "1–9 класи" },
+        { name: "Фізична культура", desc: "Спорт, рухливі ігри, здоров'я", icon: "fas fa-futbol", iconClass: "pe", link: "materials/fizkultura.html", grades: "1–9 класи" },
+        { name: "Трудове навчання", desc: "Технології, рукоділля, проєкти", icon: "fas fa-tools", iconClass: "tech", link: "materials/trudove-navchannya.html", grades: "1–9 класи" }
     ];
 
     /* =====================================================================
@@ -1997,7 +2356,6 @@
         if (modalCounter) {
             modalCounter.textContent = `${currentNewsIndex + 1} / ${newsIds.length}`;
         }
-
         if (modalPrev) {
             modalPrev.disabled = currentNewsIndex <= 0;
         }
@@ -2302,12 +2660,8 @@
         const maxScroll = navContainer.scrollWidth - navContainer.clientWidth;
         const tolerance = 5;
 
-        if (navArrowLeft) {
-            navArrowLeft.disabled = scrollLeft <= tolerance;
-        }
-        if (navArrowRight) {
-            navArrowRight.disabled = scrollLeft >= maxScroll - tolerance;
-        }
+        if (navArrowLeft) navArrowLeft.disabled = scrollLeft <= tolerance;
+        if (navArrowRight) navArrowRight.disabled = scrollLeft >= maxScroll - tolerance;
     }
 
     if (navArrowLeft) {
@@ -2379,6 +2733,7 @@
                         'news': 'news',
                         'gallery': 'gallery',
                         'materials-section': 'materials',
+                        'tabor-section': 'tabor',
                         'tabs-section': 'tabs',
                         'contacts': 'contacts'
                     };
