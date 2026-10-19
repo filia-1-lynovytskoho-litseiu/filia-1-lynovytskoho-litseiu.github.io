@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#6366f1">
+    <title>Інформатика — Філія №1 Линовицького ліцею</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --accent-pink: #ec4899;
+            --accent-lime: #84cc16;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light: #f1f5f9;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+            background: #fafbff;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            min-height: 100dvh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15), transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -300px;
+            left: -300px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.12), transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 4vw, 24px);
+        }
+
+        /* ================= HEADER ================= */
+        header {
+            position: relative;
+            padding: clamp(0.8rem, 2vw, 1.2rem) 0 0;
+            margin-bottom: clamp(1.5rem, 4vw, 3rem);
+        }
+
+        .header-inner {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 40%, #ec4899 100%);
+            border-radius: clamp(20px, 4vw, 32px);
+            padding: clamp(1.5rem, 3.5vw, 2.5rem) clamp(1.2rem, 3vw, 2.5rem);
+            box-shadow: 0 20px 60px -20px rgba(99, 102, 241, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-inner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .header-inner::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: 20%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .breadcrumb {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 6px 16px;
+            border-radius: 50px;
+            color: #fff;
+            font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 1.2rem;
+            transition: 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .breadcrumb:hover {
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .breadcrumb i {
+            font-size: 0.7rem;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: clamp(12px, 2.5vw, 20px);
+        }
+
+        .header-icon {
+            width: clamp(56px, 10vw, 80px);
+            height: clamp(56px, 10vw, 80px);
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            border-radius: clamp(16px, 3vw, 24px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(245, 158, 11, 0.5);
+            transform: rotate(-5deg);
+            flex-shrink: 0;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .header-title h1 {
+            font-size: clamp(1.3rem, 4vw, 2.2rem);
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-title p {
+            font-size: clamp(0.82rem, 2vw, 1rem);
+            color: rgba(255, 255, 255, 0.92);
+            font-weight: 500;
+            margin-top: 6px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ================= СЕКЦІЯ ================= */
+        .section-title {
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: clamp(1.2rem, 3vw, 1.8rem);
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .section-title .emoji {
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+        }
+
+        .section-title span.line {
+            background: linear-gradient(90deg, var(--primary), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ================= КЛАСИ ================= */
+        .classes-section {
+            margin-bottom: clamp(2rem, 5vw, 4rem);
+        }
+
+        .class-tabs {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+            background: #fff;
+            padding: 8px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .class-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .class-tab {
+            background: transparent;
+            border: none;
+            padding: clamp(0.6rem, 1.8vw, 0.8rem) clamp(1rem, 2.5vw, 1.4rem);
+            border-radius: 14px;
+            font-weight: 700;
+            color: var(--gray);
+            cursor: pointer;
+            transition: all 0.25s;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .class-tab i {
+            color: var(--primary);
+            transition: 0.2s;
+        }
+
+        .class-tab.active {
+            background: linear-gradient(135deg, var(--primary), var(--accent-pink));
+            color: #fff;
+            box-shadow: 0 8px 20px -5px rgba(99, 102, 241, 0.5);
+        }
+
+        .class-tab.active i {
+            color: #fff;
+        }
+
+        .class-content {
+            background: #fff;
+            border-radius: clamp(18px, 3vw, 28px);
+            padding: clamp(1.2rem, 3vw, 2.2rem);
+            box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+            border: 1px solid #eef2f8;
+        }
+
+        .class-pane {
+            display: none;
+            animation: fadeIn 0.35s ease;
+        }
+
+        .class-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .class-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 2px solid #f1f5f9;
+            flex-wrap: wrap;
+        }
+
+        .class-badge {
+            width: clamp(48px, 8vw, 60px);
+            height: clamp(48px, 8vw, 60px);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 800;
+            color: #fff;
+            box-shadow: 0 8px 20px -5px rgba(99, 102, 241, 0.4);
+            flex-shrink: 0;
+        }
+
+        .class-badge.c1 { background: linear-gradient(135deg, #ec4899, #f43f5e); }
+        .class-badge.c2 { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+        .class-badge.c3 { background: linear-gradient(135deg, #10b981, #84cc16); }
+        .class-badge.c4 { background: linear-gradient(135deg, #06b6d4, #3b82f6); }
+        .class-badge.c5 { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+        .class-badge.c6 { background: linear-gradient(135deg, #8b5cf6, #ec4899); }
+        .class-badge.c7 { background: linear-gradient(135deg, #0ea5e9, #06b6d4); }
+        .class-badge.c8 { background: linear-gradient(135deg, #f97316, #f59e0b); }
+        .class-badge.c9 { background: linear-gradient(135deg, #14b8a6, #10b981); }
+
+        .class-header h2 {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            font-weight: 800;
+            color: var(--dark);
+            letter-spacing: -0.5px;
+        }
+
+        .class-header p {
+            color: var(--gray);
+            font-size: clamp(0.82rem, 2vw, 0.92rem);
+            margin-top: 2px;
+        }
+
+        /* ================= УРОКИ ================= */
+        .lessons-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .lesson-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: clamp(0.8rem, 2vw, 1rem) clamp(1rem, 2.5vw, 1.2rem);
+            background: #fafbff;
+            border-radius: 16px;
+            border: 1px solid #eef2f8;
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lesson-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--primary), var(--accent-pink));
+            opacity: 0;
+            transition: opacity 0.25s;
+        }
+
+        @media (hover: hover) {
+            .lesson-item:hover {
+                background: #fff;
+                border-color: rgba(99, 102, 241, 0.25);
+                transform: translateX(6px);
+                box-shadow: 0 8px 24px -10px rgba(99, 102, 241, 0.3);
+            }
+            .lesson-item:hover::before {
+                opacity: 1;
+            }
+            .lesson-item:hover .lesson-num {
+                background: linear-gradient(135deg, var(--primary), var(--accent-pink));
+                color: #fff;
+                border-color: transparent;
+            }
+            .lesson-item:hover .lesson-arrow {
+                color: var(--accent-pink);
+                transform: translateX(4px);
+            }
+        }
+
+        .lesson-item:active {
+            transform: scale(0.99);
+        }
+
+        .lesson-num {
+            width: clamp(36px, 6vw, 42px);
+            height: clamp(36px, 6vw, 42px);
+            border-radius: 12px;
+            background: #fff;
+            border: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            color: var(--primary);
+            flex-shrink: 0;
+            transition: all 0.25s;
+        }
+
+        .lesson-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .lesson-info h3 {
+            font-size: clamp(0.88rem, 2.2vw, 1rem);
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.4;
+            margin-bottom: 2px;
+        }
+
+        .lesson-info .lesson-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: clamp(0.7rem, 1.6vw, 0.8rem);
+            color: var(--gray);
+        }
+
+        .lesson-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .lesson-meta i {
+            font-size: 0.7em;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 10px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tag.video { background: #fef2f2; color: #dc2626; }
+        .tag.practice { background: #ecfdf5; color: #059669; }
+        .tag.test { background: #eff6ff; color: #2563eb; }
+        .tag.theory { background: #faf5ff; color: #9333ea; }
+        .tag.game { background: #fefce8; color: #ca8a04; }
+
+        .lesson-arrow {
+            color: #cbd5e1;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            transition: all 0.25s;
+            flex-shrink: 0;
+        }
+
+        /* ================= ФУТЕР ================= */
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 2rem 0 3rem;
+            padding: 12px 24px;
+            background: #fff;
+            border-radius: 50px;
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+            border: 1px solid #eef2f8;
+            transition: all 0.25s;
+        }
+
+        .back-home:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px -8px rgba(99, 102, 241, 0.5);
+        }
+
+        footer {
+            background: var(--dark);
+            color: #94a3b8;
+            padding: clamp(1.5rem, 4vw, 2rem) 0;
+            text-align: center;
+            font-size: clamp(0.78rem, 2vw, 0.88rem);
+        }
+
+        footer a {
+            color: #fbbf24;
+            text-decoration: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="header-inner">
+            <div class="header-content">
+                <a href="index.html" class="breadcrumb">
+                    <i class="fas fa-arrow-left"></i> На головну
+                </a>
+                <div class="header-title">
+                    <div class="header-icon"><i class="fas fa-laptop-code"></i></div>
+                    <div>
+                        <h1>Інформатика</h1>
+                        <p>Матеріали до уроків для учнів 1–9 класів</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section class="classes-section">
+        <h2 class="section-title"><span class="emoji">📚</span> <span class="line">Оберіть клас</span></h2>
+
+        <!-- Вкладки класів -->
+        <div class="class-tabs" id="classTabs">
+            <button class="class-tab active" data-class="class-1"><i class="fas fa-child"></i> 1 клас</button>
+            <button class="class-tab" data-class="class-2"><i class="fas fa-child"></i> 2 клас</button>
+            <button class="class-tab" data-class="class-3"><i class="fas fa-child"></i> 3 клас</button>
+            <button class="class-tab" data-class="class-4"><i class="fas fa-child"></i> 4 клас</button>
+            <button class="class-tab" data-class="class-5"><i class="fas fa-user-graduate"></i> 5 клас</button>
+            <button class="class-tab" data-class="class-6"><i class="fas fa-user-graduate"></i> 6 клас</button>
+            <button class="class-tab" data-class="class-7"><i class="fas fa-user-graduate"></i> 7 клас</button>
+            <button class="class-tab" data-class="class-8"><i class="fas fa-user-graduate"></i> 8 клас</button>
+            <button class="class-tab" data-class="class-9"><i class="fas fa-user-graduate"></i> 9 клас</button>
+        </div>
+
+        <!-- Контент класів -->
+        <div class="class-content" id="classContent">
+            <!-- 1 КЛАС -->
+            <div class="class-pane active" id="class-1">
+                <div class="class-header">
+                    <div class="class-badge c1">1</div>
+                    <div>
+                        <h2>1 клас</h2>
+                        <p>Перші кроки у світ інформатики</p>
+                    </div>
+                </div>
+                <div class="lessons-list">
+                    <a href="materials/1-klas/urok-1.html" class="lesson-item">
+                        <div class="lesson-num">1</div>
+                        <div class="lesson-info">
+                            <h3>Знайомство з комп'ютером</h3>
+                            <div class="lesson-meta">
+                                <span class="tag theory">Теорія</span>
+                                <span><i class="fas fa-clock"></i> 35 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/1-klas/urok-2.html" class="lesson-item">
+                        <div class="lesson-num">2</div>
+                        <div class="lesson-info">
+                            <h3>Пристрої комп'ютера</h3>
+                            <div class="lesson-meta">
+                                <span class="tag video">Відео</span>
+                                <span><i class="fas fa-clock"></i> 35 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/1-klas/urok-3.html" class="lesson-item">
+                        <div class="lesson-num">3</div>
+                        <div class="lesson-info">
+                            <h3>Мишка та клавіатура</h3>
+                            <div class="lesson-meta">
+                                <span class="tag practice">Практика</span>
+                                <span><i class="fas fa-clock"></i> 35 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/1-klas/urok-4.html" class="lesson-item">
+                        <div class="lesson-num">4</div>
+                        <div class="lesson-info">
+                            <h3>Ігри на уважність</h3>
+                            <div class="lesson-meta">
+                                <span class="tag game">Гра</span>
+                                <span><i class="fas fa-clock"></i> 35 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2 КЛАС -->
+            <div class="class-pane" id="class-2">
+                <div class="class-header">
+                    <div class="class-badge c2">2</div>
+                    <div>
+                        <h2>2 клас</h2>
+                        <p>Знайомство з інформацією та діями з нею</p>
+                    </div>
+                </div>
+                <div class="lessons-list">
+                    <a href="materials/2-klas/urok-1.html" class="lesson-item">
+                        <div class="lesson-num">1</div>
+                        <div class="lesson-info">
+                            <h3>Що таке інформація?</h3>
+                            <div class="lesson-meta">
+                                <span class="tag theory">Теорія</span>
+                                <span><i class="fas fa-clock"></i> 35 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/2-klas/urok-2.html" class="lesson-item">
+                        <div class="lesson-num">2</div>
+                        <div class="lesson-info">
+                            <h3>Види інформації</h3>
+                            <div class="lesson-meta">
+                                <span class="tag video">Відео</span>
+                                <span><i class="fas fa-clock"></i> 35 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/2-klas/urok-3.html" class="lesson-item">
+                        <div class="lesson-num">3</div>
+                        <div class="lesson-info">
+                            <h3>Дії з інформацією</h3>
+                            <div class="lesson-meta">
+                                <span class="tag practice">Практика</span>
+                                <span><i class="fas fa-clock"></i> 35 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3 КЛАС -->
+            <div class="class-pane" id="class-3">
+                <div class="class-header">
+                    <div class="class-badge c3">3</div>
+                    <div>
+                        <h2>3 клас</h2>
+                        <p>Комп'ютерні програми та безпека</p>
+                    </div>
+                </div>
+                <div class="lessons-list">
+                    <a href="materials/3-klas/urok-1.html" class="lesson-item">
+                        <div class="lesson-num">1</div>
+                        <div class="lesson-info">
+                            <h3>Що таке програма?</h3>
+                            <div class="lesson-meta">
+                                <span class="tag theory">Теорія</span>
+                                <span><i class="fas fa-clock"></i> 40 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/3-klas/urok-2.html" class="lesson-item">
+                        <div class="lesson-num">2</div>
+                        <div class="lesson-info">
+                            <h3>Графічний редактор</h3>
+                            <div class="lesson-meta">
+                                <span class="tag practice">Практика</span>
+                                <span><i class="fas fa-clock"></i> 40 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/3-klas/urok-3.html" class="lesson-item">
+                        <div class="lesson-num">3</div>
+                        <div class="lesson-info">
+                            <h3>Безпека в Інтернеті</h3>
+                            <div class="lesson-meta">
+                                <span class="tag video">Відео</span>
+                                <span><i class="fas fa-clock"></i> 40 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 4 КЛАС -->
+            <div class="class-pane" id="class-4">
+                <div class="class-header">
+                    <div class="class-badge c4">4</div>
+                    <div>
+                        <h2>4 клас</h2>
+                        <p>Алгоритми та перші проєкти</p>
+                    </div>
+                </div>
+                <div class="lessons-list">
+                    <a href="materials/4-klas/urok-1.html" class="lesson-item">
+                        <div class="lesson-num">1</div>
+                        <div class="lesson-info">
+                            <h3>Поняття алгоритму</h3>
+                            <div class="lesson-meta">
+                                <span class="tag theory">Теорія</span>
+                                <span><i class="fas fa-clock"></i> 40 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/4-klas/urok-2.html" class="lesson-item">
+                        <div class="lesson-num">2</div>
+                        <div class="lesson-info">
+                            <h3>Лінійні алгоритми</h3>
+                            <div class="lesson-meta">
+                                <span class="tag practice">Практика</span>
+                                <span><i class="fas fa-clock"></i> 40 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/4-klas/urok-3.html" class="lesson-item">
+                        <div class="lesson-num">3</div>
+                        <div class="lesson-info">
+                            <h3>Створення презентації</h3>
+                            <div class="lesson-meta">
+                                <span class="tag practice">Практика</span>
+                                <span><i class="fas fa-clock"></i> 40 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 5 КЛАС -->
+            <div class="class-pane" id="class-5">
+                <div class="class-header">
+                    <div class="class-badge c5">5</div>
+                    <div>
+                        <h2>5 клас</h2>
+                        <p>Основи роботи з комп'ютером та інформацією</p>
+                    </div>
+                </div>
+                <div class="lessons-list">
+                    <a href="materials/5-klas/urok-1.html" class="lesson-item">
+                        <div class="lesson-num">1</div>
+                        <div class="lesson-info">
+                            <h3>Інформація та повідомлення</h3>
+                            <div class="lesson-meta">
+                                <span class="tag theory">Теорія</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/5-klas/urok-2.html" class="lesson-item">
+                        <div class="lesson-num">2</div>
+                        <div class="lesson-info">
+                            <h3>Операційна система</h3>
+                            <div class="lesson-meta">
+                                <span class="tag video">Відео</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/5-klas/urok-3.html" class="lesson-item">
+                        <div class="lesson-num">3</div>
+                        <div class="lesson-info">
+                            <h3>Текстовий редактор</h3>
+                            <div class="lesson-meta">
+                                <span class="tag practice">Практика</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/5-klas/urok-4.html" class="lesson-item">
+                        <div class="lesson-num">4</div>
+                        <div class="lesson-info">
+                            <h3>Підсумковий тест</h3>
+                            <div class="lesson-meta">
+                                <span class="tag test">Тест</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 6 КЛАС -->
+            <div class="class-pane" id="class-6">
+                <div class="class-header">
+                    <div class="class-badge c6">6</div>
+                    <div>
+                        <h2>6 клас</h2>
+                        <p>Алгоритми та виконавці</p>
+                    </div>
+                </div>
+                <div class="lessons-list">
+                    <a href="materials/6-klas/urok-1.html" class="lesson-item">
+                        <div class="lesson-num">1</div>
+                        <div class="lesson-info">
+                            <h3>Алгоритми та їх властивості</h3>
+                            <div class="lesson-meta">
+                                <span class="tag theory">Теорія</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/6-klas/urok-2.html" class="lesson-item">
+                        <div class="lesson-num">2</div>
+                        <div class="lesson-info">
+                            <h3>Виконавці алгоритмів</h3>
+                            <div class="lesson-meta">
+                                <span class="tag video">Відео</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/6-klas/urok-3.html" class="lesson-item">
+                        <div class="lesson-num">3</div>
+                        <div class="lesson-info">
+                            <h3>Цикли та розгалуження</h3>
+                            <div class="lesson-meta">
+                                <span class="tag practice">Практика</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 7 КЛАС -->
+            <div class="class-pane" id="class-7">
+                <div class="class-header">
+                    <div class="class-badge c7">7</div>
+                    <div>
+                        <h2>7 клас</h2>
+                        <p>Програмування та комп'ютерна графіка</p>
+                    </div>
+                </div>
+                <div class="lessons-list">
+                    <a href="materials/7-klas/urok-1.html" class="lesson-item">
+                        <div class="lesson-num">1</div>
+                        <div class="lesson-info">
+                            <h3>Вступ до програмування</h3>
+                            <div class="lesson-meta">
+                                <span class="tag theory">Теорія</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/7-klas/urok-2.html" class="lesson-item">
+                        <div class="lesson-num">2</div>
+                        <div class="lesson-info">
+                            <h3>Змінні та типи даних</h3>
+                            <div class="lesson-meta">
+                                <span class="tag practice">Практика</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/7-klas/urok-3.html" class="lesson-item">
+                        <div class="lesson-num">3</div>
+                        <div class="lesson-info">
+                            <h3>Комп'ютерна графіка</h3>
+                            <div class="lesson-meta">
+                                <span class="tag video">Відео</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 8 КЛАС -->
+            <div class="class-pane" id="class-8">
+                <div class="class-header">
+                    <div class="class-badge c8">8</div>
+                    <div>
+                        <h2>8 клас</h2>
+                        <p>Алгоритмізація та робота з даними</p>
+                    </div>
+                </div>
+                <div class="lessons-list">
+                    <a href="materials/8-klas/urok-1.html" class="lesson-item">
+                        <div class="lesson-num">1</div>
+                        <div class="lesson-info">
+                            <h3>Основи алгоритмізації</h3>
+                            <div class="lesson-meta">
+                                <span class="tag theory">Теорія</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/8-klas/urok-2.html" class="lesson-item">
+                        <div class="lesson-num">2</div>
+                        <div class="lesson-info">
+                            <h3>Масиви та списки</h3>
+                            <div class="lesson-meta">
+                                <span class="tag practice">Практика</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/8-klas/urok-3.html" class="lesson-item">
+                        <div class="lesson-num">3</div>
+                        <div class="lesson-info">
+                            <h3>Електронні таблиці</h3>
+                            <div class="lesson-meta">
+                                <span class="tag practice">Практика</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/8-klas/urok-4.html" class="lesson-item">
+                        <div class="lesson-num">4</div>
+                        <div class="lesson-info">
+                            <h3>Контрольна робота</h3>
+                            <div class="lesson-meta">
+                                <span class="tag test">Тест</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 9 КЛАС -->
+            <div class="class-pane" id="class-9">
+                <div class="class-header">
+                    <div class="class-badge c9">9</div>
+                    <div>
+                        <h2>9 клас</h2>
+                        <p>Підготовка до іспитів та поглиблене програмування</p>
+                    </div>
+                </div>
+                <div class="lessons-list">
+                    <a href="materials/9-klas/urok-1.html" class="lesson-item">
+                        <div class="lesson-num">1</div>
+                        <div class="lesson-info">
+                            <h3>Поглиблене програмування</h3>
+                            <div class="lesson-meta">
+                                <span class="tag practice">Практика</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/9-klas/urok-2.html" class="lesson-item">
+                        <div class="lesson-num">2</div>
+                        <div class="lesson-info">
+                            <h3>Бази даних</h3>
+                            <div class="lesson-meta">
+                                <span class="tag theory">Теорія</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/9-klas/urok-3.html" class="lesson-item">
+                        <div class="lesson-num">3</div>
+                        <div class="lesson-info">
+                            <h3>Проєктна робота</h3>
+                            <div class="lesson-meta">
+                                <span class="tag practice">Практика</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/9-klas/urok-4.html" class="lesson-item">
+                        <div class="lesson-num">4</div>
+                        <div class="lesson-info">
+                            <h3>Підсумковий тест</h3>
+                            <div class="lesson-meta">
+                                <span class="tag test">Тест</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Повернутися на головну</a>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        &copy; 2026 Філія №1 Линовицького ліцею. <a href="index.html">На головну</a>
+    </div>
+</footer>
+
+<script>
+    /* =====================================================================
+       📚 ВКЛАДКИ КЛАСІВ
+       ===================================================================== */
+    const classTabs = document.querySelectorAll('.class-tab');
+    const classPanes = document.querySelectorAll('.class-pane');
+
+    classTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const targetId = this.dataset.class;
+
+            // Активна вкладка
+            classTabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+
+            // Показати відповідний клас
+            classPanes.forEach(pane => pane.classList.remove('active'));
+            const targetPane = document.getElementById(targetId);
+            if (targetPane) targetPane.classList.add('active');
+
+            // Прокрутити вкладку в видиму область (на мобільних)
+            this.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+            // Оновити URL з хешем
+            history.replaceState(null, '', '#' + targetId);
+        });
+    });
+
+    /* =====================================================================
+       🔗 ПІДТРИМКА ХЕШУ ПРИ ЗАВАНТАЖЕННІ (#class-5)
+       ===================================================================== */
+    function activateFromHash() {
+        const hash = window.location.hash.replace('#', '');
+        if (!hash) return;
+
+        const targetTab = document.querySelector(`.class-tab[data-class="${hash}"]`);
+        const targetPane = document.getElementById(hash);
+
+        if (targetTab && targetPane) {
+            classTabs.forEach(t => t.classList.remove('active'));
+            classPanes.forEach(p => p.classList.remove('active'));
+            targetTab.classList.add('active');
+            targetPane.classList.add('active');
+            targetTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', activateFromHash);
+    window.addEventListener('hashchange', activateFromHash);
+</script>
+
+</body>
+</html>
