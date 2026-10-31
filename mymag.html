@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏪 Мій Магазин — Ребаланс</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    min-height: 100vh; padding: 20px; color: #333;
+  }
+  .container { max-width: 1400px; margin: 0 auto; }
+  h1 {
+    color: #fff; text-align: center; margin-bottom: 20px; font-size: 2.2em;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    letter-spacing: 1px;
+  }
+  .panel {
+    background: rgba(255,255,255,0.97); border-radius: 16px; padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.5) inset;
+  }
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px; margin-bottom: 20px;
+  }
+  .stat {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff; border-radius: 12px; padding: 14px; text-align: center;
+    box-shadow: 0 4px 15px rgba(102,126,234,0.35);
+  }
+  .stat .label { font-size: 0.8em; opacity: 0.9; }
+  .stat .value { font-size: 1.4em; font-weight: bold; margin-top: 5px; }
+  .stat.money { background: linear-gradient(135deg, #11998e, #38ef7d); box-shadow: 0 4px 15px rgba(17,153,142,0.35); }
+  .stat.day { background: linear-gradient(135deg, #f7971e, #ffd200); color:#333; box-shadow: 0 4px 15px rgba(247,151,30,0.35); }
+  .stat.rep { background: linear-gradient(135deg, #8e2de2, #4a00e0); box-shadow: 0 4px 15px rgba(142,45,226,0.35); }
+  .stat.cost { background: linear-gradient(135deg, #c0392b, #e74c3c); box-shadow: 0 4px 15px rgba(192,57,43,0.35); }
+
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 15px; }
+  .tab {
+    flex: 1; min-width: 100px; padding: 12px; border: none; border-radius: 10px;
+    background: #e8ecf1; cursor: pointer; font-weight: 600; font-size: 0.95em;
+    transition: all 0.2s;
+  }
+  .tab.active { background: linear-gradient(135deg, #4a6cf7, #6a4af7); color: #fff; box-shadow: 0 4px 12px rgba(74,108,247,0.4); }
+  .tab:hover:not(.active) { background: #d3dae3; }
+
+  .goods { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 12px; }
+  .card {
+    border: 2px solid #e8ecf1; border-radius: 12px; padding: 14px;
+    transition: all 0.2s; display: flex; flex-direction: column; gap: 8px;
+    background: #fff;
+  }
+  .card:hover { border-color: #4a6cf7; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(74,108,247,0.15); }
+  .card .emoji { font-size: 2em; text-align: center; }
+  .card .name { font-weight: 600; text-align: center; }
+  .card .price { color: #e74c3c; font-weight: bold; text-align: center; }
+  .card .stock { text-align: center; font-size: 0.85em; color: #666; }
+  .card .controls { display: flex; gap: 6px; align-items: center; justify-content: center; }
+  .card input {
+    width: 70px; padding: 6px; border: 1px solid #ccc; border-radius: 6px;
+    text-align: center; font-size: 0.9em;
+  }
+  .card .trend { text-align:center; font-size:0.85em; font-weight:600; }
+  .card .trend.up { color:#27ae60; }
+  .card .trend.down { color:#e74c3c; }
+  .card .market { text-align:center; font-size:0.8em; color:#888; }
+  .btn {
+    padding: 8px 14px; border: none; border-radius: 8px; cursor: pointer;
+    font-weight: 600; transition: all 0.2s;
+  }
+  .btn-buy { background: #38ef7d; color: #0a3d1e; }
+  .btn-buy:hover { background: #2bd16a; }
+  .btn-buy:disabled { background: #ccc; cursor: not-allowed; color: #888; }
+  .btn-sell { background: #ffd200; color: #4a3c00; }
+  .btn-sell:hover { background: #e6bd00; }
+  .btn-sell:disabled { background: #ccc; cursor: not-allowed; color: #888; }
+
+  .action-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+  .btn-day {
+    flex: 1; min-width: 200px; padding: 16px; font-size: 1.1em;
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+    color: #333; border: none; border-radius: 12px; cursor: pointer;
+    font-weight: bold; box-shadow: 0 4px 15px rgba(247,151,30,0.4);
+    transition: all 0.2s;
+  }
+  .btn-day:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(247,151,30,0.6); }
+  .btn-reset {
+    padding: 16px 24px; background: #e74c3c; color: #fff; border: none;
+    border-radius: 12px; cursor: pointer; font-weight: bold;
+  }
+  .btn-reset:hover { background: #c0392b; }
+
+  /* ===== Двоколонкова розкладка ===== */
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 20px;
+    align-items: start;
+  }
+  .main-col { min-width: 0; }
+  .side-col { min-width: 0; position: sticky; top: 20px; }
+
+  #log {
+    background: #0d1b2a; color: #e0e1dd; border-radius: 12px; padding: 15px;
+    font-family: 'Courier New', monospace; font-size: 0.85em;
+    height: calc(100vh - 260px);
+    min-height: 400px;
+    max-height: 700px;
+    overflow-y: auto; line-height: 1.6;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  #log::-webkit-scrollbar { width: 8px; }
+  #log::-webkit-scrollbar-track { background: #0a1420; border-radius: 4px; }
+  #log::-webkit-scrollbar-thumb { background: #2c5364; border-radius: 4px; }
+  #log::-webkit-scrollbar-thumb:hover { background: #3a6b80; }
+  #log .profit { color: #38ef7d; }
+  #log .loss { color: #ff6b6b; }
+  #log .day { color: #ffd200; font-weight: bold; border-top: 1px solid #2c3e50; margin-top: 10px; padding-top: 10px; }
+  #log .day:first-child { border-top: none; margin-top: 0; padding-top: 0; }
+  #log .info { color: #8ecae6; }
+  #log .event { color: #ff9f43; font-weight: bold; }
+  #log .warn { color: #ffb86b; font-weight: bold; }
+
+  .side-col .panel { margin-bottom: 0; padding: 16px; }
+  .side-col h3 {
+    margin-bottom: 12px; font-size: 1.05em; color: #2c5364;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .start-screen { text-align: center; padding: 40px 20px; }
+  .start-screen h2 { margin-bottom: 20px; color: #333; }
+  .capital-options { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+  .capital-btn {
+    padding: 25px 30px; border: 3px solid #4a6cf7; border-radius: 16px;
+    background: #fff; cursor: pointer; font-size: 1.1em; font-weight: bold;
+    transition: all 0.25s; min-width: 180px;
+  }
+  .capital-btn:hover { background: #4a6cf7; color: #fff; transform: scale(1.05); }
+  .capital-btn small { display: block; font-weight: normal; font-size: 0.8em; margin-top: 8px; opacity: 0.8; }
+
+  .hidden { display: none !important; }
+  .hint { color: #888; font-size: 0.85em; margin-top: 8px; }
+
+  .event-banner {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: #fff; padding: 14px 18px; border-radius: 12px;
+    margin-bottom: 15px; font-weight: 600; text-align: center;
+    box-shadow: 0 4px 15px rgba(238,90,36,0.4);
+    animation: pop 0.4s ease;
+  }
+  @keyframes pop { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+  /* ===== Адаптив ===== */
+  @media (max-width: 1024px) {
+    .layout { grid-template-columns: 1fr; }
+    .side-col { position: static; }
+    #log { height: 300px; min-height: 200px; max-height: 400px; }
+  }
+  @media (max-width: 600px) {
+    body { padding: 10px; }
+    h1 { font-size: 1.6em; }
+    .panel { padding: 14px; border-radius: 12px; }
+    .stats { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .stat { padding: 10px; }
+    .stat .value { font-size: 1.1em; }
+    .goods { grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: 8px; }
+    .card { padding: 10px; }
+    .card .emoji { font-size: 1.6em; }
+    .btn-day { min-width: 100%; }
+    .capital-btn { min-width: 140px; padding: 18px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🏪 Мій Магазин</h1>
+
+  <!-- Стартовий екран -->
+  <div id="startScreen" class="panel start-screen">
+    <h2>Обери стартовий капітал:</h2>
+    <div class="capital-options">
+      <button class="capital-btn" onclick="startGame(1500, 'Новачок')">
+        💰 1500 ₴
+        <small>Складно · оренда 105 ₴/день</small>
+      </button>
+      <button class="capital-btn" onclick="startGame(3500, 'Підприємець')">
+        💰 3500 ₴
+        <small>Середньо · оренда 245 ₴/день</small>
+      </button>
+      <button class="capital-btn" onclick="startGame(7000, 'Інвестор')">
+        💰 7000 ₴
+        <small>Легко · оренда 490 ₴/день</small>
+      </button>
+    </div>
+    <p class="hint">🎯 Мета: закуповуй товар, призначай ціну, торгуй і зароби якнайбільше!<br>
+    ⚠️ Товари псуються, оренда зростає щодня (+2%), а склад понад 20 шт коштує 2 ₴/шт. Висока ціна = менший попит!</p>
+  </div>
+
+  <!-- Гра -->
+  <div id="gameScreen" class="hidden">
+    <div id="eventBanner"></div>
+
+    <div class="stats">
+      <div class="stat money">
+        <div class="label">💵 Капітал</div>
+        <div class="value" id="money">0 ₴</div>
+      </div>
+      <div class="stat">
+        <div class="label">📦 Товарів на складі</div>
+        <div class="value" id="stockTotal">0</div>
+      </div>
+      <div class="stat day">
+        <div class="label">📅 День</div>
+        <div class="value" id="dayNum">1</div>
+      </div>
+      <div class="stat">
+        <div class="label">💰 Загальний прибуток</div>
+        <div class="value" id="totalProfit">0 ₴</div>
+      </div>
+      <div class="stat rep">
+        <div class="label">⭐ Репутація</div>
+        <div class="value" id="reputation">50</div>
+      </div>
+      <div class="stat cost">
+        <div class="label">🏦 Оренда/день</div>
+        <div class="value" id="rent">0 ₴</div>
+      </div>
+    </div>
+
+    <!-- Двоколонкова розкладка -->
+    <div class="layout">
+      <!-- Основна колонка -->
+      <div class="main-col">
+        <div class="panel">
+          <div class="tabs">
+            <button class="tab active" onclick="switchTab('buy')">🛒 Закупівля</button>
+            <button class="tab" onclick="switchTab('sell')">🏷️ Продаж</button>
+          </div>
+          <div id="goodsGrid" class="goods"></div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn-day" onclick="nextDay()">⏭️ Завершити день і продати товар</button>
+          <button class="btn-reset" onclick="resetGame()">🔄 Нова гра</button>
+        </div>
+      </div>
+
+      <!-- Бічна колонка з журналом -->
+      <div class="side-col">
+        <div class="panel">
+          <h3>📜 Журнал подій</h3>
+          <div id="log"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== Конфігурація товарів =====
+const PRODUCTS = [
+  { id:'bread',   name:'Хліб',         emoji:'🍞', basePrice: 18,   demandBase: 22, volatility: 0.12, perishable: 0.30, elasticity: 2.0 },
+  { id:'milk',    name:'Молоко',       emoji:'🥛', basePrice: 30,   demandBase: 18, volatility: 0.14, perishable: 0.28, elasticity: 1.9 },
+  { id:'apple',   name:'Яблука (кг)',  emoji:'🍎', basePrice: 35,   demandBase: 14, volatility: 0.18, perishable: 0.22, elasticity: 1.8 },
+  { id:'cheese',  name:'Сир',          emoji:'🧀', basePrice: 110,  demandBase: 9,  volatility: 0.16, perishable: 0.10, elasticity: 1.7 },
+  { id:'coffee',  name:'Кава',         emoji:'☕', basePrice: 180,  demandBase: 7,  volatility: 0.22, perishable: 0.02, elasticity: 1.6 },
+  { id:'toy',     name:'Іграшка',      emoji:'🧸', basePrice: 250,  demandBase: 5,  volatility: 0.20, perishable: 0.00, elasticity: 1.5 },
+  { id:'phone',   name:'Телефон',      emoji:'📱', basePrice: 5500, demandBase: 2,  volatility: 0.28, perishable: 0.00, elasticity: 1.3 },
+  { id:'laptop',  name:'Ноутбук',      emoji:'💻', basePrice: 16000,demandBase: 1,  volatility: 0.32, perishable: 0.00, elasticity: 1.2 },
+];
+
+// ===== Форс-мажорні події =====
+const EVENTS = [
+  {
+    id:'power_outage', name:'⚡ Відключення світла', chance: 0.10,
+    desc:'Холодильники не працюють — швидкопсувні товари псуються!',
+    apply: (s) => {
+      let lost = 0;
+      ['milk','cheese','apple'].forEach(id => {
+        const inv = s.inventory[id];
+        if (inv.qty > 0) {
+          const spoil = Math.ceil(inv.qty * 0.35);
+          inv.qty -= spoil; lost += spoil;
+        }
+      });
+      return lost > 0 ? `Втрачено ${lost} шт швидкопсувних товарів.` : 'Пощастило — запасів не було.';
+    }
+  },
+  {
+    id:'strike', name:'✊ Страйк постачальників', chance: 0.10,
+    desc:'Постачання зупинено — ціни закупівлі зростають на 25% до кінця дня.',
+    apply: (s) => { s.buyMultiplier = 1.25; return 'Ціни закупівлі +25%.'; }
+  },
+  {
+    id:'holiday', name:'🎉 Свято / розпродаж', chance: 0.12,
+    desc:'Попит різко зростає!',
+    apply: (s) => { s.demandMultiplier = 1.5; return 'Попит +50% сьогодні.'; }
+  },
+  {
+    id:'competitor', name:'🏬 Відкрився конкурент', chance: 0.10,
+    desc:'Попит падає — покупці йдуть до конкурента.',
+    apply: (s) => { s.demandMultiplier = 0.65; return 'Попит -35% сьогодні.'; }
+  },
+  {
+    id:'inspection', name:'📋 Перевірка санстанції', chance: 0.06,
+    desc:'Штраф за порушення + падіння репутації.',
+    apply: (s) => {
+      const fine = Math.min(s.money, 100 + Math.floor(Math.random()*100));
+      s.money -= fine;
+      s.reputation = Math.max(0, s.reputation - 6);
+      return `Штраф ${fine} ₴, репутація -6.`;
+    }
+  },
+  {
+    id:'viral', name:'📱 Вірусна реклама', chance: 0.06,
+    desc:'Про магазин дізналися — репутація зростає!',
+    apply: (s) => { s.reputation = Math.min(100, s.reputation + 8); return 'Репутація +8.'; }
+  },
+  {
+    id:'robbery', name:'🦹 Крадіжка', chance: 0.05,
+    desc:'Вкрадено частину готівки.',
+    apply: (s) => {
+      const stolen = Math.floor(s.money * 0.08);
+      s.money -= stolen;
+      return `Вкрадено ${stolen} ₴.`;
+    }
+  },
+];
+
+// ===== Стан гри =====
+let state = {};
+
+function startGame(capital, mode) {
+  state = {
+    money: capital,
+    startCapital: capital,
+    day: 1,
+    mode: mode,
+    inventory: {},
+    sellPrice: {},
+    totalProfit: 0,
+    reputation: 50,
+    logs: [],
+    buyMultiplier: 1,
+    demandMultiplier: 1,
+    rentPerDay: Math.round(capital * 0.07),
+  };
+  PRODUCTS.forEach(p => {
+    state.inventory[p.id] = { qty: 0, buyPrice: 0 };
+    state.sellPrice[p.id] = 0;
+  });
+  document.getElementById('startScreen').classList.add('hidden');
+  document.getElementById('gameScreen').classList.remove('hidden');
+  log(`🚀 Гра розпочато! Режим: ${mode}, капітал: ${capital} ₴`, 'day');
+  log(`🏦 Оренда: ${currentRent()} ₴/день (+2% щодня). Склад понад 20 шт — 2 ₴/шт.`, 'info');
+  log(`💡 Порада: не задирай ціну вище ринкової більше ніж на 20-30% — покупці не купуватимуть.`, 'info');
+  render();
+}
+
+function currentRent() {
+  return Math.round(state.rentPerDay * (1 + (state.day - 1) * 0.02));
+}
+
+function storageCost() {
+  const totalQty = Object.values(state.inventory).reduce((s,i)=>s+i.qty, 0);
+  return Math.max(0, totalQty - 20) * 2;
+}
+
+function log(msg, cls='') {
+  state.logs.unshift({ msg, cls });
+  const el = document.getElementById('log');
+  el.innerHTML = state.logs.slice(0, 100).map(l => `<div class="${l.cls}">${l.msg}</div>`).join('');
+}
+
+let currentTab = 'buy';
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active', (tab==='buy'&&i===0)||(tab==='sell'&&i===1)));
+  render();
+}
+
+function render() {
+  document.getElementById('money').textContent = Math.round(state.money).toLocaleString('uk-UA') + ' ₴';
+  const stockTotal = Object.values(state.inventory).reduce((s,i)=>s+i.qty, 0);
+  document.getElementById('stockTotal').textContent = stockTotal;
+  document.getElementById('dayNum').textContent = state.day;
+  document.getElementById('reputation').textContent = state.reputation;
+  document.getElementById('rent').textContent = currentRent() + ' ₴';
+  const tp = state.totalProfit;
+  const tpEl = document.getElementById('totalProfit');
+  tpEl.textContent = (tp>=0?'+':'') + Math.round(tp).toLocaleString('uk-UA') + ' ₴';
+  tpEl.style.color = tp>=0 ? '#e8ffe8' : '#ffb3b3';
+
+  const grid = document.getElementById('goodsGrid');
+  grid.innerHTML = '';
+
+  PRODUCTS.forEach(p => {
+    const inv = state.inventory[p.id];
+    const buyPrice = currentBuyPrice(p);
+    const sellP = state.sellPrice[p.id] || 0;
+
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    if (currentTab === 'buy') {
+      const maxAfford = Math.floor(state.money / buyPrice);
+      const base = p.basePrice;
+      const trendCls = buyPrice < base*0.95 ? 'up' : (buyPrice > base*1.05 ? 'down' : '');
+      const trendTxt = trendCls==='up' ? '▼ дешево' : (trendCls==='down' ? '▲ дорого' : '— норма');
+      card.innerHTML = `
+        <div class="emoji">${p.emoji}</div>
+        <div class="name">${p.name}</div>
+        <div class="price">${buyPrice.toLocaleString()} ₴ / шт</div>
+        <div class="trend ${trendCls}">${trendTxt}</div>
+        <div class="stock">На складі: ${inv.qty} шт${p.perishable>0?' · 🧊 псується':''}</div>
+        <div class="controls">
+          <input type="number" min="1" value="1" id="qty_${p.id}">
+          <button class="btn btn-buy" onclick="buy('${p.id}')" ${state.money < buyPrice ? 'disabled':''}>
+            Купити
+          </button>
+        </div>
+        <div class="hint" style="text-align:center">Можна купити: ${maxAfford} шт · Попит ≈ ${p.demandBase}/день</div>
+      `;
+    } else {
+      const defaultSell = sellP || Math.round(inv.buyPrice * 1.15) || Math.round(p.basePrice * 1.1);
+      card.innerHTML = `
+        <div class="emoji">${p.emoji}</div>
+        <div class="name">${p.name}</div>
+        <div class="price">${inv.qty} шт на складі</div>
+        <div class="stock">Куплено по: ${inv.buyPrice.toLocaleString()} ₴</div>
+        <div class="controls">
+          <input type="number" min="1" value="1" id="qty_${p.id}" ${inv.qty===0?'disabled':''}>
+          <button class="btn btn-sell" onclick="sellNow('${p.id}')" ${inv.qty===0?'disabled':''}>
+            Продати
+          </button>
+        </div>
+        <div class="hint" style="text-align:center">
+          Ціна продажу: 
+          <input type="number" min="1" value="${defaultSell}"
+                 id="sellprice_${p.id}" 
+                 onchange="state.sellPrice['${p.id}']=+this.value"
+                 style="width:80px;padding:4px;margin-top:4px;border-radius:6px;border:1px solid #ccc">
+        </div>
+        <div class="hint" style="text-align:center">Ринок ≈ ${p.basePrice} ₴ · Попит ≈ ${p.demandBase}/день</div>
+      `;
+    }
+    grid.appendChild(card);
+  });
+}
+
+function currentBuyPrice(p) {
+  const seed = (state.day * 7 + p.id.length * 13) % 100;
+  const variation = 1 + (Math.sin(seed) * p.volatility);
+  return Math.max(1, Math.round(p.basePrice * variation * state.buyMultiplier));
+}
+
+function buy(id) {
+  const p = PRODUCTS.find(x=>x.id===id);
+  const qty = parseInt(document.getElementById('qty_'+id).value) || 1;
+  const price = currentBuyPrice(p);
+  const cost = price * qty;
+
+  if (cost > state.money) { alert('Недостатньо коштів!'); return; }
+  if (qty < 1) return;
+
+  state.money -= cost;
+  const inv = state.inventory[id];
+  const totalOld = inv.qty * inv.buyPrice;
+  inv.qty += qty;
+  inv.buyPrice = Math.round((totalOld + cost) / inv.qty);
+  if (!state.sellPrice[id]) state.sellPrice[id] = Math.round(price * 1.15);
+
+  log(`🛒 Куплено ${qty} × ${p.name} по ${price} ₴ (разом ${cost} ₴)`, 'info');
+  render();
+}
+
+function sellNow(id) {
+  const p = PRODUCTS.find(x=>x.id===id);
+  const qty = parseInt(document.getElementById('qty_'+id).value) || 1;
+  const inv = state.inventory[id];
+  if (qty > inv.qty) { alert('Недостатньо товару!'); return; }
+  const price = state.sellPrice[id] || Math.round(inv.buyPrice * 1.15);
+
+  const demand = calcDemand(p, inv, price);
+  const maxSell = Math.min(qty, demand);
+  if (maxSell <= 0) {
+    log(`🚫 ${p.emoji} ${p.name}: попиту немає за ціною ${price} ₴ (ринок ≈ ${p.basePrice} ₴)`, 'loss');
+    return;
+  }
+
+  const revenue = price * maxSell;
+  const cost = inv.buyPrice * maxSell;
+  const profit = revenue - cost;
+
+  inv.qty -= maxSell;
+  state.money += revenue;
+  state.totalProfit += profit;
+
+  const ratio = price / p.basePrice;
+  if (ratio > 1.4) state.reputation = Math.max(0, state.reputation - 1);
+  else if (ratio < 1.1) state.reputation = Math.min(100, state.reputation + 1);
+
+  log(`💰 Продано ${maxSell}${maxSell<qty?`/${qty}`:''} × ${p.name} по ${price} ₴ → прибуток ${profit>=0?'+':''}${Math.round(profit)} ₴`,
+      profit>=0?'profit':'loss');
+  if (maxSell < qty) log(`   ↳ Решта ${qty-maxSell} шт не продано — попит обмежений.`, 'info');
+  render();
+}
+
+function calcDemand(p, inv, sellPrice) {
+  const priceRatio = sellPrice / p.basePrice;
+  let demand;
+  if (priceRatio <= 1) {
+    demand = p.demandBase * Math.min(1.8, 1 + (1 - priceRatio) * p.elasticity * 0.5);
+  } else {
+    demand = p.demandBase * Math.exp(-(priceRatio - 1) * p.elasticity);
+  }
+  demand *= 0.6 + (state.reputation / 100) * 0.8;
+  demand *= state.demandMultiplier;
+  demand *= 0.75 + Math.random() * 0.5;
+  return Math.max(0, Math.round(demand));
+}
+
+function nextDay() {
+  state.day++;
+  state.buyMultiplier = 1;
+  state.demandMultiplier = 1;
+  document.getElementById('eventBanner').innerHTML = '';
+
+  log(`📅 ===== День ${state.day} =====`, 'day');
+
+  const rent = currentRent();
+  state.money -= rent;
+  log(`🏦 Оренда магазину: -${rent} ₴`, 'loss');
+
+  const storage = storageCost();
+  if (storage > 0) {
+    state.money -= storage;
+    log(`📦 Склад (понад 20 шт): -${storage} ₴`, 'loss');
+  }
+
+  let eventMsg = '';
+  for (const ev of EVENTS) {
+    if (Math.random() < ev.chance) {
+      const result = ev.apply(state);
+      eventMsg = `${ev.name}: ${ev.desc} ${result}`;
+      log(`⚠️ ${ev.name} — ${ev.desc} ${result}`, 'event');
+      break;
+    }
+  }
+  if (eventMsg) {
+    document.getElementById('eventBanner').innerHTML = `<div class="event-banner">${eventMsg}</div>`;
+  }
+
+  let dayRevenue = 0;
+  let dayCost = 0;
+  let soldCount = 0;
+  let lostCount = 0;
+
+  PRODUCTS.forEach(p => {
+    const inv = state.inventory[p.id];
+    if (inv.qty === 0) return;
+
+    const sellPrice = state.sellPrice[p.id] || Math.round(inv.buyPrice * 1.15);
+    const demand = calcDemand(p, inv, sellPrice);
+    const sold = Math.min(inv.qty, demand);
+    const unsold = inv.qty - sold;
+
+    if (sold > 0) {
+      const revenue = sold * sellPrice;
+      const cost = sold * inv.buyPrice;
+      const profit = revenue - cost;
+      state.money += revenue;
+      state.totalProfit += profit;
+      inv.qty -= sold;
+      dayRevenue += revenue;
+      dayCost += cost;
+      soldCount += sold;
+      log(`  ✅ ${p.emoji} ${p.name}: продано ${sold}/${demand} шт по ${sellPrice} ₴ → ${profit>=0?'+':''}${Math.round(profit)} ₴`,
+          profit>=0?'profit':'loss');
+    } else if (demand === 0) {
+      log(`  🚫 ${p.emoji} ${p.name}: попиту немає (ціна ${sellPrice} ₴, ринок ≈ ${p.basePrice} ₴)`, 'info');
+    }
+
+    if (unsold > 0 && p.perishable > 0) {
+            const spoil = Math.floor(unsold * p.perishable);
+      if (spoil > 0) {
+        inv.qty -= spoil;
+        lostCount += spoil;
+        log(`  ⚠️ ${p.emoji} ${p.name}: зіпсовано ${spoil} шт`, 'loss');
+      }
+    }
+  });
+
+  // Зміна репутації
+  if (soldCount > 0 && lostCount === 0) {
+    state.reputation = Math.min(100, state.reputation + 1);
+  } else if (lostCount > soldCount) {
+    state.reputation = Math.max(0, state.reputation - 2);
+  }
+
+  const totalExpenses = rent + storage;
+  const netDay = dayRevenue - dayCost - totalExpenses;
+  if (soldCount === 0 && lostCount === 0) {
+    log(`  😴 Сьогодні нічого не продано. Витрати ${totalExpenses} ₴ списані! Перевір ціни та асортимент!`, 'warn');
+  } else {
+    log(`  📊 За день: продано ${soldCount} шт, виручка ${dayRevenue} ₴, чистий ${netDay>=0?'+':''}${Math.round(netDay)} ₴ (після витрат ${totalExpenses} ₴)`,
+        netDay>=0?'profit':'loss');
+  }
+
+  // Банкрутство
+  const stockValue = PRODUCTS.reduce((s,p)=>s + state.inventory[p.id].qty * state.inventory[p.id].buyPrice, 0);
+  if (state.money < 20 && stockValue === 0) {
+    setTimeout(()=>{
+      alert(`💀 ГРА ЗАКІНЧЕНА!\n\nТи збанкрутів на день ${state.day}.\nЗагальний прибуток: ${Math.round(state.totalProfit)} ₴\nСтартовий капітал: ${state.startCapital} ₴\nРепутація: ${state.reputation}`);
+      resetGame();
+    }, 300);
+    return;
+  }
+
+  render();
+}
+
+function resetGame() {
+  if (!confirm('Почати нову гру?')) return;
+  document.getElementById('gameScreen').classList.add('hidden');
+  document.getElementById('startScreen').classList.remove('hidden');
+  document.getElementById('log').innerHTML = '';
+  document.getElementById('eventBanner').innerHTML = '';
+  state = {};
+}
+</script>
+</body>
+</html>
