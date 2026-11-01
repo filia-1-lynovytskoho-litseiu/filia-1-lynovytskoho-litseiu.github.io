@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#6366f1">
+    <title>Підприємництво та фінансова грамотність — Філія №1 Линовицького ліцею</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+        /* ================= СВІТЛА ТЕМА (за замовчуванням) ================= */
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --accent-pink: #ec4899;
+            --accent-lime: #84cc16;
+
+            --bg-body: #fafbff;
+            --bg-card: #ffffff;
+            --bg-card-hover: #ffffff;
+            --bg-tab: #ffffff;
+            --bg-lesson: #fafbff;
+            --bg-lesson-hover: #ffffff;
+            --bg-num: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --border-color: #eef2f8;
+            --border-light: #f1f5f9;
+            --border-num: #e2e8f0;
+            --shadow-card: 0 4px 20px rgba(15, 23, 42, 0.05);
+            --shadow-card-hover: 0 8px 24px -10px rgba(99, 102, 241, 0.3);
+            --footer-bg: #0f172a;
+            --footer-text: #94a3b8;
+            --back-home-bg: #ffffff;
+            --back-home-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+            --arrow-color: #cbd5e1;
+            --header-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 40%, #ec4899 100%);
+        }
+
+        /* ================= ТЕМНА ТЕМА ================= */
+        [data-theme="dark"] {
+            --bg-body: #0a0f1c;
+            --bg-card: #151d2e;
+            --bg-card-hover: #1a2438;
+            --bg-tab: #151d2e;
+            --bg-lesson: #1a2438;
+            --bg-lesson-hover: #1f2a40;
+            --bg-num: #1f2a40;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+            --border-light: #1e293b;
+            --border-num: #334155;
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --shadow-card-hover: 0 8px 24px -10px rgba(99, 102, 241, 0.5);
+            --footer-bg: #050810;
+            --footer-text: #94a3b8;
+            --back-home-bg: #151d2e;
+            --back-home-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --arrow-color: #64748b;
+            --header-gradient: linear-gradient(135deg, #4338ca 0%, #6d28d9 40%, #be185d 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+            background: var(--bg-body);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            min-height: 100dvh;
+            transition: background-color 0.35s ease, color 0.35s ease;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15), transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        [data-theme="dark"] body::before {
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.25), transparent 70%);
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -300px;
+            left: -300px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.12), transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        [data-theme="dark"] body::after {
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.18), transparent 70%);
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 clamp(16px, 4vw, 24px);
+        }
+
+        /* ================= HEADER ================= */
+        header {
+            position: relative;
+            padding: clamp(0.8rem, 2vw, 1.2rem) 0 0;
+            margin-bottom: clamp(1.5rem, 4vw, 3rem);
+        }
+
+        .header-inner {
+            background: var(--header-gradient);
+            border-radius: clamp(20px, 4vw, 32px);
+            padding: clamp(1.5rem, 3.5vw, 2.5rem) clamp(1.2rem, 3vw, 2.5rem);
+            box-shadow: 0 20px 60px -20px rgba(99, 102, 241, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.35s ease;
+        }
+
+        .header-inner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .header-inner::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: 20%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .header-main {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .breadcrumb {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 6px 16px;
+            border-radius: 50px;
+            color: #fff;
+            font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 1.2rem;
+            transition: 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .breadcrumb:hover {
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .breadcrumb i {
+            font-size: 0.7rem;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: clamp(12px, 2.5vw, 20px);
+        }
+
+        .header-icon {
+            width: clamp(56px, 10vw, 80px);
+            height: clamp(56px, 10vw, 80px);
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            border-radius: clamp(16px, 3vw, 24px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(245, 158, 11, 0.5);
+            transform: rotate(-5deg);
+            flex-shrink: 0;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .header-title h1 {
+            font-size: clamp(1.3rem, 4vw, 2.2rem);
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-title p {
+            font-size: clamp(0.82rem, 2vw, 1rem);
+            color: rgba(255, 255, 255, 0.92);
+            font-weight: 500;
+            margin-top: 6px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ================= КНОПКА ТЕМИ ================= */
+        .theme-toggle {
+            width: clamp(44px, 8vw, 50px);
+            height: clamp(44px, 8vw, 50px);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-toggle:hover {
+            background: #fff;
+            color: var(--primary-dark);
+            transform: rotate(20deg) scale(1.08);
+        }
+
+        .theme-toggle:active {
+            transform: rotate(20deg) scale(0.95);
+        }
+
+        .theme-toggle i {
+            position: absolute;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .theme-toggle .icon-sun {
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.5);
+        }
+
+        .theme-toggle .icon-moon {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+        }
+
+        [data-theme="dark"] .theme-toggle .icon-sun {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+        }
+
+        [data-theme="dark"] .theme-toggle .icon-moon {
+            opacity: 0;
+            transform: rotate(90deg) scale(0.5);
+        }
+
+        /* ================= СЕКЦІЯ ================= */
+        .section-title {
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: clamp(1.2rem, 3vw, 1.8rem);
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            transition: color 0.35s;
+        }
+
+        .section-title .emoji {
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+        }
+
+        .section-title span.line {
+            background: linear-gradient(90deg, var(--primary), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ================= КЛАСИ ================= */
+        .classes-section {
+            margin-bottom: clamp(2rem, 5vw, 4rem);
+        }
+
+        .class-tabs {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+            background: var(--bg-tab);
+            padding: 8px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-card);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            transition: background-color 0.35s;
+        }
+
+        .class-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .class-tab {
+            background: transparent;
+            border: none;
+            padding: clamp(0.6rem, 1.8vw, 0.8rem) clamp(1rem, 2.5vw, 1.4rem);
+            border-radius: 14px;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.25s;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .class-tab i {
+            color: var(--primary);
+            transition: 0.2s;
+        }
+
+        .class-tab.active {
+            background: linear-gradient(135deg, var(--primary), var(--accent-pink));
+            color: #fff;
+            box-shadow: 0 8px 20px -5px rgba(99, 102, 241, 0.5);
+        }
+
+        .class-tab.active i {
+            color: #fff;
+        }
+
+        .class-content {
+            background: var(--bg-card);
+            border-radius: clamp(18px, 3vw, 28px);
+            padding: clamp(1.2rem, 3vw, 2.2rem);
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.35s, border-color 0.35s;
+        }
+
+        .class-pane {
+            display: none;
+            animation: fadeIn 0.35s ease;
+        }
+
+        .class-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .class-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 2px solid var(--border-light);
+            flex-wrap: wrap;
+            transition: border-color 0.35s;
+        }
+
+        .class-badge {
+            width: clamp(48px, 8vw, 60px);
+            height: clamp(48px, 8vw, 60px);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 800;
+            color: #fff;
+            box-shadow: 0 8px 20px -5px rgba(99, 102, 241, 0.4);
+            flex-shrink: 0;
+        }
+
+        .class-badge.c8 { background: linear-gradient(135deg, #f97316, #f59e0b); }
+        .class-badge.c9 { background: linear-gradient(135deg, #14b8a6, #10b981); }
+
+        .class-header h2 {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+            transition: color 0.35s;
+        }
+
+        .class-header p {
+            color: var(--text-muted);
+            font-size: clamp(0.82rem, 2vw, 0.92rem);
+            margin-top: 2px;
+        }
+
+        /* ================= УРОКИ ================= */
+        .lessons-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .lesson-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: clamp(0.8rem, 2vw, 1rem) clamp(1rem, 2.5vw, 1.2rem);
+            background: var(--bg-lesson);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lesson-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--primary), var(--accent-pink));
+            opacity: 0;
+            transition: opacity 0.25s;
+        }
+
+        @media (hover: hover) {
+            .lesson-item:hover {
+                background: var(--bg-lesson-hover);
+                border-color: rgba(99, 102, 241, 0.25);
+                transform: translateX(6px);
+                box-shadow: var(--shadow-card-hover);
+            }
+            .lesson-item:hover::before {
+                opacity: 1;
+            }
+            .lesson-item:hover .lesson-num {
+                background: linear-gradient(135deg, var(--primary), var(--accent-pink));
+                color: #fff;
+                border-color: transparent;
+            }
+            .lesson-item:hover .lesson-arrow {
+                color: var(--accent-pink);
+                transform: translateX(4px);
+            }
+        }
+
+        .lesson-item:active {
+            transform: scale(0.99);
+        }
+
+        .lesson-num {
+            width: clamp(36px, 6vw, 42px);
+            height: clamp(36px, 6vw, 42px);
+            border-radius: 12px;
+            background: var(--bg-num);
+            border: 2px solid var(--border-num);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            color: var(--primary);
+            flex-shrink: 0;
+            transition: all 0.25s;
+        }
+
+        .lesson-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .lesson-info h3 {
+            font-size: clamp(0.88rem, 2.2vw, 1rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.4;
+            margin-bottom: 2px;
+            transition: color 0.35s;
+        }
+
+        .lesson-info .lesson-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: clamp(0.7rem, 1.6vw, 0.8rem);
+            color: var(--text-muted);
+        }
+
+        .lesson-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .lesson-meta i {
+            font-size: 0.7em;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 10px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tag.video { background: #fef2f2; color: #dc2626; }
+        .tag.practice { background: #ecfdf5; color: #059669; }
+        .tag.test { background: #eff6ff; color: #2563eb; }
+        .tag.theory { background: #faf5ff; color: #9333ea; }
+        .tag.game { background: #fefce8; color: #ca8a04; }
+        .tag.project { background: #fff7ed; color: #ea580c; }
+
+        [data-theme="dark"] .tag.video { background: rgba(220, 38, 38, 0.2); color: #fca5a5; }
+        [data-theme="dark"] .tag.practice { background: rgba(5, 150, 105, 0.2); color: #6ee7b7; }
+        [data-theme="dark"] .tag.test { background: rgba(37, 99, 235, 0.2); color: #93c5fd; }
+        [data-theme="dark"] .tag.theory { background: rgba(147, 51, 234, 0.2); color: #d8b4fe; }
+        [data-theme="dark"] .tag.game { background: rgba(202, 138, 4, 0.2); color: #fde68a; }
+        [data-theme="dark"] .tag.project { background: rgba(234, 88, 12, 0.2); color: #fdba74; }
+
+        .lesson-arrow {
+            color: var(--arrow-color);
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            transition: all 0.25s;
+            flex-shrink: 0;
+        }
+
+        /* ================= ФУТЕР ================= */
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 2rem 0 3rem;
+            padding: 12px 24px;
+            background: var(--back-home-bg);
+            border-radius: 50px;
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+            box-shadow: var(--back-home-shadow);
+            border: 1px solid var(--border-color);
+            transition: all 0.25s;
+        }
+
+        .back-home:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px -8px rgba(99, 102, 241, 0.5);
+        }
+
+        footer {
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            padding: clamp(1.5rem, 4vw, 2rem) 0;
+            text-align: center;
+            font-size: clamp(0.78rem, 2vw, 0.88rem);
+            transition: background-color 0.35s;
+        }
+
+        footer a {
+            color: #fbbf24;
+            text-decoration: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+    <script>
+        // Застосовуємо тему ДО рендерингу (без блимання)
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="header-inner">
+            <div class="header-content">
+                <div class="header-main">
+                    <a href="index.html" class="breadcrumb">
+                        <i class="fas fa-arrow-left"></i> На головну
+                    </a>
+                    <div class="header-title">
+                        <div class="header-icon"><i class="fas fa-chart-line"></i></div>
+                        <div>
+                            <h1>Підприємництво та фінансова грамотність</h1>
+                            <p>Матеріали до уроків для учнів 8–9 класів</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Перемкнути тему">
+                    <i class="fas fa-moon icon-moon"></i>
+                    <i class="fas fa-sun icon-sun"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section class="classes-section">
+        <h2 class="section-title"><span class="emoji">💼</span> <span class="line">Оберіть клас</span></h2>
+
+        <div class="class-tabs" id="classTabs">
+            <button class="class-tab active" data-class="class-8"><i class="fas fa-user-graduate"></i> 8 клас</button>
+            <button class="class-tab" data-class="class-9"><i class="fas fa-user-graduate"></i> 9 клас</button>
+        </div>
+
+        <div class="class-content" id="classContent">
+            <!-- 8 КЛАС -->
+            <div class="class-pane active" id="class-8">
+                <div class="class-header">
+                    <div class="class-badge c8">8</div>
+                    <div>
+                        <h2>8 клас</h2>
+                        <p>Основи підприємництва та фінансової грамотності</p>
+                    </div>
+                </div>
+                <div class="lessons-list">
+                    <a href="materials/8-klas-pidp/urok-1.html" class="lesson-item">
+                        <div class="lesson-num">1</div>
+                        <div class="lesson-info">
+                            <h3>Що таке підприємництво?</h3>
+                            <div class="lesson-meta">
+                                <span class="tag theory">Теорія</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/8-klas-pidp/urok-2.html" class="lesson-item">
+                        <div class="lesson-num">2</div>
+                        <div class="lesson-info">
+                            <h3>Гроші та їх функції</h3>
+                            <div class="lesson-meta">
+                                <span class="tag video">Відео</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/8-klas-pidp/urok-3.html" class="lesson-item">
+                        <div class="lesson-num">3</div>
+                        <div class="lesson-info">
+                            <h3>Особистий бюджет</h3>
+                            <div class="lesson-meta">
+                                <span class="tag practice">Практика</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="mymag.html" class="lesson-item">
+                        <div class="lesson-num">4</div>
+                        <div class="lesson-info">
+                            <h3>«Мій магазин»</h3>
+                            <div class="lesson-meta">
+                                <span class="tag theory">Теорія</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/8-klas-pidp/urok-5.html" class="lesson-item">
+                        <div class="lesson-num">5</div>
+                        <div class="lesson-info">
+                            <h3>Підсумковий тест</h3>
+                            <div class="lesson-meta">
+                                <span class="tag test">Тест</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 9 КЛАС -->
+            <div class="class-pane" id="class-9">
+                <div class="class-header">
+                    <div class="class-badge c9">9</div>
+                    <div>
+                        <h2>9 клас</h2>
+                        <p>Бізнес-ідеї, фінансові інструменти та проєкти</p>
+                    </div>
+                </div>
+                <div class="lessons-list">
+                    <a href="materials/9-klas-pidp/urok-1.html" class="lesson-item">
+                        <div class="lesson-num">1</div>
+                        <div class="lesson-info">
+                            <h3>Бізнес-ідея та бізнес-план</h3>
+                            <div class="lesson-meta">
+                                <span class="tag theory">Теорія</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/9-klas-pidp/urok-2.html" class="lesson-item">
+                        <div class="lesson-num">2</div>
+                        <div class="lesson-info">
+                            <h3>Форми організації бізнесу</h3>
+                            <div class="lesson-meta">
+                                <span class="tag video">Відео</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/9-klas-pidp/urok-3.html" class="lesson-item">
+                        <div class="lesson-num">3</div>
+                        <div class="lesson-info">
+                            <h3>Кредити та страхування</h3>
+                            <div class="lesson-meta">
+                                <span class="tag practice">Практика</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/9-klas-pidp/urok-4.html" class="lesson-item">
+                        <div class="lesson-num">4</div>
+                        <div class="lesson-info">
+                            <h3>Податки та держава</h3>
+                            <div class="lesson-meta">
+                                <span class="tag theory">Теорія</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/9-klas-pidp/urok-5.html" class="lesson-item">
+                        <div class="lesson-num">5</div>
+                        <div class="lesson-info">
+                            <h3>Мій бізнес-проєкт</h3>
+                            <div class="lesson-meta">
+                                <span class="tag project">Проєкт</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                    <a href="materials/9-klas-pidp/urok-6.html" class="lesson-item">
+                        <div class="lesson-num">6</div>
+                        <div class="lesson-info">
+                            <h3>Підсумковий тест</h3>
+                            <div class="lesson-meta">
+                                <span class="tag test">Тест</span>
+                                <span><i class="fas fa-clock"></i> 45 хв</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right lesson-arrow"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Повернутися на головну</a>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        &copy; 2026 Філія №1 Линовицького ліцею. <a href="index.html">На головну</a>
+    </div>
+</footer>
+
+<script>
+    /* =====================================================================
+       🌓 ПЕРЕМИКАННЯ ТЕМИ
+       ===================================================================== */
+    const themeToggle = document.getElementById('themeToggle');
+
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if (metaTheme) metaTheme.setAttribute('content', '#0a0f1c');
+                } else {
+            document.documentElement.removeAttribute('data-theme');
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if (metaTheme) metaTheme.setAttribute('content', '#6366f1');
+        }
+        localStorage.setItem('theme', theme);
+    }
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    });
+
+    /* =====================================================================
+       📚 ПЕРЕМИКАННЯ КЛАСІВ (TABS)
+       ===================================================================== */
+    const classTabs = document.querySelectorAll('.class-tab');
+    const classPanes = document.querySelectorAll('.class-pane');
+
+    classTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const targetClass = tab.dataset.class;
+
+            // Активна кнопка
+            classTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // Активна панель
+            classPanes.forEach(pane => {
+                pane.classList.toggle('active', pane.id === targetClass);
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
